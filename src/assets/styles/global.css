@@ -321,4 +321,38 @@
   .theme-nav-divider {
     border-color: var(--theme-border);
   }
+
+  .theme-button-primary {
+    background-color: var(--theme-primary);
+    color: var(--theme-primary-foreground);
+    box-shadow: 0 10px 24px color-mix(in oklch, var(--theme-primary) 24%, transparent);
+  }
+
+  .theme-button-primary:hover,
+  .theme-button-primary:active {
+    background-color: color-mix(in oklch, var(--theme-primary) 88%, black);
+  }
+
+  .theme-button-secondary {
+    border-color: var(--theme-border);
+    background-color: var(--theme-accent);
+    color: var(--theme-accent-foreground);
+  }
+
+  .theme-button-secondary:hover {
+    background-color: color-mix(in oklch, var(--theme-accent) 82%, var(--theme-primary));
+    color: var(--theme-primary-foreground);
+  }
+
+  .theme-icon-accent {
+    color: var(--theme-accent-foreground);
+  }
+
+  .theme-icon-primary {
+    color: var(--theme-primary);
+  }
+
+  .theme-rating-icon {
+    color: var(--theme-primary);
+  }
 }

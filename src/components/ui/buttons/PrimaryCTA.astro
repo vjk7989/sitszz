@@ -9,7 +9,7 @@ import Icon from '@components/ui/icons/Icon.astro';
 interface Props {
   title?: string;
   url?: string;
-  /** `orange` (default) or the yellow brand button. */
+  /** Retained for API compatibility; both variants use the active brand theme. */
   variant?: 'orange' | 'yellow';
   noArrow?: boolean;
   [attribute: string]: unknown;
@@ -18,9 +18,8 @@ interface Props {
 const { title, url, variant = 'orange', noArrow, ...rest } = Astro.props;
 
 const variants = {
-  orange:
-    'text-neutral-50 bg-orange-400 hover:bg-orange-500 active:bg-orange-500',
-  yellow: 'text-neutral-800 bg-yellow-400 hover:bg-yellow-500',
+  orange: 'theme-button-primary',
+  yellow: 'theme-button-primary',
 };
 
 const classes = [
