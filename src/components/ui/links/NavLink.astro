@@ -7,10 +7,10 @@ interface Props {
   name: string;
   /** Disable the character-roll treatment for static navigation controls. */
   motion?: boolean;
-  /** Optional decorative icon shown beside a static navigation label. */
-  icon?: IconName;
-  /** Position the optional icon at the beginning or end of the label. */
-  iconPosition?: 'start' | 'end';
+  /** Optional decorative icon shown before a static navigation label. */
+  leadingIcon?: IconName;
+  /** Optional decorative icon shown after a static navigation label. */
+  trailingIcon?: IconName;
   /** Use the compact, filled CTA treatment for a static navigation control. */
   variant?: 'link' | 'cta';
 }
@@ -19,8 +19,8 @@ const {
   url,
   name,
   motion = true,
-  icon,
-  iconPosition = 'start',
+  leadingIcon,
+  trailingIcon,
   variant = 'link',
 } = Astro.props;
 
@@ -83,12 +83,12 @@ GitHub Pages base paths without relying on browser-side state.
     </span>
   ) : (
     <>
-      {icon && iconPosition === 'start' && (
-        <Icon name={icon} class="h-4 w-4 shrink-0" />
+      {leadingIcon && (
+        <Icon name={leadingIcon} class="h-4 w-4 shrink-0" />
       )}
       <span>{name}</span>
-      {icon && iconPosition === 'end' && (
-        <Icon name={icon} class="h-4 w-4 shrink-0" />
+      {trailingIcon && (
+        <Icon name={trailingIcon} class="h-4 w-4 shrink-0" />
       )}
     </>
   )}
