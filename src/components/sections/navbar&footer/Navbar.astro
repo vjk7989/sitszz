@@ -1,14 +1,12 @@
 ---
 import ThemeIcon from '@components/ThemeIcon.astro';
 import NavLink from '@components/ui/links/NavLink.astro';
-import Authentication from '../misc/Authentication.astro';
 import BrandLogo from '@components/BrandLogo.astro';
-import LanguagePicker from '@components/ui/LanguagePicker.astro';
 import NavbarToggle from '@components/ui/buttons/NavbarToggle.astro';
 import { navLinks } from '@data/navigation';
-import { localePath } from '@utils/locale';
+import { sitePath } from '@utils/site-path';
 
-const { locale, copy: t } = Astro.locals;
+const { copy: t } = Astro.locals;
 ---
 
 {/* Main header component */}
@@ -22,7 +20,7 @@ const { locale, copy: t } = Astro.locals;
       {/* Brand logo */}
       <a
         class="flex-none rounded-lg text-xl font-bold ring-zinc-500 outline-hidden focus-visible:ring-3 dark:ring-zinc-200 dark:focus:outline-hidden"
-        href={localePath(locale)}
+        href={sitePath('/')}
         aria-label="ScrewFast"
       >
         <BrandLogo class="h-auto w-24" />
@@ -40,16 +38,20 @@ const { locale, copy: t } = Astro.locals;
     >
       {/* Navigation links container */}
       <div class="mt-5 flex flex-col gap-x-0 gap-y-4 md:mt-0 md:flex-row md:items-center md:justify-end md:gap-x-4 md:gap-y-0 md:ps-7 lg:gap-x-7">
-        {/* Navigation links and Authentication component */}
+        {/* Primary page navigation */}
         {navLinks.map(link => (
           <NavLink
-            url={localePath(locale, link.path)}
+            url={sitePath(link.path)}
             name={t.nav.labels[link.id]}
           />
         ))}
 
-        <Authentication />
-        <LanguagePicker />
+        <a
+          href={sitePath('/contact')}
+          class="theme-button-primary theme-nav-divider inline-flex items-center justify-center rounded-full px-4 py-2 text-sm font-medium ring-zinc-500 outline-hidden transition duration-300 focus-visible:ring-3 dark:ring-zinc-200 dark:focus:outline-hidden"
+        >
+          {t.nav.contactUs}
+        </a>
         {/* ThemeIcon component specifically for larger screens */}
         <span class="hidden md:inline-block">
           <ThemeIcon />

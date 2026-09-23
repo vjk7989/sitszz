@@ -2,7 +2,7 @@
 // Import necessary modules and utilities
 import { Image } from 'astro:assets';
 import { formatDate } from '@utils/utils';
-import { localeOf, pathFor } from '@utils/content';
+import { pathFor } from '@utils/content';
 import type { CollectionEntry } from 'astro:content';
 
 const { blogEntry } = Astro.props;
@@ -31,7 +31,7 @@ interface Props {
     </h3>
     {/* The formatted publication date of the blog post */}
     <p class="mt-2 text-sm text-neutral-600 dark:text-neutral-400">
-      {formatDate(blogEntry.data.pubDate, localeOf(blogEntry))}
+      {formatDate(blogEntry.data.pubDate)}
     </p>
   </div>
 </a>

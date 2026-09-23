@@ -2,7 +2,7 @@
 import InsightView from '@views/InsightView.astro';
 import { staticPathsFor } from '@utils/content';
 
-export const getStaticPaths = () => staticPathsFor('insights', 'en');
+export const getStaticPaths = () => staticPathsFor('insights');
 
 const { entry } = Astro.props;
 ---

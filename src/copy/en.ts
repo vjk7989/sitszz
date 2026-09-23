@@ -3,12 +3,7 @@ import features from '@data/features.json';
 import pricing from '@data/pricing.json';
 
 /**
- * English copy table. This file defines the shape every other locale must
- * satisfy (see `Copy` in `./index.ts`), so a missing translation fails
- * `astro check` instead of leaking English onto a localised page.
- *
- * Paths are unlocalised (`/products`, not `/fr/products`); callers run them
- * through `localePath()` from `@utils/locale`.
+ * English copy table for the site.
  */
 export const en = {
   site: {
@@ -25,7 +20,6 @@ export const en = {
 
   layout: {
     skipToContent: 'Skip to content',
-    changeLanguage: 'Change language',
     toggleNavigation: 'Toggle navigation',
     darkTheme: 'Dark Theme Toggle',
     lightTheme: 'Light Theme Toggle',
@@ -41,6 +35,7 @@ export const en = {
       blog: 'Blog',
       contact: 'Contact',
     },
+    contactUs: 'Contact Us',
     footer: {
       /** Section titles and link labels for `footerSections` in `@data/navigation`, keyed by id. */
       sectionTitles: {
@@ -124,30 +119,6 @@ export const en = {
     termsAndConditions: 'Terms and Conditions',
     or: 'Or',
     demoFallbackMessage: 'Demo only — this form is not connected to a backend.',
-  },
-
-  auth: {
-    logIn: 'Log in',
-    signIn: 'Sign in',
-    signUp: 'Sign up',
-    signInWithGoogle: 'Sign in with Google',
-    signUpWithGoogle: 'Sign up with Google',
-    noAccountYet: "Don't have an account yet?",
-    signUpHere: 'Sign up here',
-    alreadyHaveAccount: 'Already have an account?',
-    signInHere: 'Sign in here',
-    forgotPasswordTitle: 'Forgot password?',
-    rememberYourPassword: 'Remember your password?',
-    resetPassword: 'Reset password',
-    credentialsDemoNotice:
-      'Demo only – connect a real auth provider before collecting credentials.',
-    recoveryDemoNotice:
-      'Demo only – password recovery is not connected to a backend.',
-    signInDemoMessage: 'Demo only – sign-in is not connected to a backend.',
-    registerDemoMessage:
-      'Demo only – registration is not connected to a backend.',
-    recoverDemoMessage:
-      'Demo only – password recovery is not connected to a backend.',
   },
 
   share: {

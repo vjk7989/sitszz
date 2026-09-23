@@ -6,9 +6,9 @@ import Icon from '@components/ui/icons/Icon.astro';
 import BrandLogo from '@components/BrandLogo.astro';
 import { SITE } from '@data/constants';
 import { footerSections, socialLinks } from '@data/navigation';
-import { localePath } from '@utils/locale';
+import { sitePath } from '@utils/site-path';
 
-const { locale, copy: t } = Astro.locals;
+const { copy: t } = Astro.locals;
 const footer = t.nav.footer;
 
 const socialIconClass =
@@ -32,7 +32,7 @@ const socialIconClass =
             {section.links.map(link => (
               <li>
                 <a
-                  href={localePath(locale, link.path)}
+                  href={sitePath(link.path)}
                   class="inline-flex gap-x-2 rounded-lg text-neutral-600 ring-zinc-500 outline-hidden transition duration-300 hover:text-neutral-500 focus-visible:ring-3 dark:text-neutral-400 dark:ring-zinc-200 dark:hover:text-neutral-300 dark:focus:outline-hidden"
                 >
                   {footer.links[link.id]}

@@ -1,8 +1,6 @@
-import { LOCALE_INFO, type MarketingLocale } from '@utils/locale';
-
-/** Format a date for display in the given marketing locale, e.g. "Sep 20, 2026". */
-function formatDate(date: Date, locale: MarketingLocale): string {
-  return new Date(date).toLocaleDateString(LOCALE_INFO[locale].intl, {
+/** Format a date for the English-only marketing site. */
+function formatDate(date: Date): string {
+  return new Date(date).toLocaleDateString('en-US', {
     year: 'numeric',
     month: 'short',
     day: 'numeric',

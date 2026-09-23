@@ -9,8 +9,7 @@ import '@styles/global.css';
  * Marketing-page layout. A page tells it what the page *is* (title,
  * description, section, kind); the layout derives the whole `<head>` from
  * that via `buildPageMetadata()` and wraps the content in Navbar +
- * FooterSection. The locale is the one resolved from the URL by the
- * middleware (`Astro.locals.locale`), the single source for the whole tree.
+ * FooterSection.
  */
 interface Props {
   /** Page title without the site suffix. Omit on the home page. */
@@ -31,10 +30,9 @@ const {
   kind,
   hideFooter = false,
 } = Astro.props;
-const { locale, copy: t } = Astro.locals;
+const { copy: t } = Astro.locals;
 
 const metadata = buildPageMetadata({
-  locale,
   pathname: Astro.url.pathname,
   title,
   description,

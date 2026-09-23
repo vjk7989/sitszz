@@ -8,7 +8,7 @@ import PostFeedback from '@components/ui/feedback/PostFeedback.astro';
 import { Image } from 'astro:assets';
 import { render, type CollectionEntry } from 'astro:content';
 import { capitalize, formatDate } from '@utils/utils';
-import { entriesFor, localeOf } from '@utils/content';
+import { entriesFor } from '@utils/content';
 import { getCopy } from '@/copy';
 
 /** One blog post. The locale is the entry's own. */
@@ -17,15 +17,14 @@ interface Props {
 }
 
 const { post } = Astro.props;
-const locale = localeOf(post);
-const t = getCopy(locale);
+const t = getCopy();
 const { Content } = await render(post);
 
 // Related posts: every other post in this locale.
 // Note: This is a very basic way of choosing related posts, just for the purpose of the example.
 // In a production site, you might want to implement a more robust algorithm, choosing related posts based on tags, categories, dates, authors, or keywords.
 // See example: https://blog.codybrunner.com/2024/adding-related-articles-with-astro-content-collections/
-const relatedPosts = (await entriesFor('blog', locale)).filter(
+const relatedPosts = (await entriesFor('blog')).filter(
   blogEntry => blogEntry.id !== post.id
 );
 ---
@@ -55,7 +54,7 @@ const relatedPosts = (await entriesFor('blog', locale)).filter(
                 </span>
                 <ul class="text-xs text-neutral-500">
                   <li class="relative inline-block pe-6 before:absolute before:end-2 before:top-1/2 before:size-1 before:-translate-y-1/2 before:rounded-full before:bg-neutral-300 last:pe-0 last-of-type:before:hidden dark:text-neutral-400 dark:before:bg-neutral-600">
-                    {formatDate(post.data.pubDate, locale)}
+                    {formatDate(post.data.pubDate)}
                   </li>
                   <li class="relative inline-block pe-6 before:absolute before:end-2 before:top-1/2 before:size-1 before:-translate-y-1/2 before:rounded-full before:bg-neutral-300 last:pe-0 last-of-type:before:hidden dark:text-neutral-400 dark:before:bg-neutral-600">
                     {t.blog.minRead(post.data.readTime)}

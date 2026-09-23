@@ -45,9 +45,6 @@ const basePath = import.meta.env.BASE_URL.replace(/\/$/, '');
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 <meta http-equiv="X-UA-Compatible" content="ie=edge" />
 <link rel="canonical" href={metadata.canonical} />
-{metadata.alternates.map(alt => (
-  <link rel="alternate" hreflang={alt.hreflang} href={alt.href} />
-))}
 
 {/* Facebook Meta Tags */}
 <meta property="og:locale" content={metadata.ogLocale} />

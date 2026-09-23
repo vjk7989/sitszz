@@ -1,8 +1,7 @@
 /**
- * Navigation structure shared by every locale: stable ids, unlocalised paths
- * and social URLs. The label for each id lives in the copy tables
- * (`copy.nav.labels`, `copy.nav.footer.sections`), so translators never touch
- * a path and code never keys on a translated label.
+ * English navigation structure: stable ids, site-relative paths and social
+ * URLs. Labels live in the shared copy table so paths stay separate from UI
+ * text.
  */
 export type NavLinkId = 'home' | 'products' | 'services' | 'blog' | 'contact';
 

@@ -3,7 +3,7 @@
 import AvatarBlog from '@components/ui/avatars/AvatarBlog.astro';
 import { Image } from 'astro:assets';
 import { formatDate } from '@utils/utils';
-import { localeOf, pathFor } from '@utils/content';
+import { pathFor } from '@utils/content';
 import type { CollectionEntry } from 'astro:content';
 
 const { blogEntry } = Astro.props;
@@ -42,7 +42,7 @@ interface Props {
         <div class="ms-2.5 sm:ms-4">
           <h4 class="font-bold text-neutral-50">{blogEntry.data.author}</h4>
           <p class="text-xs text-neutral-50/[.8]">
-            {formatDate(blogEntry.data.pubDate, localeOf(blogEntry))}
+            {formatDate(blogEntry.data.pubDate)}
           </p>
         </div>
       </div>

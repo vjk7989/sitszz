@@ -5,18 +5,10 @@ import CardBlogRecent from '@components/ui/cards/CardBlogRecent.astro';
 import CardInsight from '@components/ui/cards/CardInsight.astro';
 import { entriesFor } from '@utils/content';
 import { getCopy } from '@/copy';
-import type { MarketingLocale } from '@utils/locale';
+const copy = getCopy().blogIndex;
 
-/** The blog index (posts + insights) in one locale. */
-interface Props {
-  locale: MarketingLocale;
-}
-
-const { locale } = Astro.props;
-const copy = getCopy(locale).blogIndex;
-
-const blogPosts = await entriesFor('blog', locale);
-const insightPosts = await entriesFor('insights', locale);
+const blogPosts = await entriesFor('blog');
+const insightPosts = await entriesFor('insights');
 
 // Separate the most recent post from others
 const [mostRecentPost, ...otherPosts] = blogPosts;

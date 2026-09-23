@@ -3,9 +3,7 @@
 
 declare namespace App {
   interface Locals {
-    /** Marketing locale of the current request; set in `src/middleware.ts`. */
-    locale: import('@utils/locale').MarketingLocale;
-    /** Copy table for `locale`; set in `src/middleware.ts`. */
+    /** English marketing copy set by `src/middleware.ts`. */
     copy: import('@/copy').Copy;
   }
 }

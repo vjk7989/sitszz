@@ -2,19 +2,9 @@
 import MainLayout from '@/layouts/MainLayout.astro';
 import PrimaryCTA from '@components/ui/buttons/PrimaryCTA.astro';
 import { getCopy } from '@/copy';
-import { localePath, type MarketingLocale } from '@utils/locale';
+import { sitePath } from '@utils/site-path';
 
-/**
- * The 404 page in one locale. Static output can only serve one `404.html`
- * (the English one); `/fr/404/` is built as well so the host can rewrite
- * missing `/fr/…` paths to it (see `vercel.json` and the README).
- */
-interface Props {
-  locale: MarketingLocale;
-}
-
-const { locale } = Astro.props;
-const copy = getCopy(locale).notFound;
+const copy = getCopy().notFound;
 ---
 
 <MainLayout title={copy.title} hideFooter>
@@ -39,14 +29,14 @@ const copy = getCopy(locale).notFound;
         <div class="flex flex-wrap items-center justify-center gap-3">
           <PrimaryCTA
             title={copy.goHome}
-            url={localePath(locale)}
+            url={sitePath('/')}
             variant="yellow"
             noArrow
           />
           <PrimaryCTA
             title={copy.goBack}
             id="go-back"
-            data-home={localePath(locale)}
+            data-home={sitePath('/')}
           />
         </div>
       </div>

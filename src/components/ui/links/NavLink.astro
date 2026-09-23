@@ -11,7 +11,12 @@ const normalizePath = (path: string) => {
   return withoutBase.replace(/\/$/, '') || '/';
 };
 
-const isCurrentPage = normalizePath(Astro.url.pathname) === normalizePath(url);
+const currentPath = normalizePath(Astro.url.pathname);
+const linkPath = normalizePath(url);
+const isCurrentPage =
+  currentPath === linkPath ||
+  (linkPath !== '/' && currentPath.startsWith(`${linkPath}/`)) ||
+  (linkPath === '/blog' && currentPath.startsWith('/insights/'));
 const characters = Array.from(name);
 
 // Define TypeScript interface for the properties
@@ -23,8 +28,8 @@ interface Props {
 
 {/*
 Re-usable link component for navigation bar. The current-page state is
-calculated during rendering, so it works on every static route, locale, and
-GitHub Pages base path without relying on a browser-side path comparison.
+calculated during rendering, so it works on index and detail routes with
+GitHub Pages base paths without relying on browser-side state.
 */}
 <a
   href={url}

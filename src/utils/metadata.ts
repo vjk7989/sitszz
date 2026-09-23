@@ -1,12 +1,6 @@
 import { SITE } from '@data/constants';
 import { getCopy } from '@/copy';
-import {
-  LOCALE_INFO,
-  MARKETING_LOCALES,
-  alternatePaths,
-  localePath,
-  type MarketingLocale,
-} from '@utils/locale';
+import { sitePath } from '@utils/site-path';
 
 const basePath = import.meta.env.BASE_URL.replace(/\/$/, '');
 
@@ -15,7 +9,7 @@ const basePath = import.meta.env.BASE_URL.replace(/\/$/, '');
  *
  * Turns the five things a page knows about itself (locale, path, title,
  * description, kind) into everything the `<head>` needs: title, description,
- * Open Graph fields, canonical, hreflang alternates and schema.org JSON-LD
+ * Open Graph fields, canonical URL and schema.org JSON-LD
  * with the site boilerplate filled in. Pages never hand-write schema.org
  * objects or the site URL.
  *
@@ -35,7 +29,6 @@ export type PageKind =
   | { type: 'Product' };
 
 export interface PageMetadataInput {
-  locale: MarketingLocale;
   /** Site-relative pathname of the page (`Astro.url.pathname`). */
   pathname: string;
   /** Page title without the site suffix. Omit on the home page. */
@@ -60,7 +53,6 @@ export interface PageMetadata {
   ogDescription: string;
   ogLocale: string;
   canonical: string;
-  alternates: { hreflang: string; href: string }[];
   jsonLd: Record<string, unknown>;
 }
 
@@ -74,9 +66,8 @@ export function absoluteUrl(path: string): string {
 }
 
 export function buildPageMetadata(input: PageMetadataInput): PageMetadata {
-  const { locale, pathname, kind = { type: 'WebPage' } } = input;
-  const copy = getCopy(locale);
-  const info = LOCALE_INFO[locale];
+  const { pathname, kind = { type: 'WebPage' } } = input;
+  const copy = getCopy();
 
   const title = input.title ? `${input.title} | ${SITE.title}` : SITE.title;
   const description = input.description ?? copy.site.description;
@@ -87,12 +78,6 @@ export function buildPageMetadata(input: PageMetadataInput): PageMetadata {
       : copy.site.ogTitle);
   const ogDescription = input.description ?? copy.site.ogDescription;
   const canonical = absoluteUrl(pathname);
-
-  const paths = alternatePaths(pathname);
-  const alternates = MARKETING_LOCALES.map(alt => ({
-    hreflang: LOCALE_INFO[alt].lang,
-    href: absoluteUrl(paths[alt]),
-  }));
 
   const publisher = {
     '@type': 'Organization',
@@ -142,7 +127,7 @@ export function buildPageMetadata(input: PageMetadataInput): PageMetadata {
         description,
         isPartOf: {
           '@type': 'WebSite',
-          url: absoluteUrl(localePath(locale)),
+          url: absoluteUrl(sitePath('/')),
           name: SITE.title,
           description: copy.site.descriptionShort,
         },
@@ -150,18 +135,17 @@ export function buildPageMetadata(input: PageMetadataInput): PageMetadata {
   }
 
   return {
-    lang: info.lang,
+    lang: 'en',
     title,
     description,
     ogTitle,
     ogDescription,
-    ogLocale: info.ogLocale,
+    ogLocale: 'en_US',
     canonical,
-    alternates,
     jsonLd: {
       '@context': 'https://schema.org',
       ...jsonLd,
-      inLanguage: info.inLanguage,
+      inLanguage: 'en-US',
     },
   };
 }

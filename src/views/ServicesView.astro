@@ -14,15 +14,7 @@ import usingTools from '@images/using-tools.avif';
 import progressBuilding from '@images/progress-building.avif';
 import underConstruction from '@images/under-construction.avif';
 import { getCopy } from '@/copy';
-import type { MarketingLocale } from '@utils/locale';
-
-/** The services page in one locale. */
-interface Props {
-  locale: MarketingLocale;
-}
-
-const { locale } = Astro.props;
-const copy = getCopy(locale).services;
+const copy = getCopy().services;
 const articleCopy = copy.articles;
 
 const articles: Article[] = [

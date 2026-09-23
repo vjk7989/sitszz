@@ -1,10 +1,10 @@
 import { createServer } from 'node:http';
 import { readFile } from 'node:fs/promises';
 import { extname, isAbsolute, relative, resolve } from 'node:path';
+import { fileURLToPath } from 'node:url';
 
-const DIST = resolve(new URL('../dist/', import.meta.url).pathname);
-// Marketing routes exist once per locale (src/pages/ vs src/pages/fr/).
-const LOCALE_PREFIXES = ['', '/fr'];
+const DIST = resolve(fileURLToPath(new URL('../dist/', import.meta.url)));
+// Marketing routes exist once in English.
 const MARKETING_ROUTES = [
   '/',
   '/products/',
@@ -15,28 +15,25 @@ const MARKETING_ROUTES = [
   '/insights/insight-1/',
   '/contact/',
 ];
-const ROUTES = [
-  ...LOCALE_PREFIXES.flatMap(prefix =>
-    MARKETING_ROUTES.map(route => `${prefix}${route}`)
-  ),
-  '/404',
-  '/fr/404/',
-];
+const ROUTES = [...MARKETING_ROUTES, '/404'];
 
 // Cheap content assertions on top of the status check.
 const EXPECTATIONS = {
-  '/fr/': [
-    '<html lang="fr"',
-    '<meta property="og:locale" content="fr_FR"',
-    'hreflang="en" href="https://screwfast.uk"',
-  ],
-  '/': ['<html lang="en"', 'hreflang="fr" href="https://screwfast.uk/fr"'],
-  '/fr/404/': ['<html lang="fr"'],
-  '/contact/': ['data-demo-form', 'data-demo-status'],
-  '/fr/contact/': ['data-demo-form', 'data-demo-status'],
+  '/': ['<html lang="en"', 'Contact Us', 'aria-current="page"'],
+  '/products/': ['aria-current="page"'],
+  '/services/': ['aria-current="page"'],
+  '/blog/': ['aria-current="page"'],
+  '/contact/': ['data-demo-form', 'data-demo-status', 'Contact Us', 'aria-current="page"'],
   '/blog/post-1/': ['"@type":"BlogPosting"'],
-  '/fr/blog/post-1/': ['"inLanguage":"fr"'],
 };
+
+const FORBIDDEN = [
+  'hreflang=',
+  'hs-toggle-between-modals',
+  'Change language',
+  'Log in',
+  'Sign in',
+];
 
 const MIME = {
   '.html': 'text/html; charset=utf-8',
@@ -111,8 +108,16 @@ async function run() {
       const missing = (EXPECTATIONS[route] ?? []).filter(
         needle => !html.includes(needle)
       );
+      const forbidden = FORBIDDEN.filter(needle => html.includes(needle));
+      const activeLinkCount = (html.match(/aria-current="page"/g) ?? []).length;
       if (missing.length) {
         console.error(`FAIL ${route} → missing ${missing.join(', ')}`);
+        failed = true;
+      } else if (forbidden.length) {
+        console.error(`FAIL ${route} → forbidden ${forbidden.join(', ')}`);
+        failed = true;
+      } else if (MARKETING_ROUTES.includes(route) && activeLinkCount !== 1) {
+        console.error(`FAIL ${route} → expected 1 active link, got ${activeLinkCount}`);
         failed = true;
       } else {
         console.log(`OK   ${route} → ${res.status}`);
