@@ -306,7 +306,7 @@
 
   .theme-nav-link-active,
   .theme-nav-link-active:hover {
-    color: var(--theme-accent-foreground);
+    color: var(--theme-primary);
   }
 
   .theme-nav-control {

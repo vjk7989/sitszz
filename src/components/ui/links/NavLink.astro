@@ -2,6 +2,17 @@
 // Destructure the properties from Astro.props
 const { url, name } = Astro.props;
 
+const normalizePath = (path: string) => {
+  const basePath = import.meta.env.BASE_URL.replace(/\/$/, '');
+  const withoutBase =
+    basePath && (path === basePath || path.startsWith(`${basePath}/`))
+      ? path.slice(basePath.length) || '/'
+      : path;
+  return withoutBase.replace(/\/$/, '') || '/';
+};
+
+const isCurrentPage = normalizePath(Astro.url.pathname) === normalizePath(url);
+
 // Define TypeScript interface for the properties
 interface Props {
   url: string;
@@ -10,37 +21,18 @@ interface Props {
 ---
 
 {/*
-Re-usable link component for navigation bar. Highlights the active link
-by comparing the current URL with the href of each link.
-We assign an ID matching the URL for easy reference in our script.
-If URL is '/' (home page), assign ID as 'home' 
+Re-usable link component for navigation bar. The current-page state is
+calculated during rendering, so it works on every static route, locale, and
+GitHub Pages base path without relying on a browser-side path comparison.
 */}
 <a
-  id={url === '/' ? 'home' : url.replace('/', '')}
   href={url}
   data-astro-prefetch
-  class="theme-nav-link rounded-lg text-base font-medium ring-zinc-500 outline-hidden focus-visible:ring-3 md:py-3 md:text-sm 2xl:text-base dark:ring-zinc-200 dark:focus:outline-hidden"
+  class:list={[
+    isCurrentPage ? 'theme-nav-link-active' : 'theme-nav-link',
+    'rounded-lg text-base font-medium ring-zinc-500 outline-hidden focus-visible:ring-3 md:py-3 md:text-sm 2xl:text-base dark:ring-zinc-200 dark:focus:outline-hidden',
+  ]}
+  aria-current={isCurrentPage ? 'page' : undefined}
 >
   {name}
 </a>
-
-<script>
-  document.addEventListener('DOMContentLoaded', function () {
-    let url = window.location.pathname;
-    let navId;
-
-    if (url === '/') {
-      navId = 'home';
-    } else {
-      navId = url.replace('/', '');
-    }
-
-    let nav = document.getElementById(navId);
-
-    if (nav) {
-      nav.classList.remove('theme-nav-link');
-      nav.classList.add('theme-nav-link-active');
-      nav.setAttribute('aria-current', 'page');
-    }
-  });
-</script>
