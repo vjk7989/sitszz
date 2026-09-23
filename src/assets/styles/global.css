@@ -283,3 +283,42 @@
     cursor: pointer;
   }
 }
+
+@layer components {
+  .theme-navbar {
+    border-color: color-mix(in oklch, var(--theme-border) 72%, transparent);
+    background-color: color-mix(in oklch, var(--theme-card) 86%, transparent);
+    color: var(--theme-foreground);
+  }
+
+  .theme-navbar-menu {
+    border-color: var(--theme-border);
+    background-color: var(--theme-card);
+  }
+
+  .theme-nav-link {
+    color: var(--theme-muted-foreground);
+  }
+
+  .theme-nav-link:hover {
+    color: var(--theme-foreground);
+  }
+
+  .theme-nav-link-active,
+  .theme-nav-link-active:hover {
+    color: var(--theme-accent-foreground);
+  }
+
+  .theme-nav-control {
+    color: var(--theme-muted-foreground);
+  }
+
+  .theme-nav-control:hover {
+    background-color: var(--theme-accent);
+    color: var(--theme-accent-foreground);
+  }
+
+  .theme-nav-divider {
+    border-color: var(--theme-border);
+  }
+}

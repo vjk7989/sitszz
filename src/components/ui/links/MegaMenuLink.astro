@@ -16,17 +16,17 @@ const menu = t.nav.megaMenu;
 <div class="hs-dropdown py-3 [--adaptive:none] [--strategy:static] md:px-3 md:py-4 md:[--strategy:absolute] md:[--trigger:hover]">
   <button
     type="button"
-    class="flex w-full items-center text-base font-medium text-neutral-600 hover:text-neutral-500 dark:text-neutral-400 dark:hover:text-neutral-500"
+    class="theme-nav-link flex w-full items-center text-base font-medium"
   >
     {title} <Icon name="chevronDown" class="ms-2 size-4 shrink-0" />
   </button>
 
-  <div class="hs-dropdown-menu hs-dropdown-open:opacity-100 start-0 top-full z-10 hidden w-full min-w-60 rounded-2xl bg-neutral-50 py-2 opacity-0 transition-[opacity,margin] duration-[0.1ms] before:absolute before:start-0 before:-top-5 before:h-5 before:w-full md:p-4 md:shadow-2xl md:duration-[150ms] dark:divide-neutral-700 dark:bg-neutral-800">
+  <div class="theme-navbar-menu hs-dropdown-menu hs-dropdown-open:opacity-100 start-0 top-full z-10 hidden w-full min-w-60 rounded-2xl py-2 opacity-0 transition-[opacity,margin] duration-[0.1ms] before:absolute before:start-0 before:-top-5 before:h-5 before:w-full md:p-4 md:shadow-2xl md:duration-[150ms] dark:divide-neutral-700">
     <div class="gap-4 md:grid md:grid-cols-2 lg:grid-cols-3">
       <div class="mx-1 flex flex-col md:mx-0">
         {megaMenuServices.slice(0, 3).map(data => (
           <a
-            class="group flex gap-x-5 rounded-lg p-4 hover:bg-neutral-100 dark:text-neutral-200 dark:hover:bg-neutral-500/10"
+            class="theme-nav-control group flex gap-x-5 rounded-lg p-4"
             href={data.url}
           >
             <Icon name={data.icon} class="mt-1 size-5 shrink-0" />
@@ -45,7 +45,7 @@ const menu = t.nav.megaMenu;
       <div class="mx-1 flex flex-col md:mx-0">
         {megaMenuServices.slice(3, 6).map(data => (
           <a
-            class="group flex gap-x-5 rounded-lg p-4 hover:bg-neutral-100 dark:text-neutral-200 dark:hover:bg-neutral-500/10"
+            class="theme-nav-control group flex gap-x-5 rounded-lg p-4"
             href={data.url}
           >
             <Icon name={data.icon} class="mt-1 size-5 shrink-0" />
@@ -66,7 +66,7 @@ const menu = t.nav.megaMenu;
           {menu.successStories}
         </span>
         <a
-          class="group mt-2 flex items-center gap-x-5 rounded-xl p-3 hover:bg-neutral-100 dark:hover:bg-neutral-500/10"
+          class="theme-nav-control group mt-2 flex items-center gap-x-5 rounded-xl p-3"
           href={megaMenuSuccessStory.learnMoreUrl}
         >
           <Image
@@ -79,7 +79,7 @@ const menu = t.nav.megaMenu;
             <p class="text-sm text-neutral-800 dark:text-neutral-400">
               {menu.successStory.description}
             </p>
-            <p class="mt-3 inline-flex items-center gap-x-1 text-sm font-medium text-orange-400 decoration-2 hover:underline dark:text-orange-300">
+            <p class="theme-nav-link-active mt-3 inline-flex items-center gap-x-1 text-sm font-medium decoration-2 hover:underline">
               {menu.learnMore}
               <Icon
                 name="arrowRight"
