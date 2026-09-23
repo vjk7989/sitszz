@@ -122,7 +122,7 @@ const tickMarks = Array.from({ length: 48 });
   .orb-core-fill { fill: url(#security-orb-core-fill); stroke: none; }.orb-center { fill: color-mix(in oklch, var(--theme-card) 84%, var(--theme-primary)); stroke: var(--theme-primary); }.orb-core-glow { fill: var(--orb-safe); stroke: none; opacity: .75; }.orb-core-dot { fill: var(--orb-safe); stroke: none; }
   .orb-event { opacity: 0; transform-box: fill-box; transform-origin: center; }.orb-event rect { stroke-width: 1.1; }.orb-event text { font-size: 10px; font-weight: 700; letter-spacing: .03em; }.orb-event-safe rect { fill: color-mix(in oklch, var(--theme-card) 80%, var(--orb-safe)); stroke: var(--orb-safe); }.orb-event-safe text { fill: var(--orb-safe); }.orb-event-threat rect { fill: color-mix(in oklch, var(--theme-card) 80%, var(--orb-risk)); stroke: var(--orb-risk); }.orb-event-threat text { fill: color-mix(in oklch, var(--orb-risk) 84%, var(--theme-foreground)); }
   .orb-static-events { display: none; }.orb-fragments { opacity: 0; fill: var(--orb-risk); }.orb-annotations { fill: var(--theme-muted-foreground); font-size: 9px; font-weight: 750; letter-spacing: .11em; }.orb-boundary-copy { fill: color-mix(in oklch, var(--orb-risk) 76%, var(--theme-muted-foreground)); font-size: 7px; letter-spacing: .08em; }
-  @media (max-width: 560px) { .security-orb { min-height: 20rem; border-radius: 1.15rem; }.orb-annotations { font-size: 8px; }.orb-event text { font-size: 8px; }.orb-event rect { transform: scale(.8); transform-box: fill-box; transform-origin: center; }.orb-ticks { opacity: .45; } }
+  @media (max-width: 640px) { .security-orb { display: none; } }
   @media (prefers-reduced-motion: reduce) { .orb-three, .orb-dynamic-events { display: none; }.orb-static-wireframe, .orb-static-events { display: block; }.orb-ledger-segment-active { fill: color-mix(in oklch, var(--theme-primary) 24%, var(--theme-card)); } }
 </style>
 
@@ -131,9 +131,10 @@ const tickMarks = Array.from({ length: 48 });
   import * as THREE from 'three';
 
   const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)');
+  const hasOrbViewport = window.matchMedia('(min-width: 641px)');
   const root = document.querySelector<HTMLElement>('[data-security-orb]');
 
-  if (root && !prefersReducedMotion.matches) {
+  if (root && !prefersReducedMotion.matches && hasOrbViewport.matches) {
     const path = (selector: string) => root.querySelector<SVGPathElement>(selector);
     const target = (selector: string) => root.querySelector<SVGElement>(selector);
 
@@ -151,10 +152,11 @@ const tickMarks = Array.from({ length: 48 });
       const renderer = new THREE.WebGLRenderer({ alpha: true, antialias: true });
       renderer.setPixelRatio(Math.min(window.devicePixelRatio, 1.75));
       renderer.setClearColor(0x000000, 0);
+      renderer.domElement.style.cssText = 'display:block;width:100%;height:100%;';
       orbHost.appendChild(renderer.domElement);
 
       const orb = new THREE.Group();
-      orb.position.x = 0.26;
+      orb.position.x = 0.165;
       orb.scale.setScalar(0.8);
       scene.add(orb);
 
