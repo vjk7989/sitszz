@@ -1,86 +1,185 @@
 ---
-const sources = [
-  { name: 'User input', mark: 'U' },
-  { name: 'Tool calls', mark: 'T' },
-  { name: 'Agent operations', mark: 'A' },
-  { name: 'Automations', mark: '∞' },
-];
-
-const threats = [
-  { name: 'Prompt injection', placement: 'prompt' },
-  { name: 'Supply-chain attack', placement: 'supply' },
-  { name: 'Agentic attack', placement: 'agentic' },
-];
+const ledgerSegments = Array.from({ length: 20 });
+const tickMarks = Array.from({ length: 48 });
 ---
 
-<div class="security-flow" role="img" aria-labelledby="security-flow-title security-flow-description">
-  <span id="security-flow-title" class="sr-only">Signed audit security flow</span>
-  <span id="security-flow-description" class="sr-only">
-    User input, tool calls, agent operations, and automations pass through a signed audit ledger before reaching a protected application. Prompt injection, supply-chain, and agentic attacks are rejected at the ledger.
+<div class="security-orb" data-security-orb role="img" aria-labelledby="security-orb-title security-orb-description">
+  <span id="security-orb-title" class="sr-only">Blockchain security orb</span>
+  <span id="security-orb-description" class="sr-only">
+    Safe prompts and user inputs pass through a blockchain ledger into a secure AI core. Prompt injection and supply-chain attacks are rejected and destroyed at the ledger boundary.
   </span>
 
-  <div class="security-flow-grid" aria-hidden="true"></div>
-  <p class="security-flow-note" aria-hidden="true">Every action is checked before it moves on.</p>
+  <svg class="security-orb-canvas" viewBox="0 0 800 600" aria-hidden="true">
+    <defs>
+      <radialGradient id="security-orb-core-fill" cx="50%" cy="50%" r="55%">
+        <stop offset="0" stop-color="var(--orb-core)" stop-opacity=".45" />
+        <stop offset=".58" stop-color="var(--orb-primary)" stop-opacity=".12" />
+        <stop offset="1" stop-color="var(--orb-primary)" stop-opacity="0" />
+      </radialGradient>
+      <filter id="security-orb-glow" x="-100%" y="-100%" width="300%" height="300%">
+        <feGaussianBlur stdDeviation="5" />
+      </filter>
+      <path id="orb-safe-prompt-path" d="M86 204 C202 204 272 252 371 287 C393 295 404 298 420 300" />
+      <path id="orb-safe-input-path" d="M86 394 C203 394 276 347 372 313 C394 305 404 302 420 300" />
+      <path id="orb-threat-prompt-path" d="M701 137 C610 148 555 198 502 249 C481 269 468 280 458 286" />
+      <path id="orb-threat-supply-path" d="M702 455 C611 442 555 398 502 350 C483 332 469 319 458 313" />
+    </defs>
 
-  <svg class="security-flow-lines" viewBox="0 0 900 600" preserveAspectRatio="none" aria-hidden="true">
-    <path class="line line-safe" d="M 180 178 C 302 178, 354 245, 425 285" />
-    <path class="line line-safe" d="M 180 267 C 310 267, 353 290, 425 298" />
-    <path class="line line-safe" d="M 180 355 C 306 355, 355 320, 425 307" />
-    <path class="line line-safe" d="M 180 444 C 300 444, 355 370, 425 320" />
-    <path class="line line-output" d="M 550 303 C 648 303, 674 303, 758 303" />
-    <path class="line line-threat" d="M 392 77 C 430 132, 455 185, 468 238" />
-    <path class="line line-threat" d="M 715 89 C 642 145, 580 200, 530 250" />
-    <path class="line line-threat" d="M 490 534 C 500 454, 505 388, 503 356" />
-    <path class="break-mark" d="M 462 242 l 14 12 m -14 0 l 14 -12" />
-    <path class="break-mark" d="M 522 251 l 14 12 m -14 0 l 14 -12" />
-    <path class="break-mark" d="M 497 349 l 14 12 m -14 0 l 14 -12" />
+    <g class="orb-construction">
+      <circle cx="430" cy="300" r="244" />
+      <circle cx="430" cy="300" r="219" />
+      <circle cx="430" cy="300" r="189" />
+      <path d="M430 42 V558 M172 300 H688" />
+      <path d="M248 118 L612 482 M248 482 L612 118" />
+    </g>
+
+    <g class="orb-ticks">
+      {tickMarks.map((_, index) => (
+        <line x1="430" y1="62" x2="430" y2={index % 4 === 0 ? "75" : "69"} transform={`rotate(${index * 7.5} 430 300)`} />
+      ))}
+    </g>
+
+    <g class="orb-ledger">
+      {ledgerSegments.map((_, index) => (
+        <rect
+          class:list={['orb-ledger-segment', index === 2 || index === 13 ? 'orb-ledger-segment-active' : '']}
+          x="418"
+          y="84"
+          width="24"
+          height="18"
+          rx="2"
+          transform={`rotate(${index * 18} 430 300)`}
+        />
+      ))}
+    </g>
+
+    <g class="orb-flow-lines">
+      <use href="#orb-safe-prompt-path" class="orb-flow orb-flow-safe" />
+      <use href="#orb-safe-input-path" class="orb-flow orb-flow-safe" />
+      <use href="#orb-threat-prompt-path" class="orb-flow orb-flow-threat" />
+      <use href="#orb-threat-supply-path" class="orb-flow orb-flow-threat" />
+    </g>
+
+    <g class="orb-wireframe">
+      <circle cx="430" cy="300" r="112" class="orb-core-fill" />
+      <ellipse cx="430" cy="300" rx="111" ry="56" />
+      <ellipse cx="430" cy="300" rx="78" ry="112" transform="rotate(28 430 300)" />
+      <ellipse cx="430" cy="300" rx="78" ry="112" transform="rotate(-28 430 300)" />
+      <path d="M318 300 H542 M430 188 V412" />
+      <path d="M340 236 C394 271 467 329 520 364 M340 364 C394 329 467 271 520 236" />
+      <circle cx="430" cy="300" r="43" class="orb-center" />
+      <circle cx="430" cy="300" r="11" class="orb-core-glow" filter="url(#security-orb-glow)" />
+      <circle cx="430" cy="300" r="6" class="orb-core-dot" />
+    </g>
+
+    <g class="orb-static-events">
+      <g transform="translate(85 204)" class="orb-event-safe"><rect x="-48" y="-15" width="96" height="30" rx="15" /><text text-anchor="middle" y="5">safe prompt</text></g>
+      <g transform="translate(85 394)" class="orb-event-safe"><rect x="-44" y="-15" width="88" height="30" rx="15" /><text text-anchor="middle" y="5">user input</text></g>
+      <g transform="translate(458 286)" class="orb-event-threat"><rect x="-61" y="-15" width="122" height="30" rx="15" /><text text-anchor="middle" y="5">prompt injection</text></g>
+      <g transform="translate(458 313)" class="orb-event-threat"><rect x="-68" y="-15" width="136" height="30" rx="15" /><text text-anchor="middle" y="5">supply-chain attack</text></g>
+    </g>
+
+    <g class="orb-dynamic-events">
+      <g class="orb-event orb-event-safe orb-event-safe-prompt"><rect x="-48" y="-15" width="96" height="30" rx="15" /><text text-anchor="middle" y="5">safe prompt</text></g>
+      <g class="orb-event orb-event-safe orb-event-safe-input"><rect x="-44" y="-15" width="88" height="30" rx="15" /><text text-anchor="middle" y="5">user input</text></g>
+      <g class="orb-event orb-event-threat orb-event-threat-prompt"><rect x="-61" y="-15" width="122" height="30" rx="15" /><text text-anchor="middle" y="5">prompt injection</text></g>
+      <g class="orb-event orb-event-threat orb-event-threat-supply"><rect x="-68" y="-15" width="136" height="30" rx="15" /><text text-anchor="middle" y="5">supply-chain attack</text></g>
+      <g class="orb-fragments orb-fragments-prompt" transform="translate(458 286)">{Array.from({ length: 8 }).map((_, index) => <rect data-fragment x={index % 2 ? "2" : "-5"} y={index % 3 ? "2" : "-5"} width="5" height="5" rx="1" />)}</g>
+      <g class="orb-fragments orb-fragments-supply" transform="translate(458 313)">{Array.from({ length: 8 }).map((_, index) => <rect data-fragment x={index % 2 ? "2" : "-5"} y={index % 3 ? "2" : "-5"} width="5" height="5" rx="1" />)}</g>
+    </g>
+
+    <g class="orb-annotations">
+      <text x="430" y="531" text-anchor="middle">signed blockchain ledger</text>
+      <text x="430" y="550" text-anchor="middle">safe actions enter the core</text>
+    </g>
   </svg>
-
-  <div class="security-flow-sources" aria-hidden="true">
-    {sources.map(source => (
-      <div class="security-flow-source">
-        <span class="security-flow-source-mark">{source.mark}</span>
-        <span>{source.name}</span>
-      </div>
-    ))}
-  </div>
-
-  <div class="security-flow-ledger" aria-hidden="true">
-    <span class="ledger-orbit ledger-orbit-one"></span>
-    <span class="ledger-orbit ledger-orbit-two"></span>
-    <span class="ledger-node"><span>✓</span></span>
-    <span class="ledger-caption">Signed audit<br />ledger</span>
-  </div>
-
-  <div class="security-flow-receipts" aria-hidden="true">
-    <span>signed</span><i></i><span>hash</span><i></i><span>proof</span>
-  </div>
-
-  <div class="security-flow-output" aria-hidden="true">
-    <span class="security-flow-output-mark">▱</span>
-    <span>Protected<br />application</span>
-  </div>
-
-  <div class="security-flow-threats" aria-hidden="true">
-    {threats.map(threat => (
-      <span class:list={['security-flow-threat', `security-flow-threat-${threat.placement}`]}><b>×</b>{threat.name}</span>
-    ))}
-    <span class="threat-fragments fragments-one">· · ·</span>
-    <span class="threat-fragments fragments-two">· · ·</span>
-    <span class="threat-fragments fragments-three">· · ·</span>
-  </div>
 </div>
 
 <style>
-  .security-flow { --ink: var(--theme-primary); --risk: var(--theme-destructive); position: relative; width: 100%; min-height: 25rem; aspect-ratio: 3 / 2; overflow: hidden; border: 1px solid var(--theme-border); border-radius: 1.5rem; background: color-mix(in oklch, var(--theme-card) 96%, var(--theme-background)); color: var(--theme-foreground); }
-  .security-flow-grid { position: absolute; inset: 1rem; opacity: .42; background-image: linear-gradient(to right, color-mix(in oklch, var(--theme-border) 68%, transparent) 1px, transparent 1px), linear-gradient(to bottom, color-mix(in oklch, var(--theme-border) 68%, transparent) 1px, transparent 1px); background-size: 1.75rem 1.75rem; mask-image: linear-gradient(to right, transparent, black 14%, black 86%, transparent); }
-  .security-flow-note { position: absolute; top: 5%; left: 6%; margin: 0; color: var(--theme-muted-foreground); font-size: clamp(.58rem, 1.1vw, .74rem); letter-spacing: .01em; }
-  .security-flow-lines { position: absolute; inset: 0; width: 100%; height: 100%; }.line { fill: none; stroke-width: 1.45; stroke-linecap: round; stroke-dasharray: 2 8; }.line-safe, .line-output { stroke: color-mix(in oklch, var(--ink) 82%, var(--theme-border)); animation: signal-flow 3.2s linear infinite; }.line-output { stroke-width: 1.8; animation-duration: 2.4s; }.line-threat { stroke: color-mix(in oklch, var(--risk) 76%, var(--theme-border)); animation: threat-flow 3.8s linear infinite; }.break-mark { fill: none; stroke: var(--risk); stroke-width: 1.5; stroke-linecap: round; }
-  .security-flow-sources { position: absolute; inset: 21% auto 16% 6%; display: grid; align-content: space-between; width: 22%; }.security-flow-source { display: flex; align-items: center; gap: .48rem; color: var(--theme-foreground); font-size: clamp(.61rem, 1.15vw, .8rem); font-weight: 650; line-height: 1.1; }.security-flow-source::after { width: 1.5rem; height: 1px; margin-left: .1rem; background: color-mix(in oklch, var(--ink) 55%, transparent); content: ''; }.security-flow-source-mark { display: grid; width: 1.5rem; aspect-ratio: 1; place-items: center; border: 1px solid color-mix(in oklch, var(--ink) 68%, var(--theme-border)); border-radius: 50%; color: var(--ink); font-size: .68rem; font-weight: 800; }
-  .security-flow-ledger { position: absolute; top: 50%; left: 54%; width: 25%; aspect-ratio: 1; transform: translate(-50%, -50%); }.ledger-orbit { position: absolute; inset: 9%; border: 1px solid color-mix(in oklch, var(--ink) 72%, var(--theme-border)); border-radius: 50%; }.ledger-orbit-one { transform: rotate(-28deg) scaleY(.52); animation: orbit-one 16s linear infinite; }.ledger-orbit-two { transform: rotate(54deg) scaleY(.52); opacity: .72; animation: orbit-two 20s linear infinite; }.ledger-node { position: absolute; inset: 27%; display: grid; place-items: center; border: 1.5px solid var(--ink); border-radius: 50%; background: var(--theme-card); color: var(--ink); box-shadow: 0 0 0 .35rem color-mix(in oklch, var(--ink) 8%, transparent); font-size: clamp(1rem, 2.5vw, 1.75rem); font-weight: 700; animation: ledger-pulse 3.2s cubic-bezier(.25, 1, .5, 1) infinite; }.ledger-node::before, .ledger-node::after { position: absolute; width: .45rem; aspect-ratio: 1; border: 1px solid var(--ink); border-radius: .1rem; background: var(--theme-card); content: ''; }.ledger-node::before { top: -1.45rem; left: 50%; transform: translateX(-50%); }.ledger-node::after { right: -1.45rem; bottom: 50%; transform: translateY(50%); }.ledger-caption { position: absolute; bottom: -8%; left: 50%; width: max-content; transform: translateX(-50%); color: var(--theme-foreground); font-size: clamp(.56rem, 1vw, .72rem); font-weight: 700; line-height: 1.2; text-align: center; }
-  .security-flow-receipts { position: absolute; top: 47.5%; left: 64%; display: flex; align-items: center; gap: .38rem; color: var(--ink); font-size: clamp(.49rem, .9vw, .63rem); font-weight: 700; letter-spacing: .02em; }.security-flow-receipts i { width: .28rem; aspect-ratio: 1; border: 1px solid var(--ink); border-radius: 50%; }.security-flow-output { position: absolute; top: 50%; right: 5%; display: flex; width: 14%; min-height: 4.6rem; transform: translateY(-50%); align-items: center; justify-content: center; gap: .35rem; border: 1px solid color-mix(in oklch, var(--ink) 74%, var(--theme-border)); border-radius: .8rem; background: var(--theme-card); color: var(--theme-foreground); font-size: clamp(.57rem, 1vw, .76rem); font-weight: 700; line-height: 1.15; text-align: left; }.security-flow-output-mark { display: grid; width: 1.25rem; aspect-ratio: 1; place-items: center; border: 1px solid var(--ink); border-radius: .2rem; color: var(--ink); font-size: .9rem; }
-  .security-flow-threat { position: absolute; display: inline-flex; align-items: center; gap: .28rem; color: color-mix(in oklch, var(--risk) 82%, var(--theme-foreground)); font-size: clamp(.49rem, .95vw, .67rem); font-weight: 650; white-space: nowrap; }.security-flow-threat b { display: grid; width: .93rem; aspect-ratio: 1; place-items: center; border: 1px solid currentColor; border-radius: 50%; font-size: .76rem; font-weight: 700; }.security-flow-threat-prompt { top: 9%; left: 37%; }.security-flow-threat-supply { top: 11%; right: 15%; }.security-flow-threat-agentic { bottom: 9%; left: 45%; }.threat-fragments { position: absolute; color: var(--risk); font-size: .9rem; letter-spacing: .22rem; opacity: .7; animation: rejected-fragments 2.8s cubic-bezier(.25, 1, .5, 1) infinite; }.fragments-one { top: 30%; left: 52%; animation-delay: .2s; }.fragments-two { top: 27%; right: 31%; animation-delay: 1.1s; }.fragments-three { bottom: 15%; left: 55%; animation-delay: 1.8s; }
-  @keyframes signal-flow { to { stroke-dashoffset: -40; } } @keyframes threat-flow { to { stroke-dashoffset: 32; } } @keyframes orbit-one { to { transform: rotate(332deg) scaleY(.52); } } @keyframes orbit-two { to { transform: rotate(-306deg) scaleY(.52); } } @keyframes ledger-pulse { 0%, 100% { box-shadow: 0 0 0 .35rem color-mix(in oklch, var(--ink) 8%, transparent); } 50% { box-shadow: 0 0 0 .62rem color-mix(in oklch, var(--ink) 13%, transparent); } } @keyframes rejected-fragments { 0%, 18% { opacity: 0; transform: translateY(-3px); } 30% { opacity: .72; } 72% { opacity: 0; transform: translateY(16px); } 100% { opacity: 0; transform: translateY(16px); } }
-  @media (max-width: 560px) { .security-flow { min-height: 20rem; border-radius: 1.15rem; }.security-flow-note { left: 5%; }.security-flow-sources { left: 4%; width: 28%; }.security-flow-source { gap: .3rem; font-size: .5rem; }.security-flow-source::after { width: .4rem; }.security-flow-source-mark { width: 1.18rem; font-size: .55rem; }.security-flow-ledger { width: 30%; }.security-flow-output { right: 2%; width: 17%; min-height: 4rem; font-size: .48rem; }.security-flow-output-mark, .security-flow-receipts { display: none; }.security-flow-threat { font-size: .42rem; }.security-flow-threat b { width: .7rem; font-size: .6rem; }.security-flow-threat-prompt { left: 34%; }.security-flow-threat-supply { right: 6%; }.security-flow-threat-agentic { left: 41%; } }
-  @media (prefers-reduced-motion: reduce) { .security-flow *, .security-flow *::before, .security-flow *::after { animation: none !important; } }
+  .security-orb { --orb-primary: var(--theme-primary); --orb-core: oklch(.78 .16 166); --orb-safe: oklch(.75 .15 166); --orb-risk: var(--theme-destructive); position: relative; width: 100%; min-height: 25rem; aspect-ratio: 4 / 3; overflow: hidden; border: 1px solid var(--theme-border); border-radius: 1.5rem; background: radial-gradient(circle at 54% 50%, color-mix(in oklch, var(--theme-primary) 12%, transparent), transparent 32%), color-mix(in oklch, var(--theme-card) 96%, var(--theme-background)); }
+  .security-orb-canvas { display: block; width: 100%; height: 100%; }
+  .orb-construction { fill: none; stroke: color-mix(in oklch, var(--theme-border) 82%, transparent); stroke-width: 1; }
+  .orb-ticks { stroke: color-mix(in oklch, var(--theme-primary) 54%, var(--theme-border)); stroke-width: 1; opacity: .8; }
+  .orb-ledger { fill: color-mix(in oklch, var(--theme-card) 92%, var(--theme-background)); stroke: color-mix(in oklch, var(--theme-primary) 70%, var(--theme-border)); stroke-width: 1.15; transform-origin: 430px 300px; }
+  .orb-ledger-segment-active { fill: color-mix(in oklch, var(--theme-primary) 36%, var(--theme-card)); stroke: var(--theme-primary); }
+  .orb-flow { fill: none; stroke-width: 1.6; stroke-linecap: round; stroke-dasharray: 3 8; }
+  .orb-flow-safe { stroke: var(--orb-safe); }.orb-flow-threat { stroke: var(--orb-risk); }
+  .orb-wireframe { fill: none; stroke: color-mix(in oklch, var(--theme-primary) 82%, var(--theme-border)); stroke-width: 1.3; transform-origin: 430px 300px; }
+  .orb-core-fill { fill: url(#security-orb-core-fill); stroke: none; }.orb-center { fill: color-mix(in oklch, var(--theme-card) 84%, var(--theme-primary)); stroke: var(--theme-primary); }.orb-core-glow { fill: var(--orb-safe); stroke: none; opacity: .75; }.orb-core-dot { fill: var(--orb-safe); stroke: none; }
+  .orb-event { opacity: 0; transform-box: fill-box; transform-origin: center; }.orb-event rect { stroke-width: 1.1; }.orb-event text { font-size: 10px; font-weight: 700; letter-spacing: .03em; }.orb-event-safe rect { fill: color-mix(in oklch, var(--theme-card) 80%, var(--orb-safe)); stroke: var(--orb-safe); }.orb-event-safe text { fill: var(--orb-safe); }.orb-event-threat rect { fill: color-mix(in oklch, var(--theme-card) 80%, var(--orb-risk)); stroke: var(--orb-risk); }.orb-event-threat text { fill: color-mix(in oklch, var(--orb-risk) 84%, var(--theme-foreground)); }
+  .orb-static-events { display: none; }.orb-fragments { opacity: 0; fill: var(--orb-risk); }.orb-annotations { fill: var(--theme-muted-foreground); font-size: 10px; letter-spacing: .05em; }
+  @media (max-width: 560px) { .security-orb { min-height: 20rem; border-radius: 1.15rem; }.orb-annotations { font-size: 8px; }.orb-event text { font-size: 8px; }.orb-event rect { transform: scale(.8); transform-box: fill-box; transform-origin: center; }.orb-ticks { opacity: .45; } }
+  @media (prefers-reduced-motion: reduce) { .orb-dynamic-events { display: none; }.orb-static-events { display: block; }.orb-ledger-segment-active { fill: color-mix(in oklch, var(--theme-primary) 24%, var(--theme-card)); } }
 </style>
+
+<script>
+  import { animate, svg } from 'animejs';
+
+  const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)');
+  const root = document.querySelector<HTMLElement>('[data-security-orb]');
+
+  if (root && !prefersReducedMotion.matches) {
+    const path = (selector: string) => root.querySelector<SVGPathElement>(selector);
+    const target = (selector: string) => root.querySelector<SVGElement>(selector);
+
+    const safePromptPath = path('#orb-safe-prompt-path');
+    const safeInputPath = path('#orb-safe-input-path');
+    const threatPromptPath = path('#orb-threat-prompt-path');
+    const threatSupplyPath = path('#orb-threat-supply-path');
+
+    const runEvent = (event: SVGElement | null, eventPath: SVGPathElement | null, delay: number, duration: number) => {
+      if (!event || !eventPath) return;
+      const { translateX, translateY } = svg.createMotionPath(eventPath);
+      animate(event, {
+        translateX,
+        translateY,
+        opacity: [0, 1, 1, 0],
+        scale: [0.92, 1, 0.35],
+        duration,
+        delay,
+        ease: 'inOutSine',
+        loop: true,
+      });
+    };
+
+    runEvent(target('.orb-event-safe-prompt'), safePromptPath, 400, 4300);
+    runEvent(target('.orb-event-safe-input'), safeInputPath, 3300, 4300);
+    runEvent(target('.orb-event-threat-prompt'), threatPromptPath, 1600, 3000);
+    runEvent(target('.orb-event-threat-supply'), threatSupplyPath, 5400, 3000);
+
+    animate(svg.createDrawable(root.querySelectorAll('.orb-flow')), {
+      draw: ['0 0', '0 1', '1 1'],
+      delay: (_: unknown, index = 0) => index * 260,
+      duration: 4200,
+      ease: 'inOutSine',
+      loop: true,
+    });
+
+    const ledger = target('.orb-ledger');
+    const wireframe = target('.orb-wireframe');
+    const coreDot = target('.orb-core-dot');
+
+    if (ledger) animate(ledger, { rotate: 360, duration: 14000, ease: 'linear', loop: true });
+    if (wireframe) animate(wireframe, { rotate: -360, duration: 18000, ease: 'linear', loop: true });
+    if (coreDot) animate(coreDot, { r: [6, 9, 6], duration: 4200, ease: 'inOutSine', loop: true });
+
+    const burst = (selector: string, delay: number) => {
+      const fragments = root.querySelectorAll<SVGRectElement>(`${selector} [data-fragment]`);
+      animate(fragments, {
+        opacity: [0, 1, 0],
+        x: (_: unknown, index = 0) => (index % 2 ? 24 : -24) + index * 3,
+        y: (_: unknown, index = 0) => (index % 3 ? 26 : -20) + index * 2,
+        rotate: (_: unknown, index = 0) => index * 45,
+        scale: [0, 1, 0.5],
+        duration: 760,
+        delay: delay + 2300,
+        ease: 'outExpo',
+        loop: true,
+        loopDelay: 2240,
+      });
+    };
+
+    burst('.orb-fragments-prompt', 1600);
+    burst('.orb-fragments-supply', 5400);
+  }
+</script>

@@ -18,6 +18,7 @@
     "@astrojs/sitemap": "^3.7.4",
     "@astrojs/starlight": "^0.42.1",
     "@tailwindcss/vite": "^4.3.3",
+    "animejs": "^4.5.0",
     "astro": "^7.3.3",
     "clipboard": "^2.0.11",
     "globby": "^16.2.4",
