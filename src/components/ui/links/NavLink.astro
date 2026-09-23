@@ -7,11 +7,22 @@ interface Props {
   name: string;
   /** Disable the character-roll treatment for static navigation controls. */
   motion?: boolean;
-  /** Optional decorative icon shown before a static navigation label. */
+  /** Optional decorative icon shown beside a static navigation label. */
   icon?: IconName;
+  /** Position the optional icon at the beginning or end of the label. */
+  iconPosition?: 'start' | 'end';
+  /** Use the compact, filled CTA treatment for a static navigation control. */
+  variant?: 'link' | 'cta';
 }
 
-const { url, name, motion = true, icon } = Astro.props;
+const {
+  url,
+  name,
+  motion = true,
+  icon,
+  iconPosition = 'start',
+  variant = 'link',
+} = Astro.props;
 
 const normalizePath = (path: string) => {
   const basePath = import.meta.env.BASE_URL.replace(/\/$/, '');
@@ -43,7 +54,11 @@ GitHub Pages base paths without relying on browser-side state.
     isCurrentPage ? 'theme-nav-link-active' : 'theme-nav-link',
     motion && 'theme-nav-link-motion',
     !motion && 'inline-flex items-center gap-x-2',
-    'rounded-lg text-base font-medium ring-zinc-500 outline-hidden focus-visible:ring-3 md:py-3 md:text-sm 2xl:text-base dark:ring-zinc-200 dark:focus:outline-hidden',
+    variant === 'cta' && 'theme-nav-cta',
+    'font-medium ring-zinc-500 outline-hidden focus-visible:ring-3 dark:ring-zinc-200 dark:focus:outline-hidden',
+    variant === 'cta'
+      ? 'rounded-full px-4 py-2 text-sm font-bold md:py-2 2xl:text-sm'
+      : 'rounded-lg text-base md:py-3 md:text-sm 2xl:text-base',
   ]}
   aria-label={name}
   aria-current={isCurrentPage ? 'page' : undefined}
@@ -68,8 +83,13 @@ GitHub Pages base paths without relying on browser-side state.
     </span>
   ) : (
     <>
-      {icon && <Icon name={icon} class="h-4 w-4 shrink-0" />}
+      {icon && iconPosition === 'start' && (
+        <Icon name={icon} class="h-4 w-4 shrink-0" />
+      )}
       <span>{name}</span>
+      {icon && iconPosition === 'end' && (
+        <Icon name={icon} class="h-4 w-4 shrink-0" />
+      )}
     </>
   )}
 </a>
