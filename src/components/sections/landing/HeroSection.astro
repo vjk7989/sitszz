@@ -4,6 +4,7 @@ import { Image } from 'astro:assets';
 import PrimaryCTA from '@components/ui/buttons/PrimaryCTA.astro';
 import SecondaryCTA from '@components/ui/buttons/SecondaryCTA.astro';
 import ReviewComponent from '@components/ui/blocks/ReviewComponent.astro';
+import SecurityFlowIllustration from './SecurityFlowIllustration.astro';
 
 // Define props from Astro
 const {
@@ -20,6 +21,7 @@ const {
   reviews,
   src,
   alt,
+  securityFlow = false,
 } = Astro.props;
 
 // Define TypeScript interface for props
@@ -37,6 +39,7 @@ interface Props {
   reviews?: string;
   src?: any;
   alt?: string;
+  securityFlow?: boolean;
 }
 ---
 
@@ -76,8 +79,10 @@ interface Props {
   </div>
   {/* Hero Image Section — aspect ratio reserves space before the AVIF loads */}
   <div class="flex w-full">
-    <div class="aspect-[4067/2576] w-full overflow-hidden">
-      {src && alt && (
+    <div class="w-full">
+      {securityFlow ? (
+        <SecurityFlowIllustration />
+      ) : src && alt ? (
         <Image
           src={src}
           alt={alt}
@@ -89,7 +94,7 @@ interface Props {
           height={515}
           format={'avif'}
         />
-      )}
+      ) : null}
     </div>
   </div>
 </section>

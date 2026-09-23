@@ -167,15 +167,13 @@ export const en = {
     banner: 'Explore ScrewFast on GitHub',
     hero: {
       title:
-        'Equip Your Projects with <span class="text-yellow-500 dark:text-yellow-400">ScrewFast</span>',
+        'Secure every <span class="text-yellow-500 dark:text-yellow-400">AI action</span>.',
       subTitle:
-        'Top-quality hardware tools and expert construction services for every project need.',
-      primaryBtn: 'Start Exploring',
-      secondaryBtn: 'Contact Sales Team',
+        'Screen user prompts, tool calls, agent operations, and automations. Approved activity receives a signed audit receipt before it reaches your application.',
+      primaryBtn: 'Explore protection',
+      secondaryBtn: 'Talk to security',
       rating: '<span class="font-bold">4.8</span> / 5',
       reviews: 'From Over <span class="font-bold">12.8k</span> Reviews',
-      imageAlt:
-        'Stack of ScrewFast product boxes containing assorted hardware tools',
     },
     clients: {
       title: 'Trusted by Industry Leaders',

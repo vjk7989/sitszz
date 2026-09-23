@@ -9,7 +9,6 @@ import TestimonialsSection from '@components/sections/testimonials/TestimonialsS
 import PricingSection from '@components/sections/pricing/PricingSection.astro';
 import FAQ from '@components/sections/misc/FAQ.astro';
 import AnnouncementBanner from '@components/ui/banners/AnnouncementBanner.astro';
-import heroImage from '@images/hero-image.avif';
 import featureImage from '@images/features-image.avif';
 import construction from '@images/construction-image.avif';
 import tools from '@images/automated-tools.avif';
@@ -54,8 +53,7 @@ const testimonials = copy.testimonials.quotes.map(quote => ({
     rating={copy.hero.rating}
     starCount={4}
     reviews={copy.hero.reviews}
-    src={heroImage}
-    alt={copy.hero.imageAlt}
+    securityFlow={true}
   />
 
   <ClientsSection

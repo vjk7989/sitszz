@@ -1,0 +1,154 @@
+---
+const sources = [
+  { name: 'User input', badge: 'U' },
+  { name: 'Tool calls', badge: 'T' },
+  { name: 'Agent operations', badge: 'A' },
+  { name: 'Automations', badge: '∞' },
+];
+
+const threats = [
+  { name: 'Prompt injection', position: 'prompt' },
+  { name: 'Supply-chain attack', position: 'supply' },
+  { name: 'Agentic attack', position: 'agentic' },
+];
+---
+
+<div
+  class="security-flow"
+  role="img"
+  aria-labelledby="security-flow-title security-flow-description"
+>
+  <span id="security-flow-title" class="sr-only">Signed audit security flow</span>
+  <span id="security-flow-description" class="sr-only">
+    User inputs, tool calls, agent operations, and automations are verified and
+    given a signed audit receipt before reaching the protected application.
+    Prompt injection, supply-chain, and agentic attacks are rejected before
+    they can proceed.
+  </span>
+
+  <div class="security-flow-grid" aria-hidden="true"></div>
+
+  <svg class="security-flow-paths" viewBox="0 0 1000 700" aria-hidden="true">
+    <defs>
+      <linearGradient id="security-flow-safe" x1="0" x2="1">
+        <stop offset="0" stop-color="var(--theme-primary)" stop-opacity="0.7" />
+        <stop offset="1" stop-color="var(--theme-primary)" stop-opacity="1" />
+      </linearGradient>
+      <linearGradient id="security-flow-output" x1="0" x2="1">
+        <stop offset="0" stop-color="var(--theme-primary)" />
+        <stop offset="1" stop-color="var(--theme-accent-foreground)" />
+      </linearGradient>
+    </defs>
+    <path class="security-flow-safe-path" d="M 216 173 C 360 173, 370 289, 488 332" />
+    <path class="security-flow-safe-path" d="M 216 292 C 358 292, 372 321, 488 342" />
+    <path class="security-flow-safe-path" d="M 216 411 C 358 411, 372 378, 488 358" />
+    <path class="security-flow-safe-path" d="M 216 530 C 360 530, 370 411, 488 368" />
+    <path class="security-flow-output-path" d="M 583 350 C 682 350, 708 350, 819 350" />
+    <path class="security-flow-threat-path" d="M 425 88 C 474 151, 500 217, 525 276" />
+    <path class="security-flow-threat-path" d="M 752 105 C 679 160, 617 223, 571 282" />
+    <path class="security-flow-threat-path" d="M 510 620 C 526 532, 541 452, 545 411" />
+  </svg>
+
+  <div class="security-flow-sources" aria-hidden="true">
+    {sources.map(source => (
+      <div class="security-flow-source">
+        <span class="security-flow-source-badge">{source.badge}</span>
+        <span>{source.name}</span>
+      </div>
+    ))}
+  </div>
+
+  <div class="security-flow-ledger" aria-hidden="true">
+    <span class="security-flow-ring security-flow-ring-one">
+      <i></i><i></i><i></i><i></i><i></i><i></i>
+    </span>
+    <span class="security-flow-ring security-flow-ring-two">
+      <i></i><i></i><i></i><i></i><i></i>
+    </span>
+    <span class="security-flow-orb">
+      <span class="security-flow-orb-core"></span>
+      <span class="security-flow-orb-mark">✓</span>
+    </span>
+    <span class="security-flow-ledger-caption">Signed audit receipt</span>
+  </div>
+
+  <div class="security-flow-receipts" aria-hidden="true">
+    <span>01</span><span>✓</span><span>02</span><span>✓</span>
+  </div>
+
+  <div class="security-flow-output" aria-hidden="true">
+    <span class="security-flow-output-mark">▱</span>
+    <span>Protected<br />application</span>
+  </div>
+
+  <div class="security-flow-threats" aria-hidden="true">
+    {threats.map(threat => (
+      <span class:list={['security-flow-threat', `security-flow-threat-${threat.position}`]}>
+        <b>×</b>{threat.name}
+      </span>
+    ))}
+    <span class="security-flow-fragments security-flow-fragments-top">◆ · ◆ · ◆</span>
+    <span class="security-flow-fragments security-flow-fragments-right">◆ · ◆ · ◆</span>
+    <span class="security-flow-fragments security-flow-fragments-bottom">◆ · ◆ · ◆</span>
+  </div>
+</div>
+
+<style>
+  .security-flow {
+    --safe: var(--theme-primary);
+    --threat: oklch(0.64 0.2 27);
+    position: relative;
+    width: 100%;
+    min-height: 25rem;
+    aspect-ratio: 10 / 7;
+    overflow: hidden;
+    border: 1px solid color-mix(in oklch, var(--theme-border) 75%, transparent);
+    border-radius: 1.75rem;
+    background:
+      radial-gradient(circle at 51% 48%, color-mix(in oklch, var(--safe) 18%, transparent), transparent 26%),
+      linear-gradient(135deg, color-mix(in oklch, var(--theme-card) 92%, var(--safe) 8%), var(--theme-background));
+    isolation: isolate;
+  }
+
+  .security-flow-grid {
+    position: absolute;
+    inset: 0;
+    opacity: 0.32;
+    background-image: radial-gradient(circle, var(--theme-border) 1px, transparent 1.3px);
+    background-size: 16px 16px;
+    mask-image: radial-gradient(ellipse at center, black, transparent 84%);
+  }
+
+  .security-flow-paths { position: absolute; inset: 0; width: 100%; height: 100%; }
+  .security-flow-safe-path, .security-flow-output-path, .security-flow-threat-path { fill: none; stroke-linecap: round; stroke-width: 3; stroke-dasharray: 2 12; }
+  .security-flow-safe-path { stroke: url(#security-flow-safe); }
+  .security-flow-output-path { stroke: url(#security-flow-output); stroke-width: 4; }
+  .security-flow-threat-path { stroke: var(--threat); opacity: .82; }
+
+  .security-flow-sources { position: absolute; inset: 19% auto 16% 4%; z-index: 2; display: grid; align-content: space-between; width: 25%; }
+  .security-flow-source { display: flex; align-items: center; gap: .55rem; min-height: 2.65rem; border: 1px solid color-mix(in oklch, var(--safe) 48%, var(--theme-border)); border-radius: .75rem; padding: .38rem .55rem; background: color-mix(in oklch, var(--theme-card) 87%, transparent); color: var(--theme-foreground); box-shadow: 0 8px 22px color-mix(in oklch, var(--safe) 12%, transparent); font-size: clamp(.58rem, 1.22vw, .83rem); font-weight: 700; line-height: 1.1; }
+  .security-flow-source-badge { display: inline-grid; width: 1.55rem; height: 1.55rem; flex: 0 0 auto; place-items: center; border-radius: .45rem; background: color-mix(in oklch, var(--safe) 27%, var(--theme-card)); color: var(--theme-primary-foreground); font-size: .75rem; }
+
+  .security-flow-ledger { position: absolute; z-index: 2; top: 50%; left: 54%; width: 31%; aspect-ratio: 1; transform: translate(-50%, -50%); }
+  .security-flow-orb { position: absolute; inset: 24%; display: grid; place-items: center; border: 1px solid color-mix(in oklch, var(--safe) 76%, white); border-radius: 50%; background: radial-gradient(circle at 33% 27%, color-mix(in oklch, white 45%, var(--safe)), var(--safe) 54%, color-mix(in oklch, var(--safe) 45%, var(--theme-card))); box-shadow: 0 0 34px color-mix(in oklch, var(--safe) 54%, transparent); }
+  .security-flow-orb-core { position: absolute; inset: 13%; border: 1px solid color-mix(in oklch, white 55%, var(--safe)); border-radius: 50%; opacity: .9; }
+  .security-flow-orb-mark { position: relative; display: grid; width: 39%; aspect-ratio: 1; place-items: center; border: 2px solid white; border-radius: 50% 50% 42% 42%; color: white; font-size: clamp(.8rem, 2vw, 1.45rem); font-weight: 900; }
+  .security-flow-ring { position: absolute; inset: 7%; border: 1px solid color-mix(in oklch, var(--safe) 78%, white); border-radius: 50%; box-shadow: inset 0 0 18px color-mix(in oklch, var(--safe) 20%, transparent); }
+  .security-flow-ring-one { transform: rotate(-28deg) scaleY(.55); }
+  .security-flow-ring-two { transform: rotate(54deg) scaleY(.55); }
+  .security-flow-ring i { position: absolute; width: .78rem; aspect-ratio: 1; border: 1px solid color-mix(in oklch, white 38%, var(--safe)); border-radius: .18rem; background: color-mix(in oklch, var(--theme-card) 35%, var(--safe)); box-shadow: 0 0 10px color-mix(in oklch, var(--safe) 48%, transparent); }
+  .security-flow-ring i:nth-child(1) { top: -5%; left: 46%; } .security-flow-ring i:nth-child(2) { top: 17%; right: 5%; } .security-flow-ring i:nth-child(3) { right: 17%; bottom: 5%; } .security-flow-ring i:nth-child(4) { bottom: -5%; left: 46%; } .security-flow-ring i:nth-child(5) { bottom: 17%; left: 5%; } .security-flow-ring i:nth-child(6) { top: 17%; left: 5%; }
+  .security-flow-ledger-caption { position: absolute; bottom: -8%; left: 50%; transform: translateX(-50%); width: max-content; color: var(--theme-foreground); font-size: clamp(.56rem, 1.1vw, .75rem); font-weight: 800; }
+
+  .security-flow-receipts { position: absolute; z-index: 2; top: 47%; left: 66%; display: flex; gap: .35rem; color: var(--theme-primary-foreground); }
+  .security-flow-receipts span { display: grid; width: 1.25rem; aspect-ratio: 1; place-items: center; border: 1px solid color-mix(in oklch, var(--safe) 70%, white); border-radius: .25rem; background: var(--safe); font-size: .53rem; font-weight: 800; }
+  .security-flow-output { position: absolute; z-index: 2; top: 50%; right: 4%; display: flex; width: 16%; min-height: 5.3rem; transform: translateY(-50%); align-items: center; justify-content: center; gap: .35rem; border: 1px solid color-mix(in oklch, var(--safe) 62%, white); border-radius: 1rem; background: color-mix(in oklch, var(--theme-card) 68%, var(--safe)); color: var(--theme-primary-foreground); box-shadow: 0 10px 28px color-mix(in oklch, var(--safe) 24%, transparent); text-align: center; font-size: clamp(.58rem, 1.18vw, .82rem); font-weight: 800; line-height: 1.15; }
+  .security-flow-output-mark { display: grid; width: 1.45rem; aspect-ratio: 1; place-items: center; border-radius: .3rem; background: color-mix(in oklch, white 24%, var(--safe)); color: white; font-size: 1.05rem; }
+
+  .security-flow-threat { position: absolute; z-index: 3; display: inline-flex; align-items: center; gap: .32rem; border: 1px solid color-mix(in oklch, var(--threat) 80%, var(--theme-border)); border-radius: 999px; padding: .3rem .55rem; background: color-mix(in oklch, var(--theme-card) 85%, var(--threat)); color: var(--theme-foreground); font-size: clamp(.5rem, 1.05vw, .72rem); font-weight: 750; white-space: nowrap; }
+  .security-flow-threat b { display: grid; width: .95rem; aspect-ratio: 1; place-items: center; border-radius: 50%; background: var(--threat); color: white; }
+  .security-flow-threat-prompt { top: 8%; left: 37%; } .security-flow-threat-supply { top: 10%; right: 16%; } .security-flow-threat-agentic { bottom: 8%; left: 45%; }
+  .security-flow-fragments { position: absolute; z-index: 2; color: var(--threat); font-size: clamp(.45rem, 1vw, .7rem); letter-spacing: .2rem; opacity: .9; } .security-flow-fragments-top { top: 25%; left: 52%; } .security-flow-fragments-right { top: 28%; right: 30%; } .security-flow-fragments-bottom { bottom: 13%; left: 55%; }
+
+  @media (max-width: 560px) { .security-flow { min-height: 20rem; border-radius: 1.25rem; } .security-flow-sources { left: 3%; width: 30%; } .security-flow-source { min-height: 2.25rem; padding: .25rem .34rem; font-size: .52rem; } .security-flow-source-badge { width: 1.25rem; height: 1.25rem; } .security-flow-ledger { left: 55%; width: 35%; } .security-flow-output { right: 2%; width: 18%; min-height: 4.3rem; font-size: .5rem; } .security-flow-output-mark { display: none; } .security-flow-threat { padding: .23rem .38rem; font-size: .44rem; } .security-flow-threat b { width: .75rem; } .security-flow-threat-prompt { left: 35%; } .security-flow-threat-supply { right: 8%; } .security-flow-threat-agentic { left: 41%; } .security-flow-receipts { display: none; } }
+</style>
