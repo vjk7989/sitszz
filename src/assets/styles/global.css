@@ -192,7 +192,7 @@
   }
 
   .dark {
-    --theme-background: oklch(0 0 0);
+    --theme-background: oklch(0.145 0.006 248);
     --theme-foreground: oklch(0.9328 0.0025 228.7857);
     --theme-card: oklch(0.2097 0.008 274.5332);
     --theme-muted: oklch(0.209 0 0);
