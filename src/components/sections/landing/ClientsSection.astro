@@ -1,39 +1,88 @@
 ---
-// Define props from Astro
-const { title, subTitle, partners } = Astro.props;
+import googleIcon from 'simple-icons/icons/google.svg?raw';
+import amdIcon from 'simple-icons/icons/amd.svg?raw';
+import qualcommIcon from 'simple-icons/icons/qualcomm.svg?raw';
+import tcsIcon from 'simple-icons/icons/tcs.svg?raw';
+import zomatoIcon from 'simple-icons/icons/zomato.svg?raw';
+import adpIcon from 'simple-icons/icons/adp.svg?raw';
+import coinbaseIcon from 'simple-icons/icons/coinbase.svg?raw';
 
-interface Partner {
-  icon: any;
-  name?: string;
-  href?: string;
-}
+const { title, subTitle } = Astro.props;
 
-// Define TypeScript interface for props
 interface Props {
   title: string;
   subTitle?: string;
-  partners: Partner[];
 }
+
+interface DeveloperCompany {
+  name: string;
+  icon?: string;
+}
+
+const developerCompanies: DeveloperCompany[] = [
+  { name: 'Google', icon: googleIcon },
+  { name: 'Amazon' },
+  { name: 'AMD', icon: amdIcon },
+  { name: 'Qualcomm', icon: qualcommIcon },
+  { name: 'NTT DATA' },
+  { name: 'Virtusa' },
+  { name: 'TCS', icon: tcsIcon },
+  { name: 'Flipkart' },
+  { name: 'Zomato', icon: zomatoIcon },
+  { name: 'Adobe' },
+  { name: 'ADP', icon: adpIcon },
+  { name: 'Coinbase', icon: coinbaseIcon },
+];
+
+const marqueeCompanies = [...developerCompanies, ...developerCompanies];
 ---
 
-<section class="mx-auto max-w-[85rem] px-4 py-10 sm:px-6 lg:px-8 lg:py-14 2xl:max-w-full">
-  {/* Title and description */}
-  <div class="mx-auto mb-6 w-full space-y-1 text-center sm:w-1/2 lg:w-1/3">
-    <h2 class="text-2xl leading-tight font-bold text-balance text-neutral-800 sm:text-3xl dark:text-neutral-200">
-      {title}
-    </h2>
-    {subTitle && (
-      <p class="leading-tight text-pretty text-neutral-600 dark:text-neutral-400">
-        {subTitle}
-      </p>
-    )}
+<section class="developer-community" aria-labelledby="developer-community-title">
+  <div class="developer-community-heading">
+    <p class="developer-community-kicker">FOR ENGINEERS WHO BUILD AT SCALE</p>
+    <h2 id="developer-community-title">{title}</h2>
+    {subTitle && <p>{subTitle}</p>}
   </div>
-  <div class="flex flex-col items-center justify-center gap-y-2 sm:flex-row sm:gap-x-12 sm:gap-y-0 lg:gap-x-24">
-    {/* Clients Group SVGs */}
-    {partners.map(partner => (
-      <a href={partner.href} target="_blank" rel="noopener noreferrer">
-        <div set:html={partner.icon} />
-      </a>
-    ))}
+
+  <ul class="sr-only">
+    {developerCompanies.map(company => <li>{company.name}</li>)}
+  </ul>
+
+  <div class="developer-marquee" aria-hidden="true">
+    <div class="developer-marquee-track">
+      {marqueeCompanies.map((company, index) => (
+        <div class="developer-logo" data-logo={company.icon ? 'icon' : 'wordmark'} data-index={index}>
+          {company.icon ? (
+            <span class="developer-logo-icon" set:html={company.icon} />
+          ) : (
+            <span class="developer-logo-wordmark">{company.name}</span>
+          )}
+        </div>
+      ))}
+    </div>
   </div>
+
+  <p class="developer-community-disclaimer">
+    Brand marks are shown for demonstration only and do not imply affiliation or endorsement.
+  </p>
 </section>
+
+<style>
+  .developer-community { max-width: 85rem; margin: 0 auto; padding: 3.5rem 1rem; overflow: hidden; }
+  .developer-community-heading { max-width: 42rem; margin: 0 auto 2rem; text-align: center; }
+  .developer-community-kicker { margin: 0 0 .7rem; color: var(--theme-primary); font-size: .68rem; font-weight: 800; letter-spacing: .14em; }
+  .developer-community h2 { margin: 0; color: var(--theme-foreground); font-size: clamp(1.75rem, 3vw, 2.25rem); font-weight: 750; letter-spacing: -.035em; line-height: 1.1; }
+  .developer-community-heading > p:last-child { margin: .75rem auto 0; color: var(--theme-muted-foreground); font-size: 1rem; line-height: 1.55; }
+  .developer-marquee { position: relative; mask-image: linear-gradient(to right, transparent, black 7%, black 93%, transparent); -webkit-mask-image: linear-gradient(to right, transparent, black 7%, black 93%, transparent); }
+  .developer-marquee-track { display: flex; align-items: center; width: max-content; animation: developer-marquee 38s linear infinite; }
+  .developer-marquee:hover .developer-marquee-track { animation-play-state: paused; }
+  .developer-logo { display: grid; place-items: center; flex: 0 0 10.5rem; min-height: 4.75rem; margin: 0 .55rem; padding: .8rem 1rem; border: 1px solid color-mix(in oklch, var(--theme-border) 78%, transparent); border-radius: 1rem; background: color-mix(in oklch, var(--theme-card) 80%, transparent); color: color-mix(in oklch, var(--theme-foreground) 72%, var(--theme-muted-foreground)); transition: color .2s ease, border-color .2s ease, transform .2s ease; }
+  .developer-logo:hover { transform: translateY(-2px); border-color: color-mix(in oklch, var(--theme-primary) 45%, var(--theme-border)); color: var(--theme-primary); }
+  .developer-logo-icon { display: block; width: 7rem; height: 2.25rem; }.developer-logo-icon :global(svg) { display: block; width: 100%; height: 100%; fill: currentColor; }
+  .developer-logo-wordmark { font-size: 1.18rem; font-weight: 800; letter-spacing: -.035em; white-space: nowrap; }
+  .developer-logo[data-logo='wordmark'] { font-family: ui-sans-serif, system-ui, sans-serif; }
+  .developer-community-disclaimer { margin: 1rem 0 0; color: var(--theme-muted-foreground); font-size: .75rem; text-align: center; }
+  @keyframes developer-marquee { to { transform: translateX(-50%); } }
+  @media (min-width: 640px) { .developer-community { padding: 4rem 1.5rem; } }
+  @media (prefers-reduced-motion: reduce) { .developer-marquee { mask-image: none; -webkit-mask-image: none; overflow-x: auto; }.developer-marquee-track { animation: none; }.developer-logo { flex-basis: 9rem; } }
+</style>

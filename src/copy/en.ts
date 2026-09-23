@@ -176,8 +176,9 @@ export const en = {
       reviews: 'From Over <span class="font-bold">12.8k</span> Reviews',
     },
     clients: {
-      title: 'Trusted by Industry Leaders',
-      subTitle: 'Experience the reliability chosen by industry giants.',
+      title: 'Trusted by developers. Built for security.',
+      subTitle:
+        'Chosen by engineers who build, secure, and scale the software people rely on.',
     },
     featuresGeneral: {
       title: 'Meeting Industry Demands',
