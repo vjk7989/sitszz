@@ -309,6 +309,37 @@
     color: var(--theme-primary);
   }
 
+  .theme-nav-roll {
+    display: inline-flex;
+    height: 1.5em;
+    overflow: hidden;
+    vertical-align: bottom;
+  }
+
+  .theme-nav-roll-character {
+    display: inline-block;
+    height: 1.5em;
+    overflow: hidden;
+  }
+
+  .theme-nav-roll-space {
+    width: 0.28em;
+  }
+
+  .theme-nav-roll-glyphs {
+    display: flex;
+    flex-direction: column;
+    line-height: 1.5;
+    transition: transform 200ms cubic-bezier(0.25, 1, 0.5, 1);
+    transition-delay: 0ms;
+  }
+
+  .theme-nav-link-motion:not(.theme-nav-link-active):is(:hover, :focus-visible)
+    .theme-nav-roll-glyphs {
+    transform: translateY(-50%);
+    transition-delay: calc(var(--nav-roll-index) * 16ms);
+  }
+
   .theme-nav-control {
     color: var(--theme-muted-foreground);
   }
@@ -354,5 +385,16 @@
 
   .theme-rating-icon {
     color: var(--theme-primary);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .theme-nav-roll-glyphs {
+    transform: none !important;
+    transition: none;
+  }
+
+  .theme-nav-roll-glyphs > :last-child {
+    display: none;
   }
 }

@@ -12,6 +12,7 @@ const normalizePath = (path: string) => {
 };
 
 const isCurrentPage = normalizePath(Astro.url.pathname) === normalizePath(url);
+const characters = Array.from(name);
 
 // Define TypeScript interface for the properties
 interface Props {
@@ -30,9 +31,26 @@ GitHub Pages base path without relying on a browser-side path comparison.
   data-astro-prefetch
   class:list={[
     isCurrentPage ? 'theme-nav-link-active' : 'theme-nav-link',
-    'rounded-lg text-base font-medium ring-zinc-500 outline-hidden focus-visible:ring-3 md:py-3 md:text-sm 2xl:text-base dark:ring-zinc-200 dark:focus:outline-hidden',
+    'theme-nav-link-motion rounded-lg text-base font-medium ring-zinc-500 outline-hidden focus-visible:ring-3 md:py-3 md:text-sm 2xl:text-base dark:ring-zinc-200 dark:focus:outline-hidden',
   ]}
+  aria-label={name}
   aria-current={isCurrentPage ? 'page' : undefined}
 >
-  {name}
+  <span class="theme-nav-roll" aria-hidden="true">
+    {characters.map((character, index) =>
+      character === ' ' ? (
+        <span class="theme-nav-roll-space">&nbsp;</span>
+      ) : (
+        <span
+          class="theme-nav-roll-character"
+          style={`--nav-roll-index: ${index}`}
+        >
+          <span class="theme-nav-roll-glyphs">
+            <span>{character}</span>
+            <span>{character}</span>
+          </span>
+        </span>
+      )
+    )}
+  </span>
 </a>
