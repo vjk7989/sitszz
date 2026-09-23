@@ -3,14 +3,13 @@
  * URLs. Labels live in the shared copy table so paths stay separate from UI
  * text.
  */
-export type NavLinkId = 'home' | 'products' | 'services' | 'blog' | 'contact';
+export type NavLinkId = 'home' | 'products' | 'services' | 'blog';
 
 export const navLinks: { id: NavLinkId; path: string }[] = [
   { id: 'home', path: '/' },
   { id: 'products', path: '/products' },
   { id: 'services', path: '/services' },
   { id: 'blog', path: '/blog' },
-  { id: 'contact', path: '/contact' },
 ];
 
 export type FooterSectionId = 'ecosystem' | 'company';

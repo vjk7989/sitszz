@@ -1,6 +1,17 @@
 ---
-// Destructure the properties from Astro.props
-const { url, name } = Astro.props;
+import Icon from '@components/ui/icons/Icon.astro';
+import type { IconName } from '@components/ui/icons/icons';
+
+interface Props {
+  url: string;
+  name: string;
+  /** Disable the character-roll treatment for static navigation controls. */
+  motion?: boolean;
+  /** Optional decorative icon shown before a static navigation label. */
+  icon?: IconName;
+}
+
+const { url, name, motion = true, icon } = Astro.props;
 
 const normalizePath = (path: string) => {
   const basePath = import.meta.env.BASE_URL.replace(/\/$/, '');
@@ -18,12 +29,6 @@ const isCurrentPage =
   (linkPath !== '/' && currentPath.startsWith(`${linkPath}/`)) ||
   (linkPath === '/blog' && currentPath.startsWith('/insights/'));
 const characters = Array.from(name);
-
-// Define TypeScript interface for the properties
-interface Props {
-  url: string;
-  name: string;
-}
 ---
 
 {/*
@@ -36,26 +41,35 @@ GitHub Pages base paths without relying on browser-side state.
   data-astro-prefetch
   class:list={[
     isCurrentPage ? 'theme-nav-link-active' : 'theme-nav-link',
-    'theme-nav-link-motion rounded-lg text-base font-medium ring-zinc-500 outline-hidden focus-visible:ring-3 md:py-3 md:text-sm 2xl:text-base dark:ring-zinc-200 dark:focus:outline-hidden',
+    motion && 'theme-nav-link-motion',
+    !motion && 'inline-flex items-center gap-x-2',
+    'rounded-lg text-base font-medium ring-zinc-500 outline-hidden focus-visible:ring-3 md:py-3 md:text-sm 2xl:text-base dark:ring-zinc-200 dark:focus:outline-hidden',
   ]}
   aria-label={name}
   aria-current={isCurrentPage ? 'page' : undefined}
 >
-  <span class="theme-nav-roll" aria-hidden="true">
-    {characters.map((character, index) =>
-      character === ' ' ? (
-        <span class="theme-nav-roll-space">&nbsp;</span>
-      ) : (
-        <span
-          class="theme-nav-roll-character"
-          style={`--nav-roll-index: ${index}`}
-        >
-          <span class="theme-nav-roll-glyphs">
-            <span>{character}</span>
-            <span>{character}</span>
+  {motion ? (
+    <span class="theme-nav-roll" aria-hidden="true">
+      {characters.map((character, index) =>
+        character === ' ' ? (
+          <span class="theme-nav-roll-space">&nbsp;</span>
+        ) : (
+          <span
+            class="theme-nav-roll-character"
+            style={`--nav-roll-index: ${index}`}
+          >
+            <span class="theme-nav-roll-glyphs">
+              <span>{character}</span>
+              <span>{character}</span>
+            </span>
           </span>
-        </span>
-      )
-    )}
-  </span>
+        )
+      )}
+    </span>
+  ) : (
+    <>
+      {icon && <Icon name={icon} class="h-4 w-4 shrink-0" />}
+      <span>{name}</span>
+    </>
+  )}
 </a>
