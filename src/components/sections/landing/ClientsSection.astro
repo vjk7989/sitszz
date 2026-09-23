@@ -1,13 +1,17 @@
 ---
 import googleIcon from 'simple-icons/icons/google.svg?raw';
 import amdIcon from 'simple-icons/icons/amd.svg?raw';
-import qualcommIcon from 'simple-icons/icons/qualcomm.svg?raw';
 import tcsIcon from 'simple-icons/icons/tcs.svg?raw';
 import zomatoIcon from 'simple-icons/icons/zomato.svg?raw';
 import adpIcon from 'simple-icons/icons/adp.svg?raw';
 import coinbaseIcon from 'simple-icons/icons/coinbase.svg?raw';
 import goldmanSachsIcon from 'simple-icons/icons/goldmansachs.svg?raw';
 import clickHouseIcon from 'simple-icons/icons/clickhouse.svg?raw';
+import atAndTIcon from 'simple-icons/icons/atandt.svg?raw';
+import chaseIcon from 'simple-icons/icons/chase.svg?raw';
+import logoCollection from '@iconify-json/logos/icons.json';
+import juspayLogo from '../../../assets/brand-logos/juspay.svg';
+import juspayDarkLogo from '../../../assets/brand-logos/juspay-dark.svg';
 
 const { title, subTitle } = Astro.props;
 
@@ -19,28 +23,52 @@ interface Props {
 interface DeveloperCompany {
   name: string;
   icon?: string;
+  fullLogo?: string;
+  logo?: string;
+  darkLogo?: string;
+  color: string;
+  darkColor?: string;
+  scale?: number;
 }
 
+interface IconifyLogo {
+  body: string;
+  width?: number;
+  height?: number;
+  left?: number;
+  top?: number;
+}
+
+const bundledLogo = (name: string) => {
+  const logo = (logoCollection.icons as Record<string, IconifyLogo>)[name];
+  const left = logo.left ?? 0;
+  const top = logo.top ?? 0;
+  const width = logo.width ?? 24;
+  const height = logo.height ?? 24;
+
+  return `<svg role="img" aria-label="${name}" viewBox="${left} ${top} ${width} ${height}" xmlns="http://www.w3.org/2000/svg">${logo.body}</svg>`;
+};
+
 const developerCompanies: DeveloperCompany[] = [
-  { name: 'Google', icon: googleIcon },
-  { name: 'Amazon' },
-  { name: 'AMD', icon: amdIcon },
-  { name: 'Qualcomm', icon: qualcommIcon },
-  { name: 'NTT DATA' },
-  { name: 'Virtusa' },
-  { name: 'TCS', icon: tcsIcon },
-  { name: 'Flipkart' },
-  { name: 'Zomato', icon: zomatoIcon },
-  { name: 'Adobe' },
-  { name: 'ADP', icon: adpIcon },
-  { name: 'Coinbase', icon: coinbaseIcon },
-  { name: 'PwC' },
-  { name: 'Goldman Sachs', icon: goldmanSachsIcon },
-  { name: 'J.P. Morgan' },
-  { name: 'AT&T' },
-  { name: 'OpenAI' },
-  { name: 'ClickHouse', icon: clickHouseIcon },
-  { name: 'JustPay' },
+  { name: 'Google', icon: googleIcon, color: '#4285f4' },
+  { name: 'Amazon', color: '#ff9900', darkColor: '#f2f2f2' },
+  { name: 'AMD', icon: amdIcon, color: '#ed1c24' },
+  { name: 'Qualcomm', fullLogo: bundledLogo('qualcomm'), color: '#3253dc', scale: 1.02 },
+  { name: 'NTT DATA', color: '#0064a5' },
+  { name: 'Virtusa', color: '#5f259f' },
+  { name: 'TCS', icon: tcsIcon, color: '#1f5b99' },
+  { name: 'Flipkart', color: '#2874f0' },
+  { name: 'Zomato', icon: zomatoIcon, color: '#e23744', scale: 1.34 },
+  { name: 'Adobe', fullLogo: bundledLogo('adobe'), color: '#ed1c24', scale: 1.05 },
+  { name: 'ADP', icon: adpIcon, color: '#d71920' },
+  { name: 'Coinbase', icon: coinbaseIcon, color: '#0052ff' },
+  { name: 'PwC', color: '#dc6900', scale: 1.08 },
+  { name: 'Goldman Sachs', icon: goldmanSachsIcon, color: '#7399c6', scale: 1.05 },
+  { name: 'J.P. Morgan', icon: chaseIcon, color: '#005eb8' },
+  { name: 'AT&T', icon: atAndTIcon, color: '#00a8e0', scale: 1.08 },
+  { name: 'OpenAI', fullLogo: bundledLogo('openai'), color: '#111111', darkColor: '#ffffff', scale: 1.02 },
+  { name: 'ClickHouse', icon: clickHouseIcon, color: '#ffcc01' },
+  { name: 'Juspay', logo: juspayLogo.src, darkLogo: juspayDarkLogo.src, color: '#0561e2', scale: 1.05 },
 ];
 
 const marqueeCompanies = [...developerCompanies, ...developerCompanies];
@@ -60,11 +88,23 @@ const marqueeCompanies = [...developerCompanies, ...developerCompanies];
   <div class="developer-marquee" aria-hidden="true">
     <div class="developer-marquee-track">
       {marqueeCompanies.map((company, index) => (
-        <div class="developer-logo" data-logo={company.icon ? 'icon' : 'wordmark'} data-index={index}>
-          {company.icon ? (
-            <span class="developer-logo-icon" set:html={company.icon} />
+        <div
+          class="developer-logo"
+          data-index={index}
+          style={{ '--brand-color': company.color, '--brand-color-dark': company.darkColor ?? company.color, '--logo-scale': company.scale ?? 1 }}
+        >
+          {company.logo ? (
+            <span class="developer-logo-stage developer-logo-image">
+              <img src={company.logo} alt="" />
+              {company.darkLogo && <img class="developer-logo-image-dark" src={company.darkLogo} alt="" />}
+            </span>
+          ) : company.fullLogo ? (
+            <span class="developer-logo-stage developer-logo-full" set:html={company.fullLogo} />
           ) : (
-            <span class="developer-logo-wordmark">{company.name}</span>
+            <span class="developer-logo-stage">
+              {company.icon && <span class="developer-logo-icon" set:html={company.icon} />}
+              <span class="developer-logo-wordmark">{company.name}</span>
+            </span>
           )}
         </div>
       ))}
@@ -85,11 +125,14 @@ const marqueeCompanies = [...developerCompanies, ...developerCompanies];
   .developer-marquee { position: relative; mask-image: linear-gradient(to right, transparent, black 7%, black 93%, transparent); -webkit-mask-image: linear-gradient(to right, transparent, black 7%, black 93%, transparent); }
   .developer-marquee-track { display: flex; align-items: center; width: max-content; animation: developer-marquee 38s linear infinite; }
   .developer-marquee:hover .developer-marquee-track { animation-play-state: paused; }
-  .developer-logo { display: grid; place-items: center; flex: 0 0 10.5rem; min-height: 4.75rem; margin: 0 .55rem; padding: .8rem 1rem; border: 1px solid color-mix(in oklch, var(--theme-border) 78%, transparent); border-radius: 1rem; background: color-mix(in oklch, var(--theme-card) 80%, transparent); color: color-mix(in oklch, var(--theme-foreground) 72%, var(--theme-muted-foreground)); transition: color .2s ease, border-color .2s ease, transform .2s ease; }
-  .developer-logo:hover { transform: translateY(-2px); border-color: color-mix(in oklch, var(--theme-primary) 45%, var(--theme-border)); color: var(--theme-primary); }
-  .developer-logo-icon { display: block; width: 7rem; height: 2.25rem; }.developer-logo-icon :global(svg) { display: block; width: 100%; height: 100%; fill: currentColor; }
-  .developer-logo-wordmark { font-size: 1.18rem; font-weight: 800; letter-spacing: -.035em; white-space: nowrap; }
-  .developer-logo[data-logo='wordmark'] { font-family: ui-sans-serif, system-ui, sans-serif; }
+  .developer-logo { display: grid; place-items: center; flex: 0 0 11rem; min-height: 4.75rem; margin: 0 .55rem; padding: .8rem 1rem; border: 1px solid color-mix(in oklch, var(--theme-border) 78%, transparent); border-radius: 1rem; background: color-mix(in oklch, var(--theme-card) 80%, transparent); transition: border-color .2s ease, transform .2s ease, background .2s ease; }
+  .developer-logo:hover { transform: translateY(-2px); border-color: color-mix(in oklch, var(--brand-color) 52%, var(--theme-border)); background: color-mix(in oklch, var(--brand-color) 7%, var(--theme-card)); }
+  .developer-logo-stage { display: inline-flex; align-items: center; justify-content: center; gap: .58rem; width: min(9rem, 100%); min-height: 2.35rem; color: var(--brand-color); transform: scale(var(--logo-scale)); transform-origin: center; }
+  .developer-logo-icon { display: block; flex: 0 0 auto; width: 1.8rem; height: 1.8rem; }.developer-logo-icon :global(svg) { display: block; width: 100%; height: 100%; fill: currentColor; }
+  .developer-logo-wordmark { color: var(--brand-color); font-family: ui-sans-serif, system-ui, sans-serif; font-size: 1.12rem; font-weight: 800; letter-spacing: -.045em; line-height: 1; white-space: nowrap; }
+  .developer-logo-full { display: block; height: 2.25rem; }.developer-logo-full :global(svg) { display: block; width: 100%; height: 100%; }.developer-logo-image { position: relative; display: block; height: 2.35rem; }.developer-logo-image img { display: block; width: 100%; height: 100%; object-fit: contain; }.developer-logo-image-dark { display: none !important; }
+  :global(.dark) .developer-logo-stage, :global(.dark) .developer-logo-wordmark { color: var(--brand-color-dark); }
+  :global(.dark) .developer-logo-image > img:first-child { display: none; }:global(.dark) .developer-logo-image .developer-logo-image-dark { display: block !important; }
   .developer-community-disclaimer { margin: 1rem 0 0; color: var(--theme-muted-foreground); font-size: .75rem; text-align: center; }
   @keyframes developer-marquee { to { transform: translateX(-50%); } }
   @media (min-width: 640px) { .developer-community { padding: 4rem 1.5rem; } }
