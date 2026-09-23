@@ -30,6 +30,7 @@ const appleTouchIcon = await getImage({
   height: 180,
   format: 'png',
 });
+const basePath = import.meta.env.BASE_URL.replace(/\/$/, '');
 ---
 
 <title>{metadata.title}</title>
@@ -72,9 +73,14 @@ const appleTouchIcon = await getImage({
 <meta name="twitter:image" content={socialImage} />
 
 {/* Site-wide head chrome: manifest, sitemap, favicons, theme colour */}
-<link rel="manifest" href="/manifest.json" />
-<link rel="sitemap" href="/sitemap-index.xml" />
-<link href="/favicon.ico" rel="icon" sizes="any" type="image/x-icon" />
+<link rel="manifest" href={`${basePath}/manifest.json`} />
+<link rel="sitemap" href={`${basePath}/sitemap-index.xml`} />
+<link
+  href={`${basePath}/favicon.ico`}
+  rel="icon"
+  sizes="any"
+  type="image/x-icon"
+/>
 <link href={faviconSvg.src} rel="icon" type="image/svg+xml" sizes="any" />
 <meta name="mobile-web-app-capable" content="yes" />
 <link href={appleTouchIcon.src} rel="apple-touch-icon" />

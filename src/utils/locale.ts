@@ -23,6 +23,8 @@ const PREFIXED_LOCALES: readonly MarketingLocale[] = MARKETING_LOCALES.filter(
   locale => locale !== DEFAULT_LOCALE
 );
 
+const basePath = import.meta.env.BASE_URL.replace(/\/$/, '');
+
 /** Per-locale constants: display label, language tags and Intl tag. */
 export const LOCALE_INFO: Record<
   MarketingLocale,
@@ -74,7 +76,11 @@ export function splitLocale(pathname: string): {
   locale: MarketingLocale;
   path: string;
 } {
-  const normalized = pathname.startsWith('/') ? pathname : `/${pathname}`;
+  const rawPath = pathname.startsWith('/') ? pathname : `/${pathname}`;
+  const normalized =
+    basePath && rawPath.startsWith(`${basePath}/`)
+      ? rawPath.slice(basePath.length)
+      : rawPath;
   for (const locale of PREFIXED_LOCALES) {
     const prefix = `/${locale}`;
     if (normalized === prefix) return { locale, path: '/' };
@@ -111,9 +117,13 @@ export function resolveLocale(
 export function localePath(locale: MarketingLocale, path = '/'): string {
   if (path.startsWith('#') || /^[a-z]+:/i.test(path)) return path;
   const clean = path.startsWith('/') ? path : `/${path}`;
-  if (locale === DEFAULT_LOCALE) return clean;
-  if (clean === '/') return `/${locale}`;
-  return `/${locale}${clean}`;
+  const localised =
+    locale === DEFAULT_LOCALE
+      ? clean
+      : clean === '/'
+        ? `/${locale}`
+        : `/${locale}${clean}`;
+  return `${basePath}${localised}`;
 }
 
 /**

@@ -5,10 +5,15 @@ import starlight from '@astrojs/starlight';
 
 import mdx from '@astrojs/mdx';
 
+const siteOrigin = process.env.SITE_URL ?? 'https://vjk7989.github.io';
+const basePath = process.env.BASE_PATH ?? '/sitszz';
+const publicBase = `${siteOrigin}${basePath === '/' ? '' : basePath}`;
+
 // https://astro.build/config
 export default defineConfig({
   // https://docs.astro.build/en/guides/images/#authorizing-remote-images
-  site: 'https://screwfast.uk',
+  site: siteOrigin,
+  base: basePath,
   image: {
     domains: ['images.unsplash.com'],
   },
@@ -108,7 +113,7 @@ export default defineConfig({
       ],
       disable404Route: true,
       customCss: ['./src/assets/styles/starlight.css'],
-      favicon: '/favicon.ico',
+      favicon: `${basePath === '/' ? '' : basePath}/favicon.ico`,
       components: {
         SiteTitle: './src/components/ui/starlight/SiteTitle.astro',
         Head: './src/components/ui/starlight/Head.astro',
@@ -121,14 +126,14 @@ export default defineConfig({
           tag: 'meta',
           attrs: {
             property: 'og:image',
-            content: 'https://screwfast.uk' + '/social.webp',
+            content: publicBase + '/social.webp',
           },
         },
         {
           tag: 'meta',
           attrs: {
             property: 'twitter:image',
-            content: 'https://screwfast.uk' + '/social.webp',
+            content: publicBase + '/social.webp',
           },
         },
       ],

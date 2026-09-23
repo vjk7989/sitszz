@@ -1,0 +1,1728 @@
+{
+  "name": "screwfast-template",
+  "description": "Astro website template for marketing pages, blog, product content, and documentation. Note: this project has over 100 source files; consider scoping analysis to a subdirectory for faster results.",
+  "languages": [
+    "astro",
+    "avif",
+    "css",
+    "javascript",
+    "json",
+    "markdown",
+    "typescript",
+    "unknown",
+    "yaml",
+    "zst"
+  ],
+  "frameworks": ["Astro", "Tailwind CSS", "Starlight", "MDX"],
+  "files": [
+    {
+      "path": ".codebase-memory/.gitattributes",
+      "language": "unknown",
+      "sizeLines": 3,
+      "fileCategory": "code"
+    },
+    {
+      "path": ".codebase-memory/artifact.json",
+      "language": "json",
+      "sizeLines": 10,
+      "fileCategory": "config"
+    },
+    {
+      "path": ".codebase-memory/graph.db.zst",
+      "language": "zst",
+      "sizeLines": 627,
+      "fileCategory": "code"
+    },
+    {
+      "path": ".github/dependabot.yml",
+      "language": "yaml",
+      "sizeLines": 18,
+      "fileCategory": "config"
+    },
+    {
+      "path": ".github/FUNDING.yml",
+      "language": "yaml",
+      "sizeLines": 15,
+      "fileCategory": "config"
+    },
+    {
+      "path": ".github/workflows/ci.yml",
+      "language": "yaml",
+      "sizeLines": 36,
+      "fileCategory": "infra"
+    },
+    {
+      "path": ".github/workflows/dependabot-format.yml",
+      "language": "yaml",
+      "sizeLines": 50,
+      "fileCategory": "infra"
+    },
+    {
+      "path": ".prettierignore",
+      "language": "unknown",
+      "sizeLines": 15,
+      "fileCategory": "code"
+    },
+    {
+      "path": ".understand-anything/.understandignore",
+      "language": "unknown",
+      "sizeLines": 28,
+      "fileCategory": "code"
+    },
+    {
+      "path": "AI_GUIDE.md",
+      "language": "markdown",
+      "sizeLines": 82,
+      "fileCategory": "docs"
+    },
+    {
+      "path": "astro.config.mjs",
+      "language": "javascript",
+      "sizeLines": 144,
+      "fileCategory": "code"
+    },
+    {
+      "path": "CODE_OF_CONDUCT.md",
+      "language": "markdown",
+      "sizeLines": 128,
+      "fileCategory": "docs"
+    },
+    {
+      "path": "CONTEXT.md",
+      "language": "markdown",
+      "sizeLines": 35,
+      "fileCategory": "docs"
+    },
+    {
+      "path": "package.json",
+      "language": "json",
+      "sizeLines": 41,
+      "fileCategory": "config"
+    },
+    {
+      "path": "process-html.mjs",
+      "language": "javascript",
+      "sizeLines": 46,
+      "fileCategory": "code"
+    },
+    {
+      "path": "README.md",
+      "language": "markdown",
+      "sizeLines": 329,
+      "fileCategory": "docs"
+    },
+    {
+      "path": "scripts/smoke.mjs",
+      "language": "javascript",
+      "sizeLines": 131,
+      "fileCategory": "code"
+    },
+    {
+      "path": "src/assets/scripts/demoForms.ts",
+      "language": "typescript",
+      "sizeLines": 35,
+      "fileCategory": "code"
+    },
+    {
+      "path": "src/assets/scripts/lenisSmoothScroll.js",
+      "language": "javascript",
+      "sizeLines": 17,
+      "fileCategory": "code"
+    },
+    {
+      "path": "src/assets/styles/global.css",
+      "language": "css",
+      "sizeLines": 127,
+      "fileCategory": "markup"
+    },
+    {
+      "path": "src/assets/styles/lenis.css",
+      "language": "css",
+      "sizeLines": 22,
+      "fileCategory": "markup"
+    },
+    {
+      "path": "src/assets/styles/starlight_main.css",
+      "language": "css",
+      "sizeLines": 100,
+      "fileCategory": "markup"
+    },
+    {
+      "path": "src/assets/styles/starlight.css",
+      "language": "css",
+      "sizeLines": 191,
+      "fileCategory": "markup"
+    },
+    {
+      "path": "src/components/BrandLogo.astro",
+      "language": "astro",
+      "sizeLines": 57,
+      "fileCategory": "code"
+    },
+    {
+      "path": "src/components/Meta.astro",
+      "language": "astro",
+      "sizeLines": 82,
+      "fileCategory": "code"
+    },
+    {
+      "path": "src/components/sections/features/FeaturesGeneral.astro",
+      "language": "astro",
+      "sizeLines": 73,
+      "fileCategory": "code"
+    },
+    {
+      "path": "src/components/sections/features/FeaturesNavs.astro",
+      "language": "astro",
+      "sizeLines": 82,
+      "fileCategory": "code"
+    },
+    {
+      "path": "src/components/sections/features/FeaturesStats.astro",
+      "language": "astro",
+      "sizeLines": 54,
+      "fileCategory": "code"
+    },
+    {
+      "path": "src/components/sections/features/FeaturesStatsAlt.astro",
+      "language": "astro",
+      "sizeLines": 52,
+      "fileCategory": "code"
+    },
+    {
+      "path": "src/components/sections/insights/InsightDetail.astro",
+      "language": "astro",
+      "sizeLines": 239,
+      "fileCategory": "code"
+    },
+    {
+      "path": "src/components/sections/landing/ClientsSection.astro",
+      "language": "astro",
+      "sizeLines": 39,
+      "fileCategory": "code"
+    },
+    {
+      "path": "src/components/sections/landing/HeroSection.astro",
+      "language": "astro",
+      "sizeLines": 95,
+      "fileCategory": "code"
+    },
+    {
+      "path": "src/components/sections/landing/HeroSectionAlt.astro",
+      "language": "astro",
+      "sizeLines": 136,
+      "fileCategory": "code"
+    },
+    {
+      "path": "src/components/sections/misc/Authentication.astro",
+      "language": "astro",
+      "sizeLines": 16,
+      "fileCategory": "code"
+    },
+    {
+      "path": "src/components/sections/misc/ContactSection.astro",
+      "language": "astro",
+      "sizeLines": 114,
+      "fileCategory": "code"
+    },
+    {
+      "path": "src/components/sections/misc/FAQ.astro",
+      "language": "astro",
+      "sizeLines": 68,
+      "fileCategory": "code"
+    },
+    {
+      "path": "src/components/sections/navbar&footer/FooterSection.astro",
+      "language": "astro",
+      "sizeLines": 114,
+      "fileCategory": "code"
+    },
+    {
+      "path": "src/components/sections/navbar&footer/Navbar.astro",
+      "language": "astro",
+      "sizeLines": 165,
+      "fileCategory": "code"
+    },
+    {
+      "path": "src/components/sections/navbar&footer/NavbarMegaMenu.astro",
+      "language": "astro",
+      "sizeLines": 175,
+      "fileCategory": "code"
+    },
+    {
+      "path": "src/components/sections/pricing/PricingSection.astro",
+      "language": "astro",
+      "sizeLines": 141,
+      "fileCategory": "code"
+    },
+    {
+      "path": "src/components/sections/products/ProductDetail.astro",
+      "language": "astro",
+      "sizeLines": 415,
+      "fileCategory": "code"
+    },
+    {
+      "path": "src/components/sections/testimonials/TestimonialItem.astro",
+      "language": "astro",
+      "sizeLines": 46,
+      "fileCategory": "code"
+    },
+    {
+      "path": "src/components/sections/testimonials/TestimonialsSection.astro",
+      "language": "astro",
+      "sizeLines": 71,
+      "fileCategory": "code"
+    },
+    {
+      "path": "src/components/sections/testimonials/TestimonialsSectionAlt.astro",
+      "language": "astro",
+      "sizeLines": 69,
+      "fileCategory": "code"
+    },
+    {
+      "path": "src/components/ThemeIcon.astro",
+      "language": "astro",
+      "sizeLines": 28,
+      "fileCategory": "code"
+    },
+    {
+      "path": "src/components/ui/avatars/Avatar.astro",
+      "language": "astro",
+      "sizeLines": 21,
+      "fileCategory": "code"
+    },
+    {
+      "path": "src/components/ui/avatars/AvatarBlog.astro",
+      "language": "astro",
+      "sizeLines": 22,
+      "fileCategory": "code"
+    },
+    {
+      "path": "src/components/ui/avatars/AvatarBlogLarge.astro",
+      "language": "astro",
+      "sizeLines": 22,
+      "fileCategory": "code"
+    },
+    {
+      "path": "src/components/ui/avatars/AvatarTestimonialSection.astro",
+      "language": "astro",
+      "sizeLines": 17,
+      "fileCategory": "code"
+    },
+    {
+      "path": "src/components/ui/banners/AnnouncementBanner.astro",
+      "language": "astro",
+      "sizeLines": 76,
+      "fileCategory": "code"
+    },
+    {
+      "path": "src/components/ui/blocks/AccordionItem.astro",
+      "language": "astro",
+      "sizeLines": 55,
+      "fileCategory": "code"
+    },
+    {
+      "path": "src/components/ui/blocks/AlternatingSections.astro",
+      "language": "astro",
+      "sizeLines": 86,
+      "fileCategory": "code"
+    },
+    {
+      "path": "src/components/ui/blocks/ContactIconBlock.astro",
+      "language": "astro",
+      "sizeLines": 59,
+      "fileCategory": "code"
+    },
+    {
+      "path": "src/components/ui/blocks/IconBlock.astro",
+      "language": "astro",
+      "sizeLines": 26,
+      "fileCategory": "code"
+    },
+    {
+      "path": "src/components/ui/blocks/MainSection.astro",
+      "language": "astro",
+      "sizeLines": 30,
+      "fileCategory": "code"
+    },
+    {
+      "path": "src/components/ui/blocks/ReviewComponent.astro",
+      "language": "astro",
+      "sizeLines": 62,
+      "fileCategory": "code"
+    },
+    {
+      "path": "src/components/ui/blocks/StatsBig.astro",
+      "language": "astro",
+      "sizeLines": 17,
+      "fileCategory": "code"
+    },
+    {
+      "path": "src/components/ui/blocks/StatsGrid.astro",
+      "language": "astro",
+      "sizeLines": 26,
+      "fileCategory": "code"
+    },
+    {
+      "path": "src/components/ui/blocks/StatsSmall.astro",
+      "language": "astro",
+      "sizeLines": 15,
+      "fileCategory": "code"
+    },
+    {
+      "path": "src/components/ui/blocks/TabContent.astro",
+      "language": "astro",
+      "sizeLines": 54,
+      "fileCategory": "code"
+    },
+    {
+      "path": "src/components/ui/blocks/TabNav.astro",
+      "language": "astro",
+      "sizeLines": 55,
+      "fileCategory": "code"
+    },
+    {
+      "path": "src/components/ui/buttons/AuthBtn.astro",
+      "language": "astro",
+      "sizeLines": 26,
+      "fileCategory": "code"
+    },
+    {
+      "path": "src/components/ui/buttons/Bookmark.astro",
+      "language": "astro",
+      "sizeLines": 95,
+      "fileCategory": "code"
+    },
+    {
+      "path": "src/components/ui/buttons/GithubBtn.astro",
+      "language": "astro",
+      "sizeLines": 30,
+      "fileCategory": "code"
+    },
+    {
+      "path": "src/components/ui/buttons/GoogleBtn.astro",
+      "language": "astro",
+      "sizeLines": 45,
+      "fileCategory": "code"
+    },
+    {
+      "path": "src/components/ui/buttons/LoginBtn.astro",
+      "language": "astro",
+      "sizeLines": 26,
+      "fileCategory": "code"
+    },
+    {
+      "path": "src/components/ui/buttons/NavbarToggle.astro",
+      "language": "astro",
+      "sizeLines": 31,
+      "fileCategory": "code"
+    },
+    {
+      "path": "src/components/ui/buttons/PrimaryCTA.astro",
+      "language": "astro",
+      "sizeLines": 46,
+      "fileCategory": "code"
+    },
+    {
+      "path": "src/components/ui/buttons/ProductTabBtn.astro",
+      "language": "astro",
+      "sizeLines": 34,
+      "fileCategory": "code"
+    },
+    {
+      "path": "src/components/ui/buttons/SecondaryCTA.astro",
+      "language": "astro",
+      "sizeLines": 31,
+      "fileCategory": "code"
+    },
+    {
+      "path": "src/components/ui/buttons/SocialShare.astro",
+      "language": "astro",
+      "sizeLines": 146,
+      "fileCategory": "code"
+    },
+    {
+      "path": "src/components/ui/cards/CardBlog.astro",
+      "language": "astro",
+      "sizeLines": 62,
+      "fileCategory": "code"
+    },
+    {
+      "path": "src/components/ui/cards/CardBlogRecent.astro",
+      "language": "astro",
+      "sizeLines": 63,
+      "fileCategory": "code"
+    },
+    {
+      "path": "src/components/ui/cards/CardInsight.astro",
+      "language": "astro",
+      "sizeLines": 48,
+      "fileCategory": "code"
+    },
+    {
+      "path": "src/components/ui/cards/CardProduct.astro",
+      "language": "astro",
+      "sizeLines": 42,
+      "fileCategory": "code"
+    },
+    {
+      "path": "src/components/ui/cards/CardRelated.astro",
+      "language": "astro",
+      "sizeLines": 37,
+      "fileCategory": "code"
+    },
+    {
+      "path": "src/components/ui/feedback/PostFeedback.astro",
+      "language": "astro",
+      "sizeLines": 37,
+      "fileCategory": "code"
+    },
+    {
+      "path": "src/components/ui/forms/DemoForm.astro",
+      "language": "astro",
+      "sizeLines": 34,
+      "fileCategory": "code"
+    },
+    {
+      "path": "src/components/ui/forms/input/Checkbox.astro",
+      "language": "astro",
+      "sizeLines": 27,
+      "fileCategory": "code"
+    },
+    {
+      "path": "src/components/ui/forms/input/EmailContactInput.astro",
+      "language": "astro",
+      "sizeLines": 26,
+      "fileCategory": "code"
+    },
+    {
+      "path": "src/components/ui/forms/input/EmailFooterInput.astro",
+      "language": "astro",
+      "sizeLines": 37,
+      "fileCategory": "code"
+    },
+    {
+      "path": "src/components/ui/forms/input/EmailInput.astro",
+      "language": "astro",
+      "sizeLines": 43,
+      "fileCategory": "code"
+    },
+    {
+      "path": "src/components/ui/forms/input/PasswordInput.astro",
+      "language": "astro",
+      "sizeLines": 51,
+      "fileCategory": "code"
+    },
+    {
+      "path": "src/components/ui/forms/input/PhoneInput.astro",
+      "language": "astro",
+      "sizeLines": 21,
+      "fileCategory": "code"
+    },
+    {
+      "path": "src/components/ui/forms/input/TextAreaInput.astro",
+      "language": "astro",
+      "sizeLines": 23,
+      "fileCategory": "code"
+    },
+    {
+      "path": "src/components/ui/forms/input/TextInput.astro",
+      "language": "astro",
+      "sizeLines": 24,
+      "fileCategory": "code"
+    },
+    {
+      "path": "src/components/ui/forms/LoginModal.astro",
+      "language": "astro",
+      "sizeLines": 78,
+      "fileCategory": "code"
+    },
+    {
+      "path": "src/components/ui/forms/RecoverModal.astro",
+      "language": "astro",
+      "sizeLines": 68,
+      "fileCategory": "code"
+    },
+    {
+      "path": "src/components/ui/forms/RegisterModal.astro",
+      "language": "astro",
+      "sizeLines": 98,
+      "fileCategory": "code"
+    },
+    {
+      "path": "src/components/ui/icons/Icon.astro",
+      "language": "astro",
+      "sizeLines": 39,
+      "fileCategory": "code"
+    },
+    {
+      "path": "src/components/ui/icons/icons.ts",
+      "language": "typescript",
+      "sizeLines": 660,
+      "fileCategory": "code"
+    },
+    {
+      "path": "src/components/ui/LanguagePicker.astro",
+      "language": "astro",
+      "sizeLines": 39,
+      "fileCategory": "code"
+    },
+    {
+      "path": "src/components/ui/links/FooterSocialLink.astro",
+      "language": "astro",
+      "sizeLines": 19,
+      "fileCategory": "code"
+    },
+    {
+      "path": "src/components/ui/links/MegaMenuLink.astro",
+      "language": "astro",
+      "sizeLines": 94,
+      "fileCategory": "code"
+    },
+    {
+      "path": "src/components/ui/links/NavLink.astro",
+      "language": "astro",
+      "sizeLines": 51,
+      "fileCategory": "code"
+    },
+    {
+      "path": "src/components/ui/starlight/Head.astro",
+      "language": "astro",
+      "sizeLines": 37,
+      "fileCategory": "code"
+    },
+    {
+      "path": "src/components/ui/starlight/MobileMenuFooter.astro",
+      "language": "astro",
+      "sizeLines": 38,
+      "fileCategory": "code"
+    },
+    {
+      "path": "src/components/ui/starlight/SiteTitle.astro",
+      "language": "astro",
+      "sizeLines": 50,
+      "fileCategory": "code"
+    },
+    {
+      "path": "src/components/ui/starlight/ThemeSelect.astro",
+      "language": "astro",
+      "sizeLines": 106,
+      "fileCategory": "code"
+    },
+    {
+      "path": "src/components/ui/starlight/ThemeSelectMobile.astro",
+      "language": "astro",
+      "sizeLines": 104,
+      "fileCategory": "code"
+    },
+    {
+      "path": "src/components/ui/stars/FullStar.astro",
+      "language": "astro",
+      "sizeLines": 14,
+      "fileCategory": "code"
+    },
+    {
+      "path": "src/components/ui/stars/HalfStar.astro",
+      "language": "astro",
+      "sizeLines": 18,
+      "fileCategory": "code"
+    },
+    {
+      "path": "src/content.config.ts",
+      "language": "typescript",
+      "sizeLines": 111,
+      "fileCategory": "code"
+    },
+    {
+      "path": "src/content/blog/en/post-1.md",
+      "language": "markdown",
+      "sizeLines": 22,
+      "fileCategory": "docs"
+    },
+    {
+      "path": "src/content/blog/en/post-2.md",
+      "language": "markdown",
+      "sizeLines": 24,
+      "fileCategory": "docs"
+    },
+    {
+      "path": "src/content/blog/en/post-3.md",
+      "language": "markdown",
+      "sizeLines": 21,
+      "fileCategory": "docs"
+    },
+    {
+      "path": "src/content/blog/fr/post-1.md",
+      "language": "markdown",
+      "sizeLines": 22,
+      "fileCategory": "docs"
+    },
+    {
+      "path": "src/content/blog/fr/post-2.md",
+      "language": "markdown",
+      "sizeLines": 24,
+      "fileCategory": "docs"
+    },
+    {
+      "path": "src/content/blog/fr/post-3.md",
+      "language": "markdown",
+      "sizeLines": 21,
+      "fileCategory": "docs"
+    },
+    {
+      "path": "src/content/docs/advanced/technical-specifications.mdx",
+      "language": "markdown",
+      "sizeLines": 65,
+      "fileCategory": "docs"
+    },
+    {
+      "path": "src/content/docs/construction/custom-solutions.mdx",
+      "language": "markdown",
+      "sizeLines": 19,
+      "fileCategory": "docs"
+    },
+    {
+      "path": "src/content/docs/construction/project-planning.mdx",
+      "language": "markdown",
+      "sizeLines": 21,
+      "fileCategory": "docs"
+    },
+    {
+      "path": "src/content/docs/construction/safety.mdx",
+      "language": "markdown",
+      "sizeLines": 31,
+      "fileCategory": "docs"
+    },
+    {
+      "path": "src/content/docs/construction/service-overview.mdx",
+      "language": "markdown",
+      "sizeLines": 35,
+      "fileCategory": "docs"
+    },
+    {
+      "path": "src/content/docs/de/guides/first-project-checklist.mdx",
+      "language": "markdown",
+      "sizeLines": 73,
+      "fileCategory": "docs"
+    },
+    {
+      "path": "src/content/docs/de/guides/getting-started.mdx",
+      "language": "markdown",
+      "sizeLines": 82,
+      "fileCategory": "docs"
+    },
+    {
+      "path": "src/content/docs/de/guides/intro.mdx",
+      "language": "markdown",
+      "sizeLines": 40,
+      "fileCategory": "docs"
+    },
+    {
+      "path": "src/content/docs/de/welcome-to-docs.mdx",
+      "language": "markdown",
+      "sizeLines": 54,
+      "fileCategory": "docs"
+    },
+    {
+      "path": "src/content/docs/es/guides/first-project-checklist.mdx",
+      "language": "markdown",
+      "sizeLines": 74,
+      "fileCategory": "docs"
+    },
+    {
+      "path": "src/content/docs/es/guides/getting-started.mdx",
+      "language": "markdown",
+      "sizeLines": 80,
+      "fileCategory": "docs"
+    },
+    {
+      "path": "src/content/docs/es/guides/intro.mdx",
+      "language": "markdown",
+      "sizeLines": 38,
+      "fileCategory": "docs"
+    },
+    {
+      "path": "src/content/docs/es/welcome-to-docs.mdx",
+      "language": "markdown",
+      "sizeLines": 54,
+      "fileCategory": "docs"
+    },
+    {
+      "path": "src/content/docs/fa/guides/first-project-checklist.mdx",
+      "language": "markdown",
+      "sizeLines": 71,
+      "fileCategory": "docs"
+    },
+    {
+      "path": "src/content/docs/fa/guides/getting-started.mdx",
+      "language": "markdown",
+      "sizeLines": 80,
+      "fileCategory": "docs"
+    },
+    {
+      "path": "src/content/docs/fa/guides/intro.mdx",
+      "language": "markdown",
+      "sizeLines": 37,
+      "fileCategory": "docs"
+    },
+    {
+      "path": "src/content/docs/fa/welcome-to-docs.mdx",
+      "language": "markdown",
+      "sizeLines": 49,
+      "fileCategory": "docs"
+    },
+    {
+      "path": "src/content/docs/fr/guides/first-project-checklist.mdx",
+      "language": "markdown",
+      "sizeLines": 72,
+      "fileCategory": "docs"
+    },
+    {
+      "path": "src/content/docs/fr/guides/getting-started.mdx",
+      "language": "markdown",
+      "sizeLines": 80,
+      "fileCategory": "docs"
+    },
+    {
+      "path": "src/content/docs/fr/guides/intro.mdx",
+      "language": "markdown",
+      "sizeLines": 38,
+      "fileCategory": "docs"
+    },
+    {
+      "path": "src/content/docs/fr/welcome-to-docs.mdx",
+      "language": "markdown",
+      "sizeLines": 54,
+      "fileCategory": "docs"
+    },
+    {
+      "path": "src/content/docs/guides/first-project-checklist.mdx",
+      "language": "markdown",
+      "sizeLines": 71,
+      "fileCategory": "docs"
+    },
+    {
+      "path": "src/content/docs/guides/getting-started.mdx",
+      "language": "markdown",
+      "sizeLines": 80,
+      "fileCategory": "docs"
+    },
+    {
+      "path": "src/content/docs/guides/intro.mdx",
+      "language": "markdown",
+      "sizeLines": 37,
+      "fileCategory": "docs"
+    },
+    {
+      "path": "src/content/docs/ja/guides/first-project-checklist.mdx",
+      "language": "markdown",
+      "sizeLines": 71,
+      "fileCategory": "docs"
+    },
+    {
+      "path": "src/content/docs/ja/guides/getting-started.mdx",
+      "language": "markdown",
+      "sizeLines": 79,
+      "fileCategory": "docs"
+    },
+    {
+      "path": "src/content/docs/ja/guides/intro.mdx",
+      "language": "markdown",
+      "sizeLines": 28,
+      "fileCategory": "docs"
+    },
+    {
+      "path": "src/content/docs/ja/welcome-to-docs.mdx",
+      "language": "markdown",
+      "sizeLines": 49,
+      "fileCategory": "docs"
+    },
+    {
+      "path": "src/content/docs/tools/equipment-care.mdx",
+      "language": "markdown",
+      "sizeLines": 41,
+      "fileCategory": "docs"
+    },
+    {
+      "path": "src/content/docs/tools/tool-guides.mdx",
+      "language": "markdown",
+      "sizeLines": 31,
+      "fileCategory": "docs"
+    },
+    {
+      "path": "src/content/docs/welcome-to-docs.mdx",
+      "language": "markdown",
+      "sizeLines": 54,
+      "fileCategory": "docs"
+    },
+    {
+      "path": "src/content/docs/zh-cn/guides/first-project-checklist.mdx",
+      "language": "markdown",
+      "sizeLines": 69,
+      "fileCategory": "docs"
+    },
+    {
+      "path": "src/content/docs/zh-cn/guides/getting-started.mdx",
+      "language": "markdown",
+      "sizeLines": 79,
+      "fileCategory": "docs"
+    },
+    {
+      "path": "src/content/docs/zh-cn/guides/intro.mdx",
+      "language": "markdown",
+      "sizeLines": 29,
+      "fileCategory": "docs"
+    },
+    {
+      "path": "src/content/docs/zh-cn/welcome-to-docs.mdx",
+      "language": "markdown",
+      "sizeLines": 50,
+      "fileCategory": "docs"
+    },
+    {
+      "path": "src/content/insights/en/insight-1.md",
+      "language": "markdown",
+      "sizeLines": 42,
+      "fileCategory": "docs"
+    },
+    {
+      "path": "src/content/insights/en/insight-2.md",
+      "language": "markdown",
+      "sizeLines": 44,
+      "fileCategory": "docs"
+    },
+    {
+      "path": "src/content/insights/en/insight-3.md",
+      "language": "markdown",
+      "sizeLines": 37,
+      "fileCategory": "docs"
+    },
+    {
+      "path": "src/content/insights/fr/insight-1.md",
+      "language": "markdown",
+      "sizeLines": 42,
+      "fileCategory": "docs"
+    },
+    {
+      "path": "src/content/insights/fr/insight-2.md",
+      "language": "markdown",
+      "sizeLines": 44,
+      "fileCategory": "docs"
+    },
+    {
+      "path": "src/content/insights/fr/insight-3.md",
+      "language": "markdown",
+      "sizeLines": 37,
+      "fileCategory": "docs"
+    },
+    {
+      "path": "src/content/products/en/item-a765.md",
+      "language": "markdown",
+      "sizeLines": 54,
+      "fileCategory": "docs"
+    },
+    {
+      "path": "src/content/products/en/item-b203.md",
+      "language": "markdown",
+      "sizeLines": 55,
+      "fileCategory": "docs"
+    },
+    {
+      "path": "src/content/products/en/item-f303.md",
+      "language": "markdown",
+      "sizeLines": 55,
+      "fileCategory": "docs"
+    },
+    {
+      "path": "src/content/products/en/item-t845.md",
+      "language": "markdown",
+      "sizeLines": 55,
+      "fileCategory": "docs"
+    },
+    {
+      "path": "src/content/products/fr/item-a765.md",
+      "language": "markdown",
+      "sizeLines": 54,
+      "fileCategory": "docs"
+    },
+    {
+      "path": "src/content/products/fr/item-b203.md",
+      "language": "markdown",
+      "sizeLines": 55,
+      "fileCategory": "docs"
+    },
+    {
+      "path": "src/content/products/fr/item-f303.md",
+      "language": "markdown",
+      "sizeLines": 55,
+      "fileCategory": "docs"
+    },
+    {
+      "path": "src/content/products/fr/item-t845.md",
+      "language": "markdown",
+      "sizeLines": 55,
+      "fileCategory": "docs"
+    },
+    {
+      "path": "src/copy/en.ts",
+      "language": "typescript",
+      "sizeLines": 449,
+      "fileCategory": "code"
+    },
+    {
+      "path": "src/copy/fr.ts",
+      "language": "typescript",
+      "sizeLines": 444,
+      "fileCategory": "code"
+    },
+    {
+      "path": "src/copy/index.ts",
+      "language": "typescript",
+      "sizeLines": 19,
+      "fileCategory": "code"
+    },
+    {
+      "path": "src/data_files/constants.ts",
+      "language": "typescript",
+      "sizeLines": 141,
+      "fileCategory": "code"
+    },
+    {
+      "path": "src/data_files/faqs.json",
+      "language": "json",
+      "sizeLines": 29,
+      "fileCategory": "config"
+    },
+    {
+      "path": "src/data_files/features.json",
+      "language": "json",
+      "sizeLines": 22,
+      "fileCategory": "config"
+    },
+    {
+      "path": "src/data_files/fr/faqs.json",
+      "language": "json",
+      "sizeLines": 29,
+      "fileCategory": "config"
+    },
+    {
+      "path": "src/data_files/fr/features.json",
+      "language": "json",
+      "sizeLines": 22,
+      "fileCategory": "config"
+    },
+    {
+      "path": "src/data_files/fr/pricing.json",
+      "language": "json",
+      "sizeLines": 38,
+      "fileCategory": "config"
+    },
+    {
+      "path": "src/data_files/mega_link.ts",
+      "language": "typescript",
+      "sizeLines": 27,
+      "fileCategory": "code"
+    },
+    {
+      "path": "src/data_files/navigation.ts",
+      "language": "typescript",
+      "sizeLines": 56,
+      "fileCategory": "code"
+    },
+    {
+      "path": "src/data_files/pricing.json",
+      "language": "json",
+      "sizeLines": 38,
+      "fileCategory": "config"
+    },
+    {
+      "path": "src/env.d.ts",
+      "language": "typescript",
+      "sizeLines": 11,
+      "fileCategory": "code"
+    },
+    {
+      "path": "src/images/aerial-view.avif",
+      "language": "avif",
+      "sizeLines": 779,
+      "fileCategory": "code"
+    },
+    {
+      "path": "src/images/automated-tools.avif",
+      "language": "avif",
+      "sizeLines": 348,
+      "fileCategory": "code"
+    },
+    {
+      "path": "src/images/before-after.avif",
+      "language": "avif",
+      "sizeLines": 454,
+      "fileCategory": "code"
+    },
+    {
+      "path": "src/images/blog/anna.avif",
+      "language": "avif",
+      "sizeLines": 64,
+      "fileCategory": "code"
+    },
+    {
+      "path": "src/images/blog/brad.avif",
+      "language": "avif",
+      "sizeLines": 58,
+      "fileCategory": "code"
+    },
+    {
+      "path": "src/images/blog/jacob.avif",
+      "language": "avif",
+      "sizeLines": 52,
+      "fileCategory": "code"
+    },
+    {
+      "path": "src/images/blog/post-1.avif",
+      "language": "avif",
+      "sizeLines": 116,
+      "fileCategory": "code"
+    },
+    {
+      "path": "src/images/blog/post-2.avif",
+      "language": "avif",
+      "sizeLines": 173,
+      "fileCategory": "code"
+    },
+    {
+      "path": "src/images/blog/post-3.avif",
+      "language": "avif",
+      "sizeLines": 247,
+      "fileCategory": "code"
+    },
+    {
+      "path": "src/images/blueprint-1.avif",
+      "language": "avif",
+      "sizeLines": 63,
+      "fileCategory": "code"
+    },
+    {
+      "path": "src/images/blueprint-2.avif",
+      "language": "avif",
+      "sizeLines": 131,
+      "fileCategory": "code"
+    },
+    {
+      "path": "src/images/blueprints-image.avif",
+      "language": "avif",
+      "sizeLines": 382,
+      "fileCategory": "code"
+    },
+    {
+      "path": "src/images/construction-image.avif",
+      "language": "avif",
+      "sizeLines": 710,
+      "fileCategory": "code"
+    },
+    {
+      "path": "src/images/construction-workers.avif",
+      "language": "avif",
+      "sizeLines": 923,
+      "fileCategory": "code"
+    },
+    {
+      "path": "src/images/dashboard-image.avif",
+      "language": "avif",
+      "sizeLines": 261,
+      "fileCategory": "code"
+    },
+    {
+      "path": "src/images/features-image.avif",
+      "language": "avif",
+      "sizeLines": 560,
+      "fileCategory": "code"
+    },
+    {
+      "path": "src/images/hero-image.avif",
+      "language": "avif",
+      "sizeLines": 466,
+      "fileCategory": "code"
+    },
+    {
+      "path": "src/images/insights/insight-1.avif",
+      "language": "avif",
+      "sizeLines": 305,
+      "fileCategory": "code"
+    },
+    {
+      "path": "src/images/insights/insight-2.avif",
+      "language": "avif",
+      "sizeLines": 746,
+      "fileCategory": "code"
+    },
+    {
+      "path": "src/images/insights/insight-3.avif",
+      "language": "avif",
+      "sizeLines": 223,
+      "fileCategory": "code"
+    },
+    {
+      "path": "src/images/person-working.avif",
+      "language": "avif",
+      "sizeLines": 225,
+      "fileCategory": "code"
+    },
+    {
+      "path": "src/images/product-image-1.avif",
+      "language": "avif",
+      "sizeLines": 152,
+      "fileCategory": "code"
+    },
+    {
+      "path": "src/images/product-image-2.avif",
+      "language": "avif",
+      "sizeLines": 90,
+      "fileCategory": "code"
+    },
+    {
+      "path": "src/images/product-image-3.avif",
+      "language": "avif",
+      "sizeLines": 171,
+      "fileCategory": "code"
+    },
+    {
+      "path": "src/images/product-image-4.avif",
+      "language": "avif",
+      "sizeLines": 104,
+      "fileCategory": "code"
+    },
+    {
+      "path": "src/images/product-image-main-1.avif",
+      "language": "avif",
+      "sizeLines": 213,
+      "fileCategory": "code"
+    },
+    {
+      "path": "src/images/product-image-main-2.avif",
+      "language": "avif",
+      "sizeLines": 148,
+      "fileCategory": "code"
+    },
+    {
+      "path": "src/images/product-image-main-3.avif",
+      "language": "avif",
+      "sizeLines": 222,
+      "fileCategory": "code"
+    },
+    {
+      "path": "src/images/product-image-main-4.avif",
+      "language": "avif",
+      "sizeLines": 174,
+      "fileCategory": "code"
+    },
+    {
+      "path": "src/images/progress-building.avif",
+      "language": "avif",
+      "sizeLines": 793,
+      "fileCategory": "code"
+    },
+    {
+      "path": "src/images/under-construction.avif",
+      "language": "avif",
+      "sizeLines": 628,
+      "fileCategory": "code"
+    },
+    {
+      "path": "src/images/using-tools.avif",
+      "language": "avif",
+      "sizeLines": 260,
+      "fileCategory": "code"
+    },
+    {
+      "path": "src/layouts/MainLayout.astro",
+      "language": "astro",
+      "sizeLines": 110,
+      "fileCategory": "code"
+    },
+    {
+      "path": "src/middleware.ts",
+      "language": "typescript",
+      "sizeLines": 15,
+      "fileCategory": "code"
+    },
+    {
+      "path": "src/pages/404.astro",
+      "language": "astro",
+      "sizeLines": 5,
+      "fileCategory": "code"
+    },
+    {
+      "path": "src/pages/blog/[id].astro",
+      "language": "astro",
+      "sizeLines": 10,
+      "fileCategory": "code"
+    },
+    {
+      "path": "src/pages/blog/index.astro",
+      "language": "astro",
+      "sizeLines": 5,
+      "fileCategory": "code"
+    },
+    {
+      "path": "src/pages/contact.astro",
+      "language": "astro",
+      "sizeLines": 5,
+      "fileCategory": "code"
+    },
+    {
+      "path": "src/pages/favicon.ico.ts",
+      "language": "typescript",
+      "sizeLines": 24,
+      "fileCategory": "code"
+    },
+    {
+      "path": "src/pages/fr/404.astro",
+      "language": "astro",
+      "sizeLines": 5,
+      "fileCategory": "code"
+    },
+    {
+      "path": "src/pages/fr/blog/[id].astro",
+      "language": "astro",
+      "sizeLines": 10,
+      "fileCategory": "code"
+    },
+    {
+      "path": "src/pages/fr/blog/index.astro",
+      "language": "astro",
+      "sizeLines": 5,
+      "fileCategory": "code"
+    },
+    {
+      "path": "src/pages/fr/contact.astro",
+      "language": "astro",
+      "sizeLines": 5,
+      "fileCategory": "code"
+    },
+    {
+      "path": "src/pages/fr/index.astro",
+      "language": "astro",
+      "sizeLines": 5,
+      "fileCategory": "code"
+    },
+    {
+      "path": "src/pages/fr/insights/[id].astro",
+      "language": "astro",
+      "sizeLines": 10,
+      "fileCategory": "code"
+    },
+    {
+      "path": "src/pages/fr/products/[id].astro",
+      "language": "astro",
+      "sizeLines": 10,
+      "fileCategory": "code"
+    },
+    {
+      "path": "src/pages/fr/products/index.astro",
+      "language": "astro",
+      "sizeLines": 5,
+      "fileCategory": "code"
+    },
+    {
+      "path": "src/pages/fr/services.astro",
+      "language": "astro",
+      "sizeLines": 5,
+      "fileCategory": "code"
+    },
+    {
+      "path": "src/pages/index.astro",
+      "language": "astro",
+      "sizeLines": 5,
+      "fileCategory": "code"
+    },
+    {
+      "path": "src/pages/insights/[id].astro",
+      "language": "astro",
+      "sizeLines": 10,
+      "fileCategory": "code"
+    },
+    {
+      "path": "src/pages/manifest.json.ts",
+      "language": "typescript",
+      "sizeLines": 58,
+      "fileCategory": "code"
+    },
+    {
+      "path": "src/pages/products/[id].astro",
+      "language": "astro",
+      "sizeLines": 10,
+      "fileCategory": "code"
+    },
+    {
+      "path": "src/pages/products/index.astro",
+      "language": "astro",
+      "sizeLines": 5,
+      "fileCategory": "code"
+    },
+    {
+      "path": "src/pages/robots.txt.ts",
+      "language": "typescript",
+      "sizeLines": 29,
+      "fileCategory": "code"
+    },
+    {
+      "path": "src/pages/services.astro",
+      "language": "astro",
+      "sizeLines": 5,
+      "fileCategory": "code"
+    },
+    {
+      "path": "src/utils/content.ts",
+      "language": "typescript",
+      "sizeLines": 101,
+      "fileCategory": "code"
+    },
+    {
+      "path": "src/utils/locale.ts",
+      "language": "typescript",
+      "sizeLines": 130,
+      "fileCategory": "code"
+    },
+    {
+      "path": "src/utils/metadata.ts",
+      "language": "typescript",
+      "sizeLines": 161,
+      "fileCategory": "code"
+    },
+    {
+      "path": "src/utils/utils.ts",
+      "language": "typescript",
+      "sizeLines": 20,
+      "fileCategory": "code"
+    },
+    {
+      "path": "src/views/BlogIndexView.astro",
+      "language": "astro",
+      "sizeLines": 84,
+      "fileCategory": "code"
+    },
+    {
+      "path": "src/views/BlogPostView.astro",
+      "language": "astro",
+      "sizeLines": 124,
+      "fileCategory": "code"
+    },
+    {
+      "path": "src/views/ContactView.astro",
+      "language": "astro",
+      "sizeLines": 22,
+      "fileCategory": "code"
+    },
+    {
+      "path": "src/views/HomeView.astro",
+      "language": "astro",
+      "sizeLines": 120,
+      "fileCategory": "code"
+    },
+    {
+      "path": "src/views/InsightView.astro",
+      "language": "astro",
+      "sizeLines": 25,
+      "fileCategory": "code"
+    },
+    {
+      "path": "src/views/NotFoundView.astro",
+      "language": "astro",
+      "sizeLines": 66,
+      "fileCategory": "code"
+    },
+    {
+      "path": "src/views/ProductsIndexView.astro",
+      "language": "astro",
+      "sizeLines": 77,
+      "fileCategory": "code"
+    },
+    {
+      "path": "src/views/ProductView.astro",
+      "language": "astro",
+      "sizeLines": 25,
+      "fileCategory": "code"
+    },
+    {
+      "path": "src/views/ServicesView.astro",
+      "language": "astro",
+      "sizeLines": 86,
+      "fileCategory": "code"
+    },
+    {
+      "path": "tsconfig.json",
+      "language": "json",
+      "sizeLines": 18,
+      "fileCategory": "config"
+    },
+    {
+      "path": "vercel.json",
+      "language": "json",
+      "sizeLines": 47,
+      "fileCategory": "config"
+    }
+  ],
+  "totalFiles": 241,
+  "filteredByIgnore": 0,
+  "estimatedComplexity": "large",
+  "importMap": {
+    ".codebase-memory/.gitattributes": [],
+    ".codebase-memory/artifact.json": [],
+    ".codebase-memory/graph.db.zst": [],
+    ".github/dependabot.yml": [],
+    ".github/FUNDING.yml": [],
+    ".github/workflows/ci.yml": [],
+    ".github/workflows/dependabot-format.yml": [],
+    ".prettierignore": [],
+    ".understand-anything/.understandignore": [],
+    "AI_GUIDE.md": [],
+    "astro.config.mjs": [],
+    "CODE_OF_CONDUCT.md": [],
+    "CONTEXT.md": [],
+    "package.json": [],
+    "process-html.mjs": [],
+    "README.md": [],
+    "scripts/smoke.mjs": [],
+    "src/assets/scripts/demoForms.ts": [],
+    "src/assets/scripts/lenisSmoothScroll.js": ["src/assets/styles/lenis.css"],
+    "src/assets/styles/global.css": [],
+    "src/assets/styles/lenis.css": [],
+    "src/assets/styles/starlight_main.css": [],
+    "src/assets/styles/starlight.css": [],
+    "src/components/BrandLogo.astro": [],
+    "src/components/Meta.astro": [],
+    "src/components/sections/features/FeaturesGeneral.astro": [],
+    "src/components/sections/features/FeaturesNavs.astro": [],
+    "src/components/sections/features/FeaturesStats.astro": [],
+    "src/components/sections/features/FeaturesStatsAlt.astro": [],
+    "src/components/sections/insights/InsightDetail.astro": [],
+    "src/components/sections/landing/ClientsSection.astro": [],
+    "src/components/sections/landing/HeroSection.astro": [],
+    "src/components/sections/landing/HeroSectionAlt.astro": [],
+    "src/components/sections/misc/Authentication.astro": [],
+    "src/components/sections/misc/ContactSection.astro": [],
+    "src/components/sections/misc/FAQ.astro": [],
+    "src/components/sections/navbar&footer/FooterSection.astro": [],
+    "src/components/sections/navbar&footer/Navbar.astro": [],
+    "src/components/sections/navbar&footer/NavbarMegaMenu.astro": [],
+    "src/components/sections/pricing/PricingSection.astro": [],
+    "src/components/sections/products/ProductDetail.astro": [],
+    "src/components/sections/testimonials/TestimonialItem.astro": [],
+    "src/components/sections/testimonials/TestimonialsSection.astro": [],
+    "src/components/sections/testimonials/TestimonialsSectionAlt.astro": [],
+    "src/components/ThemeIcon.astro": [],
+    "src/components/ui/avatars/Avatar.astro": [],
+    "src/components/ui/avatars/AvatarBlog.astro": [],
+    "src/components/ui/avatars/AvatarBlogLarge.astro": [],
+    "src/components/ui/avatars/AvatarTestimonialSection.astro": [],
+    "src/components/ui/banners/AnnouncementBanner.astro": [],
+    "src/components/ui/blocks/AccordionItem.astro": [],
+    "src/components/ui/blocks/AlternatingSections.astro": [],
+    "src/components/ui/blocks/ContactIconBlock.astro": [],
+    "src/components/ui/blocks/IconBlock.astro": [],
+    "src/components/ui/blocks/MainSection.astro": [],
+    "src/components/ui/blocks/ReviewComponent.astro": [],
+    "src/components/ui/blocks/StatsBig.astro": [],
+    "src/components/ui/blocks/StatsGrid.astro": [],
+    "src/components/ui/blocks/StatsSmall.astro": [],
+    "src/components/ui/blocks/TabContent.astro": [],
+    "src/components/ui/blocks/TabNav.astro": [],
+    "src/components/ui/buttons/AuthBtn.astro": [],
+    "src/components/ui/buttons/Bookmark.astro": [],
+    "src/components/ui/buttons/GithubBtn.astro": [],
+    "src/components/ui/buttons/GoogleBtn.astro": [],
+    "src/components/ui/buttons/LoginBtn.astro": [],
+    "src/components/ui/buttons/NavbarToggle.astro": [],
+    "src/components/ui/buttons/PrimaryCTA.astro": [],
+    "src/components/ui/buttons/ProductTabBtn.astro": [],
+    "src/components/ui/buttons/SecondaryCTA.astro": [],
+    "src/components/ui/buttons/SocialShare.astro": [],
+    "src/components/ui/cards/CardBlog.astro": [],
+    "src/components/ui/cards/CardBlogRecent.astro": [],
+    "src/components/ui/cards/CardInsight.astro": [],
+    "src/components/ui/cards/CardProduct.astro": [],
+    "src/components/ui/cards/CardRelated.astro": [],
+    "src/components/ui/feedback/PostFeedback.astro": [],
+    "src/components/ui/forms/DemoForm.astro": [],
+    "src/components/ui/forms/input/Checkbox.astro": [],
+    "src/components/ui/forms/input/EmailContactInput.astro": [],
+    "src/components/ui/forms/input/EmailFooterInput.astro": [],
+    "src/components/ui/forms/input/EmailInput.astro": [],
+    "src/components/ui/forms/input/PasswordInput.astro": [],
+    "src/components/ui/forms/input/PhoneInput.astro": [],
+    "src/components/ui/forms/input/TextAreaInput.astro": [],
+    "src/components/ui/forms/input/TextInput.astro": [],
+    "src/components/ui/forms/LoginModal.astro": [],
+    "src/components/ui/forms/RecoverModal.astro": [],
+    "src/components/ui/forms/RegisterModal.astro": [],
+    "src/components/ui/icons/Icon.astro": [],
+    "src/components/ui/icons/icons.ts": [],
+    "src/components/ui/LanguagePicker.astro": [],
+    "src/components/ui/links/FooterSocialLink.astro": [],
+    "src/components/ui/links/MegaMenuLink.astro": [],
+    "src/components/ui/links/NavLink.astro": [],
+    "src/components/ui/starlight/Head.astro": [],
+    "src/components/ui/starlight/MobileMenuFooter.astro": [],
+    "src/components/ui/starlight/SiteTitle.astro": [],
+    "src/components/ui/starlight/ThemeSelect.astro": [],
+    "src/components/ui/starlight/ThemeSelectMobile.astro": [],
+    "src/components/ui/stars/FullStar.astro": [],
+    "src/components/ui/stars/HalfStar.astro": [],
+    "src/content.config.ts": [],
+    "src/content/blog/en/post-1.md": [],
+    "src/content/blog/en/post-2.md": [],
+    "src/content/blog/en/post-3.md": [],
+    "src/content/blog/fr/post-1.md": [],
+    "src/content/blog/fr/post-2.md": [],
+    "src/content/blog/fr/post-3.md": [],
+    "src/content/docs/advanced/technical-specifications.mdx": [],
+    "src/content/docs/construction/custom-solutions.mdx": [],
+    "src/content/docs/construction/project-planning.mdx": [],
+    "src/content/docs/construction/safety.mdx": [],
+    "src/content/docs/construction/service-overview.mdx": [],
+    "src/content/docs/de/guides/first-project-checklist.mdx": [],
+    "src/content/docs/de/guides/getting-started.mdx": [],
+    "src/content/docs/de/guides/intro.mdx": [],
+    "src/content/docs/de/welcome-to-docs.mdx": [],
+    "src/content/docs/es/guides/first-project-checklist.mdx": [],
+    "src/content/docs/es/guides/getting-started.mdx": [],
+    "src/content/docs/es/guides/intro.mdx": [],
+    "src/content/docs/es/welcome-to-docs.mdx": [],
+    "src/content/docs/fa/guides/first-project-checklist.mdx": [],
+    "src/content/docs/fa/guides/getting-started.mdx": [],
+    "src/content/docs/fa/guides/intro.mdx": [],
+    "src/content/docs/fa/welcome-to-docs.mdx": [],
+    "src/content/docs/fr/guides/first-project-checklist.mdx": [],
+    "src/content/docs/fr/guides/getting-started.mdx": [],
+    "src/content/docs/fr/guides/intro.mdx": [],
+    "src/content/docs/fr/welcome-to-docs.mdx": [],
+    "src/content/docs/guides/first-project-checklist.mdx": [],
+    "src/content/docs/guides/getting-started.mdx": [],
+    "src/content/docs/guides/intro.mdx": [],
+    "src/content/docs/ja/guides/first-project-checklist.mdx": [],
+    "src/content/docs/ja/guides/getting-started.mdx": [],
+    "src/content/docs/ja/guides/intro.mdx": [],
+    "src/content/docs/ja/welcome-to-docs.mdx": [],
+    "src/content/docs/tools/equipment-care.mdx": [],
+    "src/content/docs/tools/tool-guides.mdx": [],
+    "src/content/docs/welcome-to-docs.mdx": [],
+    "src/content/docs/zh-cn/guides/first-project-checklist.mdx": [],
+    "src/content/docs/zh-cn/guides/getting-started.mdx": [],
+    "src/content/docs/zh-cn/guides/intro.mdx": [],
+    "src/content/docs/zh-cn/welcome-to-docs.mdx": [],
+    "src/content/insights/en/insight-1.md": [],
+    "src/content/insights/en/insight-2.md": [],
+    "src/content/insights/en/insight-3.md": [],
+    "src/content/insights/fr/insight-1.md": [],
+    "src/content/insights/fr/insight-2.md": [],
+    "src/content/insights/fr/insight-3.md": [],
+    "src/content/products/en/item-a765.md": [],
+    "src/content/products/en/item-b203.md": [],
+    "src/content/products/en/item-f303.md": [],
+    "src/content/products/en/item-t845.md": [],
+    "src/content/products/fr/item-a765.md": [],
+    "src/content/products/fr/item-b203.md": [],
+    "src/content/products/fr/item-f303.md": [],
+    "src/content/products/fr/item-t845.md": [],
+    "src/copy/en.ts": [
+      "src/data_files/faqs.json",
+      "src/data_files/features.json",
+      "src/data_files/pricing.json"
+    ],
+    "src/copy/fr.ts": [
+      "src/copy/index.ts",
+      "src/data_files/fr/faqs.json",
+      "src/data_files/fr/features.json",
+      "src/data_files/fr/pricing.json"
+    ],
+    "src/copy/index.ts": [
+      "src/copy/en.ts",
+      "src/copy/fr.ts",
+      "src/utils/locale.ts"
+    ],
+    "src/data_files/constants.ts": [],
+    "src/data_files/faqs.json": [],
+    "src/data_files/features.json": [],
+    "src/data_files/fr/faqs.json": [],
+    "src/data_files/fr/features.json": [],
+    "src/data_files/fr/pricing.json": [],
+    "src/data_files/mega_link.ts": ["src/components/ui/icons/icons.ts"],
+    "src/data_files/navigation.ts": [],
+    "src/data_files/pricing.json": [],
+    "src/env.d.ts": [],
+    "src/images/aerial-view.avif": [],
+    "src/images/automated-tools.avif": [],
+    "src/images/before-after.avif": [],
+    "src/images/blog/anna.avif": [],
+    "src/images/blog/brad.avif": [],
+    "src/images/blog/jacob.avif": [],
+    "src/images/blog/post-1.avif": [],
+    "src/images/blog/post-2.avif": [],
+    "src/images/blog/post-3.avif": [],
+    "src/images/blueprint-1.avif": [],
+    "src/images/blueprint-2.avif": [],
+    "src/images/blueprints-image.avif": [],
+    "src/images/construction-image.avif": [],
+    "src/images/construction-workers.avif": [],
+    "src/images/dashboard-image.avif": [],
+    "src/images/features-image.avif": [],
+    "src/images/hero-image.avif": [],
+    "src/images/insights/insight-1.avif": [],
+    "src/images/insights/insight-2.avif": [],
+    "src/images/insights/insight-3.avif": [],
+    "src/images/person-working.avif": [],
+    "src/images/product-image-1.avif": [],
+    "src/images/product-image-2.avif": [],
+    "src/images/product-image-3.avif": [],
+    "src/images/product-image-4.avif": [],
+    "src/images/product-image-main-1.avif": [],
+    "src/images/product-image-main-2.avif": [],
+    "src/images/product-image-main-3.avif": [],
+    "src/images/product-image-main-4.avif": [],
+    "src/images/progress-building.avif": [],
+    "src/images/under-construction.avif": [],
+    "src/images/using-tools.avif": [],
+    "src/layouts/MainLayout.astro": [],
+    "src/middleware.ts": ["src/copy/index.ts", "src/utils/locale.ts"],
+    "src/pages/404.astro": [],
+    "src/pages/blog/[id].astro": [],
+    "src/pages/blog/index.astro": [],
+    "src/pages/contact.astro": [],
+    "src/pages/favicon.ico.ts": [],
+    "src/pages/fr/404.astro": [],
+    "src/pages/fr/blog/[id].astro": [],
+    "src/pages/fr/blog/index.astro": [],
+    "src/pages/fr/contact.astro": [],
+    "src/pages/fr/index.astro": [],
+    "src/pages/fr/insights/[id].astro": [],
+    "src/pages/fr/products/[id].astro": [],
+    "src/pages/fr/products/index.astro": [],
+    "src/pages/fr/services.astro": [],
+    "src/pages/index.astro": [],
+    "src/pages/insights/[id].astro": [],
+    "src/pages/manifest.json.ts": [],
+    "src/pages/products/[id].astro": [],
+    "src/pages/products/index.astro": [],
+    "src/pages/robots.txt.ts": [],
+    "src/pages/services.astro": [],
+    "src/utils/content.ts": ["src/utils/locale.ts"],
+    "src/utils/locale.ts": [],
+    "src/utils/metadata.ts": [
+      "src/copy/index.ts",
+      "src/data_files/constants.ts",
+      "src/utils/locale.ts"
+    ],
+    "src/utils/utils.ts": ["src/utils/locale.ts"],
+    "src/views/BlogIndexView.astro": [],
+    "src/views/BlogPostView.astro": [],
+    "src/views/ContactView.astro": [],
+    "src/views/HomeView.astro": [],
+    "src/views/InsightView.astro": [],
+    "src/views/NotFoundView.astro": [],
+    "src/views/ProductsIndexView.astro": [],
+    "src/views/ProductView.astro": [],
+    "src/views/ServicesView.astro": [],
+    "tsconfig.json": [],
+    "vercel.json": []
+  }
+}

@@ -13,6 +13,9 @@ yarn-debug.log*
 yarn-error.log*
 pnpm-debug.log*
 
+# analysis scratch files
+.understand-anything/tmp/
+.understand-anything/.trash-*/
 
 # environment variables
 .env

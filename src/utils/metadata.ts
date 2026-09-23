@@ -8,6 +8,8 @@ import {
   type MarketingLocale,
 } from '@utils/locale';
 
+const basePath = import.meta.env.BASE_URL.replace(/\/$/, '');
+
 /**
  * Page-metadata module.
  *
@@ -64,7 +66,11 @@ export interface PageMetadata {
 
 /** Absolute URL on the marketing site; the root has no trailing slash. */
 export function absoluteUrl(path: string): string {
-  return path === '/' ? SITE.url : `${SITE.url}${path}`;
+  const cleanPath = path === '/' ? '' : path;
+  const pathWithBase = cleanPath.startsWith(basePath)
+    ? cleanPath
+    : `${basePath}${cleanPath}`;
+  return `${SITE.url}${pathWithBase}`;
 }
 
 export function buildPageMetadata(input: PageMetadataInput): PageMetadata {
@@ -91,7 +97,7 @@ export function buildPageMetadata(input: PageMetadataInput): PageMetadata {
   const publisher = {
     '@type': 'Organization',
     name: SITE.title,
-    logo: { '@type': 'ImageObject', url: `${SITE.url}/favicon.ico` },
+    logo: { '@type': 'ImageObject', url: absoluteUrl('/favicon.ico') },
   };
 
   let jsonLd: Record<string, unknown>;

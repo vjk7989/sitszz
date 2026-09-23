@@ -24,6 +24,7 @@ const favicons: Favicon[] = [
 ];
 
 export const GET: APIRoute = async () => {
+  const basePath = import.meta.env.BASE_URL;
   const icons = await Promise.all(
     favicons.flatMap(favicon =>
       favicon.sizes.map(async size => {
@@ -48,8 +49,8 @@ export const GET: APIRoute = async () => {
     name: 'ScrewFast',
     icons,
     display: 'minimal-ui',
-    id: '/',
-    start_url: '/',
+    id: basePath,
+    start_url: basePath,
     theme_color: '#FFEDD5',
     background_color: '#262626',
   };
