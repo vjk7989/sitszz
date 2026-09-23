@@ -325,34 +325,6 @@ export const en = {
     },
   },
 
-  contact: {
-    title: 'Contact',
-    metaDescription:
-      "Have questions or want to discuss a project? Reach out, and let's craft the perfect solution with our tools and services.",
-    ogTitle: 'Contact Us | ScrewFast',
-    heading: 'Contact us',
-    subTitle:
-      "Have questions or want to discuss a project? Reach out, and let's craft the perfect solution with our tools and services.",
-    formTitle: 'Fill in the form below',
-    formSubTitle: "We'll get back to you in 1-2 business days.",
-    firstName: 'First Name',
-    lastName: 'Last Name',
-    details: 'Details',
-    send: 'Send Message',
-    demoMessage:
-      'Thanks! (Demo only — wire a form endpoint to receive real messages.)',
-    knowledgeHeading: 'Knowledgebase',
-    knowledgeContent: 'Browse through all of our knowledgebase articles.',
-    knowledgeLink: 'Visit guides & tutorials',
-    faqHeading: 'FAQ',
-    faqContent: 'Explore our FAQ for quick, clear answers to common queries.',
-    faqLink: 'Visit FAQ',
-    officeHeading: 'Visit our office',
-    officeContent: 'UK ScrewFast',
-    emailHeading: 'Contact us by email',
-    emailContent: 'Prefer the written word? Drop us an email at',
-  },
-
   blogIndex: {
     title: 'Blog',
     metaDescription:

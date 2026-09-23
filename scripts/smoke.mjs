@@ -13,7 +13,6 @@ const MARKETING_ROUTES = [
   '/blog/',
   '/blog/post-1/',
   '/insights/insight-1/',
-  '/contact/',
 ];
 const ROUTES = [...MARKETING_ROUTES, '/404'];
 
@@ -23,7 +22,6 @@ const EXPECTATIONS = {
   '/products/': ['aria-current="page"'],
   '/services/': ['aria-current="page"'],
   '/blog/': ['aria-current="page"'],
-  '/contact/': ['data-demo-form', 'data-demo-status', 'Contact Us', 'aria-current="page"'],
   '/blog/post-1/': ['"@type":"BlogPosting"'],
 };
 
