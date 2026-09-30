@@ -59,7 +59,9 @@ export async function entriesFor<C extends LocalisedCollection>(
 }
 
 /** `getStaticPaths` result for a collection's English detail route. */
-export async function staticPathsFor<C extends LocalisedCollection>(collection: C) {
+export async function staticPathsFor<C extends LocalisedCollection>(
+  collection: C
+) {
   const entries = await entriesFor(collection);
   return entries.map(entry => ({
     params: { id: slugOf(entry) },
