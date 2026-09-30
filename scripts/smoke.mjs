@@ -115,7 +115,9 @@ async function run() {
         console.error(`FAIL ${route} → forbidden ${forbidden.join(', ')}`);
         failed = true;
       } else if (MARKETING_ROUTES.includes(route) && activeLinkCount !== 1) {
-        console.error(`FAIL ${route} → expected 1 active link, got ${activeLinkCount}`);
+        console.error(
+          `FAIL ${route} → expected 1 active link, got ${activeLinkCount}`
+        );
         failed = true;
       } else {
         console.log(`OK   ${route} → ${res.status}`);

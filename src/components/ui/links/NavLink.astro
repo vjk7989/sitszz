@@ -83,13 +83,9 @@ GitHub Pages base paths without relying on browser-side state.
     </span>
   ) : (
     <>
-      {leadingIcon && (
-        <Icon name={leadingIcon} class="h-4 w-4 shrink-0" />
-      )}
+      {leadingIcon && <Icon name={leadingIcon} class="h-4 w-4 shrink-0" />}
       <span>{name}</span>
-      {trailingIcon && (
-        <Icon name={trailingIcon} class="h-4 w-4 shrink-0" />
-      )}
+      {trailingIcon && <Icon name={trailingIcon} class="h-4 w-4 shrink-0" />}
     </>
   )}
 </a>
