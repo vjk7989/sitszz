@@ -3,10 +3,19 @@ const ledgerSegments = Array.from({ length: 20 });
 const tickMarks = Array.from({ length: 48 });
 ---
 
-<div class="security-orb" data-security-orb role="img" aria-labelledby="security-orb-title security-orb-description">
-  <span id="security-orb-title" class="sr-only">Blockchain security orb</span>
+<div
+  class="security-orb"
+  data-security-orb
+  role="img"
+  aria-labelledby="security-orb-title security-orb-description"
+>
+  <span id="security-orb-title" class="sr-only">
+    Blockchain security orb
+  </span>
   <span id="security-orb-description" class="sr-only">
-    Safe prompts and user inputs pass through the signed blockchain ledger into a secure AI core. Prompt injection and supply-chain attacks stop and fragment at the external ledger boundary.
+    Safe prompts and user inputs pass through the signed blockchain ledger into
+    a secure AI core. Prompt injection and supply-chain attacks stop and
+    fragment at the external ledger boundary.
   </span>
 
   <div class="orb-three" data-orb-three aria-hidden="true"></div>
@@ -18,11 +27,23 @@ const tickMarks = Array.from({ length: 48 });
         <stop offset=".58" stop-color="var(--orb-primary)" stop-opacity=".12" />
         <stop offset="1" stop-color="var(--orb-primary)" stop-opacity="0" />
       </radialGradient>
-      <filter id="security-orb-glow" x="-100%" y="-100%" width="300%" height="300%">
+      <filter
+        id="security-orb-glow"
+        x="-100%"
+        y="-100%"
+        width="300%"
+        height="300%"
+      >
         <feGaussianBlur stdDeviation="5" />
       </filter>
-      <path id="orb-safe-prompt-path" d="M86 204 C202 204 272 252 371 287 C393 295 404 298 420 300" />
-      <path id="orb-safe-input-path" d="M86 394 C203 394 276 347 372 313 C394 305 404 302 420 300" />
+      <path
+        id="orb-safe-prompt-path"
+        d="M86 204 C202 204 272 252 371 287 C393 295 404 298 420 300"
+      />
+      <path
+        id="orb-safe-input-path"
+        d="M86 394 C203 394 276 347 372 313 C394 305 404 302 420 300"
+      />
       <path id="orb-threat-prompt-path" d="M704 137 C674 146 647 164 618 192" />
       <path id="orb-threat-supply-path" d="M704 455 C674 444 647 426 618 408" />
     </defs>
@@ -37,14 +58,23 @@ const tickMarks = Array.from({ length: 48 });
 
     <g class="orb-ticks">
       {tickMarks.map((_, index) => (
-        <line x1="430" y1="62" x2="430" y2={index % 4 === 0 ? "75" : "69"} transform={`rotate(${index * 7.5} 430 300)`} />
+        <line
+          x1="430"
+          y1="62"
+          x2="430"
+          y2={index % 4 === 0 ? '75' : '69'}
+          transform={`rotate(${index * 7.5} 430 300)`}
+        />
       ))}
     </g>
 
     <g class="orb-ledger">
       {ledgerSegments.map((_, index) => (
         <rect
-          class:list={['orb-ledger-segment', index === 2 || index === 13 ? 'orb-ledger-segment-active' : '']}
+          class:list={[
+            'orb-ledger-segment',
+            index === 2 || index === 13 ? 'orb-ledger-segment-active' : '',
+          ]}
           x="418"
           y="84"
           width="24"
@@ -64,79 +94,339 @@ const tickMarks = Array.from({ length: 48 });
 
     <g class="orb-impact-markers">
       <g class="orb-impact orb-impact-prompt" transform="translate(618 192)">
-        <circle r="15" /><circle r="7" /><path d="M-3 -3 L3 3 M3 -3 L-3 3" />
+        <circle r="15" />
+        <circle r="7" />
+        <path d="M-3 -3 L3 3 M3 -3 L-3 3" />
       </g>
       <g class="orb-impact orb-impact-supply" transform="translate(618 408)">
-        <circle r="15" /><circle r="7" /><path d="M-3 -3 L3 3 M3 -3 L-3 3" />
+        <circle r="15" />
+        <circle r="7" />
+        <path d="M-3 -3 L3 3 M3 -3 L-3 3" />
       </g>
     </g>
 
     <g class="orb-static-wireframe">
       <circle cx="430" cy="300" r="112" class="orb-core-fill" />
       <ellipse cx="430" cy="300" rx="111" ry="56" />
-      <ellipse cx="430" cy="300" rx="78" ry="112" transform="rotate(28 430 300)" />
-      <ellipse cx="430" cy="300" rx="78" ry="112" transform="rotate(-28 430 300)" />
+      <ellipse
+        cx="430"
+        cy="300"
+        rx="78"
+        ry="112"
+        transform="rotate(28 430 300)"
+      />
+      <ellipse
+        cx="430"
+        cy="300"
+        rx="78"
+        ry="112"
+        transform="rotate(-28 430 300)"
+      />
       <path d="M318 300 H542 M430 188 V412" />
       <path d="M340 236 C394 271 467 329 520 364 M340 364 C394 329 467 271 520 236" />
       <circle cx="430" cy="300" r="43" class="orb-center" />
-      <circle cx="430" cy="300" r="11" class="orb-core-glow" filter="url(#security-orb-glow)" />
+      <circle
+        cx="430"
+        cy="300"
+        r="11"
+        class="orb-core-glow"
+        filter="url(#security-orb-glow)"
+      />
       <circle cx="430" cy="300" r="6" class="orb-core-dot" />
     </g>
 
     <g class="orb-static-events">
-      <g transform="translate(85 204)" class="orb-event-safe"><rect x="-48" y="-15" width="96" height="30" rx="15" /><text text-anchor="middle" y="5">safe prompt</text></g>
-      <g transform="translate(85 394)" class="orb-event-safe"><rect x="-44" y="-15" width="88" height="30" rx="15" /><text text-anchor="middle" y="5">user input</text></g>
-      <g transform="translate(618 192)" class="orb-event-threat"><rect x="-61" y="-15" width="122" height="30" rx="15" /><text text-anchor="middle" y="5">prompt injection</text></g>
-      <g transform="translate(618 408)" class="orb-event-threat"><rect x="-68" y="-15" width="136" height="30" rx="15" /><text text-anchor="middle" y="5">supply-chain attack</text></g>
+      <g transform="translate(85 204)" class="orb-event-safe">
+        <rect x="-48" y="-15" width="96" height="30" rx="15" />
+        <text text-anchor="middle" y="5">
+          safe prompt
+        </text>
+      </g>
+      <g transform="translate(85 394)" class="orb-event-safe">
+        <rect x="-44" y="-15" width="88" height="30" rx="15" />
+        <text text-anchor="middle" y="5">
+          user input
+        </text>
+      </g>
+      <g transform="translate(618 192)" class="orb-event-threat">
+        <rect x="-61" y="-15" width="122" height="30" rx="15" />
+        <text text-anchor="middle" y="5">
+          prompt injection
+        </text>
+      </g>
+      <g transform="translate(618 408)" class="orb-event-threat">
+        <rect x="-68" y="-15" width="136" height="30" rx="15" />
+        <text text-anchor="middle" y="5">
+          supply-chain attack
+        </text>
+      </g>
     </g>
 
     <g class="orb-dynamic-events">
-      <g class="orb-event orb-event-safe orb-event-safe-prompt"><rect x="-48" y="-15" width="96" height="30" rx="15" /><text text-anchor="middle" y="5">safe prompt</text></g>
-      <g class="orb-event orb-event-safe orb-event-safe-input"><rect x="-44" y="-15" width="88" height="30" rx="15" /><text text-anchor="middle" y="5">user input</text></g>
-      <g class="orb-event orb-event-threat orb-event-threat-prompt"><rect x="-61" y="-15" width="122" height="30" rx="15" /><text text-anchor="middle" y="5">prompt injection</text></g>
-      <g class="orb-event orb-event-threat orb-event-threat-supply"><rect x="-68" y="-15" width="136" height="30" rx="15" /><text text-anchor="middle" y="5">supply-chain attack</text></g>
-      <g class="orb-fragments orb-fragments-prompt" transform="translate(618 192)">{Array.from({ length: 8 }).map((_, index) => <rect data-fragment x={index % 2 ? "2" : "-5"} y={index % 3 ? "2" : "-5"} width="5" height="5" rx="1" />)}</g>
-      <g class="orb-fragments orb-fragments-supply" transform="translate(618 408)">{Array.from({ length: 8 }).map((_, index) => <rect data-fragment x={index % 2 ? "2" : "-5"} y={index % 3 ? "2" : "-5"} width="5" height="5" rx="1" />)}</g>
+      <g class="orb-event orb-event-safe orb-event-safe-prompt">
+        <rect x="-48" y="-15" width="96" height="30" rx="15" />
+        <text text-anchor="middle" y="5">
+          safe prompt
+        </text>
+      </g>
+      <g class="orb-event orb-event-safe orb-event-safe-input">
+        <rect x="-44" y="-15" width="88" height="30" rx="15" />
+        <text text-anchor="middle" y="5">
+          user input
+        </text>
+      </g>
+      <g class="orb-event orb-event-threat orb-event-threat-prompt">
+        <rect x="-61" y="-15" width="122" height="30" rx="15" />
+        <text text-anchor="middle" y="5">
+          prompt injection
+        </text>
+      </g>
+      <g class="orb-event orb-event-threat orb-event-threat-supply">
+        <rect x="-68" y="-15" width="136" height="30" rx="15" />
+        <text text-anchor="middle" y="5">
+          supply-chain attack
+        </text>
+      </g>
+      <g
+        class="orb-fragments orb-fragments-prompt"
+        transform="translate(618 192)"
+      >
+        {Array.from({ length: 8 }).map((_, index) => (
+          <rect
+            data-fragment
+            x={index % 2 ? '2' : '-5'}
+            y={index % 3 ? '2' : '-5'}
+            width="5"
+            height="5"
+            rx="1"
+          />
+        ))}
+      </g>
+      <g
+        class="orb-fragments orb-fragments-supply"
+        transform="translate(618 408)"
+      >
+        {Array.from({ length: 8 }).map((_, index) => (
+          <rect
+            data-fragment
+            x={index % 2 ? '2' : '-5'}
+            y={index % 3 ? '2' : '-5'}
+            width="5"
+            height="5"
+            rx="1"
+          />
+        ))}
+      </g>
     </g>
 
     <g class="orb-annotations">
-      <text x="430" y="531" text-anchor="middle">SIGNED LEDGER · SAFE ACTIONS ENTER THE CORE</text>
-      <text x="618" y="224" text-anchor="middle" class="orb-boundary-copy">BLOCKED AT PERIMETER</text>
-      <text x="618" y="440" text-anchor="middle" class="orb-boundary-copy">BLOCKED AT PERIMETER</text>
+      <text x="430" y="531" text-anchor="middle">
+        SIGNED LEDGER · SAFE ACTIONS ENTER THE CORE
+      </text>
+      <text x="618" y="224" text-anchor="middle" class="orb-boundary-copy">
+        BLOCKED AT PERIMETER
+      </text>
+      <text x="618" y="440" text-anchor="middle" class="orb-boundary-copy">
+        BLOCKED AT PERIMETER
+      </text>
     </g>
   </svg>
 </div>
 
 <style>
-  .security-orb { --orb-primary: var(--theme-primary); --orb-core: oklch(.78 .16 166); --orb-safe: oklch(.75 .15 166); --orb-risk: var(--theme-destructive); position: relative; width: 100%; min-height: 25rem; aspect-ratio: 4 / 3; overflow: hidden; border: 1px solid var(--theme-border); border-radius: 1.5rem; background: radial-gradient(circle at 54% 50%, color-mix(in oklch, var(--theme-primary) 12%, transparent), transparent 32%), color-mix(in oklch, var(--theme-card) 96%, var(--theme-background)); }
-  .orb-three { position: absolute; inset: 0; z-index: 1; pointer-events: none; }.orb-three canvas { display: block; width: 100%; height: 100%; }
-  .security-orb-canvas { position: relative; z-index: 2; display: block; width: 100%; height: 100%; }
-  .orb-construction { fill: none; stroke: color-mix(in oklch, var(--theme-border) 82%, transparent); stroke-width: 1; }
-  .orb-ticks { stroke: color-mix(in oklch, var(--theme-primary) 54%, var(--theme-border)); stroke-width: 1; opacity: .8; }
-  .orb-ledger { fill: color-mix(in oklch, var(--theme-card) 92%, var(--theme-background)); stroke: color-mix(in oklch, var(--theme-primary) 70%, var(--theme-border)); stroke-width: 1.15; transform-origin: 430px 300px; }
-  .orb-ledger-segment-active { fill: color-mix(in oklch, var(--theme-primary) 36%, var(--theme-card)); stroke: var(--theme-primary); }
-  .orb-flow { fill: none; stroke-width: 1.6; stroke-linecap: round; stroke-dasharray: 3 8; }
-  .orb-flow-safe { stroke: var(--orb-safe); }.orb-flow-threat { stroke: var(--orb-risk); }
-  .orb-impact { fill: color-mix(in oklch, var(--theme-card) 65%, var(--orb-risk)); stroke: var(--orb-risk); stroke-width: 1.25; transform-box: fill-box; transform-origin: center; }.orb-impact path { fill: none; stroke-width: 1.5; }.orb-impact circle:first-child { fill: none; opacity: .42; }
-  .orb-static-wireframe { display: none; fill: none; stroke: color-mix(in oklch, var(--theme-primary) 82%, var(--theme-border)); stroke-width: 1.3; transform-origin: 430px 300px; }
-  .orb-core-fill { fill: url(#security-orb-core-fill); stroke: none; }.orb-center { fill: color-mix(in oklch, var(--theme-card) 84%, var(--theme-primary)); stroke: var(--theme-primary); }.orb-core-glow { fill: var(--orb-safe); stroke: none; opacity: .75; }.orb-core-dot { fill: var(--orb-safe); stroke: none; }
-  .orb-event { opacity: 0; transform-box: fill-box; transform-origin: center; }.orb-event rect { stroke-width: 1.1; }.orb-event text { font-size: 10px; font-weight: 700; letter-spacing: .03em; }.orb-event-safe rect { fill: color-mix(in oklch, var(--theme-card) 80%, var(--orb-safe)); stroke: var(--orb-safe); }.orb-event-safe text { fill: var(--orb-safe); }.orb-event-threat rect { fill: color-mix(in oklch, var(--theme-card) 80%, var(--orb-risk)); stroke: var(--orb-risk); }.orb-event-threat text { fill: color-mix(in oklch, var(--orb-risk) 84%, var(--theme-foreground)); }
-  .orb-static-events { display: none; }.orb-fragments { opacity: 0; fill: var(--orb-risk); }.orb-annotations { fill: var(--theme-muted-foreground); font-size: 9px; font-weight: 750; letter-spacing: .11em; }.orb-boundary-copy { fill: color-mix(in oklch, var(--orb-risk) 76%, var(--theme-muted-foreground)); font-size: 7px; letter-spacing: .08em; }
-  @media (max-width: 640px) { .security-orb { display: none; } }
-  @media (prefers-reduced-motion: reduce) { .orb-three, .orb-dynamic-events { display: none; }.orb-static-wireframe, .orb-static-events { display: block; }.orb-ledger-segment-active { fill: color-mix(in oklch, var(--theme-primary) 24%, var(--theme-card)); } }
+  .security-orb {
+    --orb-primary: var(--theme-primary);
+    --orb-core: oklch(0.78 0.16 166);
+    --orb-safe: oklch(0.75 0.15 166);
+    --orb-risk: var(--theme-destructive);
+    position: relative;
+    width: 100%;
+    min-height: 25rem;
+    aspect-ratio: 4 / 3;
+    overflow: hidden;
+    border: 1px solid var(--theme-border);
+    border-radius: 1.5rem;
+    background:
+      radial-gradient(
+        circle at 54% 50%,
+        color-mix(in oklch, var(--theme-primary) 12%, transparent),
+        transparent 32%
+      ),
+      color-mix(in oklch, var(--theme-card) 96%, var(--theme-background));
+  }
+  .orb-three {
+    position: absolute;
+    inset: 0;
+    z-index: 1;
+    pointer-events: none;
+  }
+  .orb-three canvas {
+    display: block;
+    width: 100%;
+    height: 100%;
+  }
+  .security-orb-canvas {
+    position: relative;
+    z-index: 2;
+    display: block;
+    width: 100%;
+    height: 100%;
+  }
+  .orb-construction {
+    fill: none;
+    stroke: color-mix(in oklch, var(--theme-border) 82%, transparent);
+    stroke-width: 1;
+  }
+  .orb-ticks {
+    stroke: color-mix(in oklch, var(--theme-primary) 54%, var(--theme-border));
+    stroke-width: 1;
+    opacity: 0.8;
+  }
+  .orb-ledger {
+    fill: color-mix(in oklch, var(--theme-card) 92%, var(--theme-background));
+    stroke: color-mix(in oklch, var(--theme-primary) 70%, var(--theme-border));
+    stroke-width: 1.15;
+    transform-origin: 430px 300px;
+  }
+  .orb-ledger-segment-active {
+    fill: color-mix(in oklch, var(--theme-primary) 36%, var(--theme-card));
+    stroke: var(--theme-primary);
+  }
+  .orb-flow {
+    fill: none;
+    stroke-width: 1.6;
+    stroke-linecap: round;
+    stroke-dasharray: 3 8;
+  }
+  .orb-flow-safe {
+    stroke: var(--orb-safe);
+  }
+  .orb-flow-threat {
+    stroke: var(--orb-risk);
+  }
+  .orb-impact {
+    fill: color-mix(in oklch, var(--theme-card) 65%, var(--orb-risk));
+    stroke: var(--orb-risk);
+    stroke-width: 1.25;
+    transform-box: fill-box;
+    transform-origin: center;
+  }
+  .orb-impact path {
+    fill: none;
+    stroke-width: 1.5;
+  }
+  .orb-impact circle:first-child {
+    fill: none;
+    opacity: 0.42;
+  }
+  .orb-static-wireframe {
+    display: none;
+    fill: none;
+    stroke: color-mix(in oklch, var(--theme-primary) 82%, var(--theme-border));
+    stroke-width: 1.3;
+    transform-origin: 430px 300px;
+  }
+  .orb-core-fill {
+    fill: url(#security-orb-core-fill);
+    stroke: none;
+  }
+  .orb-center {
+    fill: color-mix(in oklch, var(--theme-card) 84%, var(--theme-primary));
+    stroke: var(--theme-primary);
+  }
+  .orb-core-glow {
+    fill: var(--orb-safe);
+    stroke: none;
+    opacity: 0.75;
+  }
+  .orb-core-dot {
+    fill: var(--orb-safe);
+    stroke: none;
+  }
+  .orb-event {
+    opacity: 0;
+    transform-box: fill-box;
+    transform-origin: center;
+  }
+  .orb-event rect {
+    stroke-width: 1.1;
+  }
+  .orb-event text {
+    font-size: 10px;
+    font-weight: 700;
+    letter-spacing: 0.03em;
+  }
+  .orb-event-safe rect {
+    fill: color-mix(in oklch, var(--theme-card) 80%, var(--orb-safe));
+    stroke: var(--orb-safe);
+  }
+  .orb-event-safe text {
+    fill: var(--orb-safe);
+  }
+  .orb-event-threat rect {
+    fill: color-mix(in oklch, var(--theme-card) 80%, var(--orb-risk));
+    stroke: var(--orb-risk);
+  }
+  .orb-event-threat text {
+    fill: color-mix(in oklch, var(--orb-risk) 84%, var(--theme-foreground));
+  }
+  .orb-static-events {
+    display: none;
+  }
+  .orb-fragments {
+    opacity: 0;
+    fill: var(--orb-risk);
+  }
+  .orb-annotations {
+    fill: var(--theme-muted-foreground);
+    font-size: 9px;
+    font-weight: 750;
+    letter-spacing: 0.11em;
+  }
+  .orb-boundary-copy {
+    fill: color-mix(
+      in oklch,
+      var(--orb-risk) 76%,
+      var(--theme-muted-foreground)
+    );
+    font-size: 7px;
+    letter-spacing: 0.08em;
+  }
+  @media (max-width: 640px) {
+    .security-orb {
+      display: none;
+    }
+  }
+  @media (prefers-reduced-motion: reduce) {
+    .orb-three,
+    .orb-dynamic-events {
+      display: none;
+    }
+    .orb-static-wireframe,
+    .orb-static-events {
+      display: block;
+    }
+    .orb-ledger-segment-active {
+      fill: color-mix(in oklch, var(--theme-primary) 24%, var(--theme-card));
+    }
+  }
 </style>
 
 <script>
   import { animate, svg } from 'animejs';
   import * as THREE from 'three';
 
-  const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)');
+  const prefersReducedMotion = window.matchMedia(
+    '(prefers-reduced-motion: reduce)'
+  );
   const hasOrbViewport = window.matchMedia('(min-width: 641px)');
   const root = document.querySelector<HTMLElement>('[data-security-orb]');
 
   if (root && !prefersReducedMotion.matches && hasOrbViewport.matches) {
-    const path = (selector: string) => root.querySelector<SVGPathElement>(selector);
-    const target = (selector: string) => root.querySelector<SVGElement>(selector);
+    const path = (selector: string) =>
+      root.querySelector<SVGPathElement>(selector);
+    const target = (selector: string) =>
+      root.querySelector<SVGElement>(selector);
 
     const safePromptPath = path('#orb-safe-prompt-path');
     const safeInputPath = path('#orb-safe-input-path');
@@ -149,10 +439,14 @@ const tickMarks = Array.from({ length: 48 });
       const camera = new THREE.PerspectiveCamera(34, 1, 0.1, 100);
       camera.position.z = 5.4;
 
-      const renderer = new THREE.WebGLRenderer({ alpha: true, antialias: true });
+      const renderer = new THREE.WebGLRenderer({
+        alpha: true,
+        antialias: true,
+      });
       renderer.setPixelRatio(Math.min(window.devicePixelRatio, 1.75));
       renderer.setClearColor(0x000000, 0);
-      renderer.domElement.style.cssText = 'display:block;width:100%;height:100%;';
+      renderer.domElement.style.cssText =
+        'display:block;width:100%;height:100%;';
       orbHost.appendChild(renderer.domElement);
 
       const orb = new THREE.Group();
@@ -160,33 +454,63 @@ const tickMarks = Array.from({ length: 48 });
       orb.scale.setScalar(0.8);
       scene.add(orb);
 
-      const wireMaterial = new THREE.LineBasicMaterial({ transparent: true, opacity: 0.78 });
-      const wire = new THREE.LineSegments(new THREE.WireframeGeometry(new THREE.SphereGeometry(0.82, 14, 10)), wireMaterial);
+      const wireMaterial = new THREE.LineBasicMaterial({
+        transparent: true,
+        opacity: 0.78,
+      });
+      const wire = new THREE.LineSegments(
+        new THREE.WireframeGeometry(new THREE.SphereGeometry(0.82, 14, 10)),
+        wireMaterial
+      );
       orb.add(wire);
 
-      const ringMaterial = new THREE.MeshBasicMaterial({ transparent: true, opacity: 0.78, side: THREE.DoubleSide });
-      const ringOne = new THREE.Mesh(new THREE.TorusGeometry(1.05, 0.012, 8, 72), ringMaterial);
+      const ringMaterial = new THREE.MeshBasicMaterial({
+        transparent: true,
+        opacity: 0.78,
+        side: THREE.DoubleSide,
+      });
+      const ringOne = new THREE.Mesh(
+        new THREE.TorusGeometry(1.05, 0.012, 8, 72),
+        ringMaterial
+      );
       const ringTwoMaterial = ringMaterial.clone();
-      const ringTwo = new THREE.Mesh(new THREE.TorusGeometry(1.05, 0.012, 8, 72), ringTwoMaterial);
+      const ringTwo = new THREE.Mesh(
+        new THREE.TorusGeometry(1.05, 0.012, 8, 72),
+        ringTwoMaterial
+      );
       ringOne.rotation.x = Math.PI / 2.8;
       ringTwo.rotation.y = Math.PI / 2.4;
       orb.add(ringOne, ringTwo);
 
-      const hashMaterial = new THREE.MeshBasicMaterial({ transparent: true, opacity: 0.86, wireframe: true });
+      const hashMaterial = new THREE.MeshBasicMaterial({
+        transparent: true,
+        opacity: 0.86,
+        wireframe: true,
+      });
       const hashOrbit = new THREE.Group();
       const hashBlock = new THREE.BoxGeometry(0.1, 0.1, 0.1);
       Array.from({ length: 9 }).forEach((_, index) => {
         const angle = (Math.PI * 2 * index) / 9;
         const node = new THREE.Mesh(hashBlock, hashMaterial);
-        node.position.set(Math.cos(angle) * 0.66, Math.sin(angle) * 0.5, Math.sin(angle * 2) * 0.14);
+        node.position.set(
+          Math.cos(angle) * 0.66,
+          Math.sin(angle) * 0.5,
+          Math.sin(angle * 2) * 0.14
+        );
         node.rotation.set(angle, angle * 0.55, 0);
         hashOrbit.add(node);
       });
       hashOrbit.rotation.x = Math.PI / 7;
       orb.add(hashOrbit);
 
-      const coreMaterial = new THREE.MeshBasicMaterial({ transparent: true, opacity: 0.94 });
-      const core = new THREE.Mesh(new THREE.SphereGeometry(0.075, 16, 16), coreMaterial);
+      const coreMaterial = new THREE.MeshBasicMaterial({
+        transparent: true,
+        opacity: 0.94,
+      });
+      const core = new THREE.Mesh(
+        new THREE.SphereGeometry(0.075, 16, 16),
+        coreMaterial
+      );
       orb.add(core);
 
       const applyPalette = () => {
@@ -209,7 +533,10 @@ const tickMarks = Array.from({ length: 48 });
       applyPalette();
       resize();
       new ResizeObserver(resize).observe(orbHost);
-      new MutationObserver(applyPalette).observe(document.documentElement, { attributes: true, attributeFilter: ['class'] });
+      new MutationObserver(applyPalette).observe(document.documentElement, {
+        attributes: true,
+        attributeFilter: ['class'],
+      });
 
       const renderOrb = (time: number) => {
         orb.rotation.y = time * 0.00014;
@@ -224,7 +551,12 @@ const tickMarks = Array.from({ length: 48 });
       requestAnimationFrame(renderOrb);
     }
 
-    const runEvent = (event: SVGElement | null, eventPath: SVGPathElement | null, delay: number, duration: number) => {
+    const runEvent = (
+      event: SVGElement | null,
+      eventPath: SVGPathElement | null,
+      delay: number,
+      duration: number
+    ) => {
       if (!event || !eventPath) return;
       const { translateX, translateY } = svg.createMotionPath(eventPath);
       animate(event, {
@@ -255,8 +587,20 @@ const tickMarks = Array.from({ length: 48 });
     const ledger = target('.orb-ledger');
     const coreDot = target('.orb-core-dot');
 
-    if (ledger) animate(ledger, { rotate: 360, duration: 14000, ease: 'linear', loop: true });
-    if (coreDot) animate(coreDot, { r: [6, 9, 6], duration: 4200, ease: 'inOutSine', loop: true });
+    if (ledger)
+      animate(ledger, {
+        rotate: 360,
+        duration: 14000,
+        ease: 'linear',
+        loop: true,
+      });
+    if (coreDot)
+      animate(coreDot, {
+        r: [6, 9, 6],
+        duration: 4200,
+        ease: 'inOutSine',
+        loop: true,
+      });
 
     const impact = (selector: string, delay: number) => {
       const marker = target(selector);
@@ -276,7 +620,9 @@ const tickMarks = Array.from({ length: 48 });
     impact('.orb-impact-supply', 5400);
 
     const burst = (selector: string, delay: number) => {
-      const fragments = root.querySelectorAll<SVGRectElement>(`${selector} [data-fragment]`);
+      const fragments = root.querySelectorAll<SVGRectElement>(
+        `${selector} [data-fragment]`
+      );
       animate(fragments, {
         opacity: [0, 1, 0],
         x: (_: unknown, index = 0) => (index % 2 ? 24 : -24) + index * 3,
