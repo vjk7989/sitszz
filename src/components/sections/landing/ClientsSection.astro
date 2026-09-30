@@ -53,28 +53,58 @@ const developerCompanies: DeveloperCompany[] = [
   { name: 'Google', icon: googleIcon, color: '#4285f4' },
   { name: 'Amazon', color: '#ff9900', darkColor: '#f2f2f2' },
   { name: 'AMD', icon: amdIcon, color: '#ed1c24' },
-  { name: 'Qualcomm', fullLogo: bundledLogo('qualcomm'), color: '#3253dc', scale: 1.02 },
+  {
+    name: 'Qualcomm',
+    fullLogo: bundledLogo('qualcomm'),
+    color: '#3253dc',
+    scale: 1.02,
+  },
   { name: 'NTT DATA', color: '#0064a5' },
   { name: 'Virtusa', color: '#5f259f' },
   { name: 'TCS', icon: tcsIcon, color: '#1f5b99' },
   { name: 'Flipkart', color: '#2874f0' },
   { name: 'Zomato', icon: zomatoIcon, color: '#e23744', scale: 1.34 },
-  { name: 'Adobe', fullLogo: bundledLogo('adobe'), color: '#ed1c24', scale: 1.05 },
+  {
+    name: 'Adobe',
+    fullLogo: bundledLogo('adobe'),
+    color: '#ed1c24',
+    scale: 1.05,
+  },
   { name: 'ADP', icon: adpIcon, color: '#d71920' },
   { name: 'Coinbase', icon: coinbaseIcon, color: '#0052ff' },
   { name: 'PwC', color: '#dc6900', scale: 1.08 },
-  { name: 'Goldman Sachs', icon: goldmanSachsIcon, color: '#7399c6', scale: 1.05 },
+  {
+    name: 'Goldman Sachs',
+    icon: goldmanSachsIcon,
+    color: '#7399c6',
+    scale: 1.05,
+  },
   { name: 'J.P. Morgan', icon: chaseIcon, color: '#005eb8' },
   { name: 'AT&T', icon: atAndTIcon, color: '#00a8e0', scale: 1.08 },
-  { name: 'OpenAI', fullLogo: bundledLogo('openai'), color: '#111111', darkColor: '#ffffff', scale: 1.02 },
+  {
+    name: 'OpenAI',
+    fullLogo: bundledLogo('openai'),
+    color: '#111111',
+    darkColor: '#ffffff',
+    scale: 1.02,
+  },
   { name: 'ClickHouse', icon: clickHouseIcon, color: '#ffcc01' },
-  { name: 'Juspay', logo: juspayLogo.src, darkLogo: juspayDarkLogo.src, color: '#0561e2', scale: 1.05 },
+  {
+    name: 'Juspay',
+    logo: juspayLogo.src,
+    darkLogo: juspayDarkLogo.src,
+    color: '#0561e2',
+    scale: 1.05,
+  },
 ];
 
 const marqueeCompanies = [...developerCompanies, ...developerCompanies];
 ---
 
-<section class="developer-community" aria-labelledby="developer-community-title">
+<section
+  class="developer-community"
+  aria-labelledby="developer-community-title"
+>
   <div class="developer-community-heading">
     <p class="developer-community-kicker">FOR ENGINEERS WHO BUILD AT SCALE</p>
     <h2 id="developer-community-title">{title}</h2>
@@ -82,7 +112,9 @@ const marqueeCompanies = [...developerCompanies, ...developerCompanies];
   </div>
 
   <ul class="sr-only">
-    {developerCompanies.map(company => <li>{company.name}</li>)}
+    {developerCompanies.map(company => (
+      <li>{company.name}</li>
+    ))}
   </ul>
 
   <div class="developer-marquee" aria-hidden="true">
@@ -91,18 +123,33 @@ const marqueeCompanies = [...developerCompanies, ...developerCompanies];
         <div
           class="developer-logo"
           data-index={index}
-          style={{ '--brand-color': company.color, '--brand-color-dark': company.darkColor ?? company.color, '--logo-scale': company.scale ?? 1 }}
+          style={{
+            '--brand-color': company.color,
+            '--brand-color-dark': company.darkColor ?? company.color,
+            '--logo-scale': company.scale ?? 1,
+          }}
         >
           {company.logo ? (
             <span class="developer-logo-stage developer-logo-image">
               <img src={company.logo} alt="" />
-              {company.darkLogo && <img class="developer-logo-image-dark" src={company.darkLogo} alt="" />}
+              {company.darkLogo && (
+                <img
+                  class="developer-logo-image-dark"
+                  src={company.darkLogo}
+                  alt=""
+                />
+              )}
             </span>
           ) : company.fullLogo ? (
-            <span class="developer-logo-stage developer-logo-full" set:html={company.fullLogo} />
+            <span
+              class="developer-logo-stage developer-logo-full"
+              set:html={company.fullLogo}
+            />
           ) : (
             <span class="developer-logo-stage">
-              {company.icon && <span class="developer-logo-icon" set:html={company.icon} />}
+              {company.icon && (
+                <span class="developer-logo-icon" set:html={company.icon} />
+              )}
               <span class="developer-logo-wordmark">{company.name}</span>
             </span>
           )}
@@ -112,29 +159,186 @@ const marqueeCompanies = [...developerCompanies, ...developerCompanies];
   </div>
 
   <p class="developer-community-disclaimer">
-    Brand marks are shown for demonstration only and do not imply affiliation or endorsement.
+    Brand marks are shown for demonstration only and do not imply affiliation or
+    endorsement.
   </p>
 </section>
 
 <style>
-  .developer-community { max-width: 85rem; margin: 0 auto; padding: 3.5rem 1rem; overflow: hidden; }
-  .developer-community-heading { max-width: 42rem; margin: 0 auto 2rem; text-align: center; }
-  .developer-community-kicker { margin: 0 0 .7rem; color: var(--theme-primary); font-size: .68rem; font-weight: 800; letter-spacing: .14em; }
-  .developer-community h2 { margin: 0; color: var(--theme-foreground); font-size: clamp(1.75rem, 3vw, 2.25rem); font-weight: 750; letter-spacing: -.035em; line-height: 1.1; }
-  .developer-community-heading > p:last-child { margin: .75rem auto 0; color: var(--theme-muted-foreground); font-size: 1rem; line-height: 1.55; }
-  .developer-marquee { position: relative; mask-image: linear-gradient(to right, transparent, black 7%, black 93%, transparent); -webkit-mask-image: linear-gradient(to right, transparent, black 7%, black 93%, transparent); }
-  .developer-marquee-track { display: flex; align-items: center; width: max-content; animation: developer-marquee 38s linear infinite; }
-  .developer-marquee:hover .developer-marquee-track { animation-play-state: paused; }
-  .developer-logo { display: grid; place-items: center; flex: 0 0 11rem; min-height: 4.75rem; margin: 0 .55rem; padding: .8rem 1rem; border: 1px solid color-mix(in oklch, var(--theme-border) 78%, transparent); border-radius: 1rem; background: color-mix(in oklch, var(--theme-card) 80%, transparent); transition: border-color .2s ease, transform .2s ease, background .2s ease; }
-  .developer-logo:hover { transform: translateY(-2px); border-color: color-mix(in oklch, var(--brand-color) 52%, var(--theme-border)); background: color-mix(in oklch, var(--brand-color) 7%, var(--theme-card)); }
-  .developer-logo-stage { display: inline-flex; align-items: center; justify-content: center; gap: .58rem; width: min(9rem, 100%); min-height: 2.35rem; color: var(--brand-color); transform: scale(var(--logo-scale)); transform-origin: center; }
-  .developer-logo-icon { display: block; flex: 0 0 auto; width: 1.8rem; height: 1.8rem; }.developer-logo-icon :global(svg) { display: block; width: 100%; height: 100%; fill: currentColor; }
-  .developer-logo-wordmark { color: var(--brand-color); font-family: ui-sans-serif, system-ui, sans-serif; font-size: 1.12rem; font-weight: 800; letter-spacing: -.045em; line-height: 1; white-space: nowrap; }
-  .developer-logo-full { display: block; height: 2.25rem; }.developer-logo-full :global(svg) { display: block; width: 100%; height: 100%; }.developer-logo-image { position: relative; display: block; height: 2.35rem; }.developer-logo-image img { display: block; width: 100%; height: 100%; object-fit: contain; }.developer-logo-image-dark { display: none !important; }
-  :global(.dark) .developer-logo-stage, :global(.dark) .developer-logo-wordmark { color: var(--brand-color-dark); }
-  :global(.dark) .developer-logo-image > img:first-child { display: none; }:global(.dark) .developer-logo-image .developer-logo-image-dark { display: block !important; }
-  .developer-community-disclaimer { margin: 1rem 0 0; color: var(--theme-muted-foreground); font-size: .75rem; text-align: center; }
-  @keyframes developer-marquee { to { transform: translateX(-50%); } }
-  @media (min-width: 640px) { .developer-community { padding: 4rem 1.5rem; } }
-  @media (prefers-reduced-motion: reduce) { .developer-marquee { mask-image: none; -webkit-mask-image: none; overflow-x: auto; }.developer-marquee-track { animation: none; }.developer-logo { flex-basis: 9rem; } }
+  .developer-community {
+    max-width: 85rem;
+    margin: 0 auto;
+    padding: 3.5rem 1rem;
+    overflow: hidden;
+  }
+  .developer-community-heading {
+    max-width: 42rem;
+    margin: 0 auto 2rem;
+    text-align: center;
+  }
+  .developer-community-kicker {
+    margin: 0 0 0.7rem;
+    color: var(--theme-primary);
+    font-size: 0.68rem;
+    font-weight: 800;
+    letter-spacing: 0.14em;
+  }
+  .developer-community h2 {
+    margin: 0;
+    color: var(--theme-foreground);
+    font-size: clamp(1.75rem, 3vw, 2.25rem);
+    font-weight: 750;
+    letter-spacing: -0.035em;
+    line-height: 1.1;
+  }
+  .developer-community-heading > p:last-child {
+    margin: 0.75rem auto 0;
+    color: var(--theme-muted-foreground);
+    font-size: 1rem;
+    line-height: 1.55;
+  }
+  .developer-marquee {
+    position: relative;
+    mask-image: linear-gradient(
+      to right,
+      transparent,
+      black 7%,
+      black 93%,
+      transparent
+    );
+    -webkit-mask-image: linear-gradient(
+      to right,
+      transparent,
+      black 7%,
+      black 93%,
+      transparent
+    );
+  }
+  .developer-marquee-track {
+    display: flex;
+    align-items: center;
+    width: max-content;
+    animation: developer-marquee 38s linear infinite;
+  }
+  .developer-marquee:hover .developer-marquee-track {
+    animation-play-state: paused;
+  }
+  .developer-logo {
+    display: grid;
+    place-items: center;
+    flex: 0 0 11rem;
+    min-height: 4.75rem;
+    margin: 0 0.55rem;
+    padding: 0.8rem 1rem;
+    border: 1px solid color-mix(in oklch, var(--theme-border) 78%, transparent);
+    border-radius: 1rem;
+    background: color-mix(in oklch, var(--theme-card) 80%, transparent);
+    transition:
+      border-color 0.2s ease,
+      transform 0.2s ease,
+      background 0.2s ease;
+  }
+  .developer-logo:hover {
+    transform: translateY(-2px);
+    border-color: color-mix(
+      in oklch,
+      var(--brand-color) 52%,
+      var(--theme-border)
+    );
+    background: color-mix(in oklch, var(--brand-color) 7%, var(--theme-card));
+  }
+  .developer-logo-stage {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.58rem;
+    width: min(9rem, 100%);
+    min-height: 2.35rem;
+    color: var(--brand-color);
+    transform: scale(var(--logo-scale));
+    transform-origin: center;
+  }
+  .developer-logo-icon {
+    display: block;
+    flex: 0 0 auto;
+    width: 1.8rem;
+    height: 1.8rem;
+  }
+  .developer-logo-icon :global(svg) {
+    display: block;
+    width: 100%;
+    height: 100%;
+    fill: currentColor;
+  }
+  .developer-logo-wordmark {
+    color: var(--brand-color);
+    font-family: ui-sans-serif, system-ui, sans-serif;
+    font-size: 1.12rem;
+    font-weight: 800;
+    letter-spacing: -0.045em;
+    line-height: 1;
+    white-space: nowrap;
+  }
+  .developer-logo-full {
+    display: block;
+    height: 2.25rem;
+  }
+  .developer-logo-full :global(svg) {
+    display: block;
+    width: 100%;
+    height: 100%;
+  }
+  .developer-logo-image {
+    position: relative;
+    display: block;
+    height: 2.35rem;
+  }
+  .developer-logo-image img {
+    display: block;
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+  }
+  .developer-logo-image-dark {
+    display: none !important;
+  }
+  :global(.dark) .developer-logo-stage,
+  :global(.dark) .developer-logo-wordmark {
+    color: var(--brand-color-dark);
+  }
+  :global(.dark) .developer-logo-image > img:first-child {
+    display: none;
+  }
+  :global(.dark) .developer-logo-image .developer-logo-image-dark {
+    display: block !important;
+  }
+  .developer-community-disclaimer {
+    margin: 1rem 0 0;
+    color: var(--theme-muted-foreground);
+    font-size: 0.75rem;
+    text-align: center;
+  }
+  @keyframes developer-marquee {
+    to {
+      transform: translateX(-50%);
+    }
+  }
+  @media (min-width: 640px) {
+    .developer-community {
+      padding: 4rem 1.5rem;
+    }
+  }
+  @media (prefers-reduced-motion: reduce) {
+    .developer-marquee {
+      mask-image: none;
+      -webkit-mask-image: none;
+      overflow-x: auto;
+    }
+    .developer-marquee-track {
+      animation: none;
+    }
+    .developer-logo {
+      flex-basis: 9rem;
+    }
+  }
 </style>
